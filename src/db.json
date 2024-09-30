@@ -1,0 +1,243 @@
+{
+    "users": [
+        {
+            "id": "79a0",
+            "username": "hisham",
+            "email": "hishamc18@gmail.com",
+            "password": "121212"
+        },
+        {
+            "id": "9f59",
+            "username": "shafeeq",
+            "email": "shafeeq@gmail.com",
+            "password": "121212"
+        },
+        {
+            "id": "72fb",
+            "username": "hisham",
+            "email": "hishamc18@gmail.com",
+            "password": "123456",
+            "confirmPassword": "123456"
+        },
+        {
+            "id": "fb29",
+            "username": "hisham",
+            "email": "hishamc18@gmail.com",
+            "password": "123456",
+            "confirmPassword": "123456"
+        },
+        {
+            "id": "fc7c",
+            "username": "hisham",
+            "email": "hishamc16@gmail.com",
+            "password": "123456",
+            "confirmPassword": "123456"
+        },
+        {
+            "id": "0919",
+            "username": "hisham",
+            "email": "hishamc16@gmail.com",
+            "password": "123456",
+            "confirmPassword": "123456"
+        },
+        {
+            "id": "adea",
+            "username": "hisham",
+            "email": "hishamc16@gmail.com",
+            "password": "123456",
+            "confirmPassword": "123456"
+        },
+        {
+            "id": "c691",
+            "username": "hisham",
+            "email": "hishamc18@gmail.com",
+            "password": "123456",
+            "confirmPassword": "123456"
+        },
+        {
+            "id": "1742",
+            "username": "Amal",
+            "email": "amal@gmail.com",
+            "password": "qwerty",
+            "confirmPassword": "qwerty"
+        },
+        {
+            "id": "0df2",
+            "username": "hisham",
+            "email": "hishamc20@gmail.com",
+            "password": "121213",
+            "confirmPassword": "121213"
+        },
+        {
+            "id": "e2b9",
+            "username": "Shahid",
+            "email": "shahid@gmail.com",
+            "password": "121212",
+            "confirmPassword": "121212"
+        }
+    ],
+
+    "products": [
+        {
+            "id": 1,
+            "name": "Dog Food 1",
+            "price": 29.99,
+            "image": "src/assets/dogProduct/pd1.jpg",
+            "category": "dog"
+        },
+        {
+            "id": 2,
+            "name": "Dog Food 2",
+            "price": 19.99,
+            "image": "src/assets/dogProduct/pd2.jpg",
+            "category": "dog"
+        },
+        {
+            "id": 3,
+            "name": "Cat Food 1",
+            "price": 9.99,
+            "image": "",
+            "category": "cat"
+        },
+        {
+            "id": 4,
+            "name": "Cat Food 2",
+            "price": 119.99,
+            "image": "src/assets/product4.jpg",
+            "category": "cat"
+        },
+        {
+            "id": 5,
+            "name": "Cat Food 2",
+            "price": 119.99,
+            "image": "src/assets/product4.jpg",
+            "category": "cat"
+        },
+        {
+            "id": 6,
+            "name": "Cat Food 2",
+            "price": 119.99,
+            "image": "src/assets/product4.jpg",
+            "category": "cat"
+        },
+        {
+            "id": 7,
+            "name": "Cat Food 2",
+            "price": 119.99,
+            "image": "src/assets/product4.jpg",
+            "category": "cat"
+        },
+        {
+            "id": 8,
+            "name": "Cat Food 2",
+            "price": 119.99,
+            "image": "src/assets/product4.jpg",
+            "category": "cat"
+        },
+        {
+            "id": 9,
+            "name": "Cat Food 2",
+            "price": 119.99,
+            "image": "src/assets/product4.jpg",
+            "category": "cat"
+        },
+        {
+            "id": 10,
+            "name": "Cat Food 2",
+            "price": 119.99,
+            "image": "src/assets/product4.jpg",
+            "category": "cat"
+        },
+        {
+            "id": 11,
+            "name": "Cat Food 2",
+            "price": 119.99,
+            "image": "src/assets/product4.jpg",
+            "category": "cat"
+        },
+        {
+            "id": 12,
+            "name": "Cat Food 2",
+            "price": 119.99,
+            "image": "src/assets/product4.jpg",
+            "category": "cat"
+        },
+        {
+            "id": 13,
+            "name": "Cat Food 2",
+            "price": 119.99,
+            "image": "src/assets/product4.jpg",
+            "category": "cat"
+        },
+        {
+            "id": 14,
+            "name": "Dog Food 3",
+            "price": 229.99,
+            "image": "src/assets/dogProduct/pd3.webp",
+            "category": "dog"
+        },
+        {
+            "id": 15,
+            "name": "Dog Food 4",
+            "price": 229.99,
+            "image": "src/assets/dogProduct/pd4.webp",
+            "category": "dog"
+        },
+        {
+            "id": 16,
+            "name": "Dog Food 5",
+            "price": 229.99,
+            "image": "src/assets/dogProduct/pd5.webp",
+            "category": "dog"
+        },
+        {
+            "id": 17,
+            "name": "Dog Food 6",
+            "price": 229.99,
+            "image": "src/assets/dogProduct/pd6.webp",
+            "category": "dog"
+        },
+        {
+            "id": 18,
+            "name": "Dog Food 7",
+            "price": 229.99,
+            "image": "src/assets/dogProduct/pd7.webp",
+            "category": "dog"
+        },
+        {
+            "id": 19,
+            "name": "Dog Food 8",
+            "price": 229.99,
+            "image": "src/assets/dogProduct/pd8.webp",
+            "category": "dog"
+        },
+        {
+            "id": 20,
+            "name": "Dog Food 9",
+            "price": 229.99,
+            "image": "src/assets/dogProduct/pd9.webp",
+            "category": "dog"
+        },
+        {
+            "id": 21,
+            "name": "Dog Food 10",
+            "price": 229.99,
+            "image": "src/assets/dogProduct/pd10.jpg",
+            "category": "dog"
+        },
+        {
+            "id": 22,
+            "name": "Dog Food 11",
+            "price": 229.99,
+            "image": "src/assets/dogProduct/pd11.jpg",
+            "category": "dog"
+        },
+        {
+            "id": 23,
+            "name": "Dog Food 12",
+            "price": 229.99,
+            "image": "src/assets/dogProduct/pd12.jpg",
+            "category": "dog"
+        }
+    ]
+}
