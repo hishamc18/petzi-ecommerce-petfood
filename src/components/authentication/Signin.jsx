@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import './style.css'
+import './Style.css'
 
 function Signin() {
     let navigate = useNavigate();
