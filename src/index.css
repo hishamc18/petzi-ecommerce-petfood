@@ -9,6 +9,17 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+
+/* Hide scrollbar for Webkit browsers */
+body::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
+}
+body {
+  overflow: scroll; /* Allow scrolling */
+}
+
+
 /*
 a {
   font-weight: 500;

@@ -1,39 +1,49 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { ProductContext } from './ProductContext';
-import axios from 'axios';
-import './style.css'
+
+import React, { useContext, useEffect, useState } from "react";
+import { ProductContext } from "../Context/ProductContext";
+import { GiShoppingCart } from "react-icons/gi";
+import "./style.css";
 
 const Products = () => {
-  const { category, searchTerm } = useContext(ProductContext);
-  const [products, setProducts] = useState([]);
+  const { addToCart, filteredProducts, isLoggedIn } = useContext(ProductContext);
 
-  useEffect(() => {
-    // Fetch products based on the selected category
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get('http://localhost:5001/products');
-        const filteredProducts = response.data.filter(product => 
-          product.category === category && 
-          product.name.toLowerCase().includes(searchTerm) // Filter based on search term
-        );
-        setProducts(filteredProducts);
-      } catch (error) {
-        console.error('Error fetching products', error);
-      }
-    };
-    fetchProducts();
-  }, [category, searchTerm]); // Re-run effect when category or searchTerm changes
+  // Wrap addToCart with a login check
+  const handleAddToCartClick = (product) => {
+    if (!isLoggedIn) {
+      alert("Please log in to add products to the cart.");
+    } else {
+      addToCart(product); // Call the original addToCart function if the user is logged in
+    }
+  };
 
   return (
     <div className="products-container">
-      {products.length === 0 ? (
+      {filteredProducts.length === 0 ? (
         <p>No products found...</p>
       ) : (
-        products.map(product => (
-          <div className="product-card" key={product.id}>
-            <img src={product.image} alt={product.name} />
-            <h3>{product.name}</h3>
-            <p>{product.price}</p>
+        filteredProducts.map((product) => (
+          <div className="card" key={product.id}>
+            <div className="wrapper">
+              <div className="card-image">
+                <img src={product.image} alt={product.name} />
+              </div>
+              <div className="content">
+                <p className="title">{product.name}</p>
+                <div className="prices">
+                  <p className="title price">₹{product.price}</p>
+                  {product.oldPrice && (
+                    <p className="title price old-price">₹{product.oldPrice}</p>
+                  )}
+                </div>
+              </div>
+              <button
+                className="card-btn"
+                onClick={() => handleAddToCartClick(product)}
+              >
+                <i class='bx bx-cart'></i> Add to Cart 
+              </button>
+            </div>
+            <p className="tag">-50%</p>
           </div>
         ))
       )}

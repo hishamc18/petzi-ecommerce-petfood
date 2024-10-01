@@ -78,7 +78,6 @@
     outline: none;
   }
 
-  /* From Uiverse.io by alexroumi */ 
 .form button {
     padding: 15px 25px;
     border: unset;
@@ -103,8 +102,7 @@
     height: 100%;
     width: 0;
     border-radius: 15px;
-    /* background-color: #212121; */
-    background-image: url('src/assets/logo.png');
+    background-image: url('src/assets/logo/logo.png');
     background-size: cover;
     background-position: center;
     z-index: -1;
@@ -132,28 +130,6 @@
   .link:hover{
     font-weight: 700;
     transition: 0.2s;
-  }
-
-  .profile-dropdown {
-    position: absolute;
-    top: 50px;
-    right: 20px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 0.5rem;
-    border-radius: 4px;
-  }
-  
-  .profile-dropdown button {
-    background: none;
-    border: none;
-    color: #333;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-  }
-  
-  .profile-dropdown button:hover {
-    background-color: #f0f0f0;
   }
 
   

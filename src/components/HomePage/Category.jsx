@@ -1,7 +1,7 @@
 
 // Category.jsx
 import React, { useContext } from "react";
-import { ProductContext } from "./ProductContext";
+import { ProductContext } from "../Context/ProductContext";
 import "./style.css"; // Add any necessary styles
 
 const Category = () => {
@@ -19,7 +19,7 @@ const Category = () => {
                         }}
                         className="category-btn"
                     >
-                        <img src="src/assets/dog.png" alt="Dog" />
+                        <img src="src/assets/category/dog.png" alt="Dog" />
                     </button>
                     <label>Dog</label>
                     </div>
@@ -31,7 +31,7 @@ const Category = () => {
                         }}
                         className="category-btn"
                     >
-                        <img src="src/assets/Cat.png" alt="Cat" />
+                        <img src="src/assets/category/Cat.png" alt="Cat" />
                     </button>
                     <label>Cat</label>
                 </div>

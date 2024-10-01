@@ -1,243 +1,261 @@
 {
-    "users": [
-        {
-            "id": "79a0",
-            "username": "hisham",
-            "email": "hishamc18@gmail.com",
-            "password": "121212"
-        },
-        {
-            "id": "9f59",
-            "username": "shafeeq",
-            "email": "shafeeq@gmail.com",
-            "password": "121212"
-        },
-        {
-            "id": "72fb",
-            "username": "hisham",
-            "email": "hishamc18@gmail.com",
-            "password": "123456",
-            "confirmPassword": "123456"
-        },
-        {
-            "id": "fb29",
-            "username": "hisham",
-            "email": "hishamc18@gmail.com",
-            "password": "123456",
-            "confirmPassword": "123456"
-        },
-        {
-            "id": "fc7c",
-            "username": "hisham",
-            "email": "hishamc16@gmail.com",
-            "password": "123456",
-            "confirmPassword": "123456"
-        },
-        {
-            "id": "0919",
-            "username": "hisham",
-            "email": "hishamc16@gmail.com",
-            "password": "123456",
-            "confirmPassword": "123456"
-        },
-        {
-            "id": "adea",
-            "username": "hisham",
-            "email": "hishamc16@gmail.com",
-            "password": "123456",
-            "confirmPassword": "123456"
-        },
-        {
-            "id": "c691",
-            "username": "hisham",
-            "email": "hishamc18@gmail.com",
-            "password": "123456",
-            "confirmPassword": "123456"
-        },
-        {
-            "id": "1742",
-            "username": "Amal",
-            "email": "amal@gmail.com",
-            "password": "qwerty",
-            "confirmPassword": "qwerty"
-        },
-        {
-            "id": "0df2",
-            "username": "hisham",
-            "email": "hishamc20@gmail.com",
-            "password": "121213",
-            "confirmPassword": "121213"
-        },
-        {
-            "id": "e2b9",
-            "username": "Shahid",
-            "email": "shahid@gmail.com",
-            "password": "121212",
-            "confirmPassword": "121212"
-        }
-    ],
-
-    "products": [
-        {
-            "id": 1,
-            "name": "Dog Food 1",
-            "price": 29.99,
-            "image": "src/assets/dogProduct/pd1.jpg",
-            "category": "dog"
-        },
-        {
-            "id": 2,
-            "name": "Dog Food 2",
-            "price": 19.99,
-            "image": "src/assets/dogProduct/pd2.jpg",
-            "category": "dog"
-        },
-        {
-            "id": 3,
-            "name": "Cat Food 1",
-            "price": 9.99,
-            "image": "",
-            "category": "cat"
-        },
-        {
-            "id": 4,
-            "name": "Cat Food 2",
-            "price": 119.99,
-            "image": "src/assets/product4.jpg",
-            "category": "cat"
-        },
-        {
-            "id": 5,
-            "name": "Cat Food 2",
-            "price": 119.99,
-            "image": "src/assets/product4.jpg",
-            "category": "cat"
-        },
-        {
-            "id": 6,
-            "name": "Cat Food 2",
-            "price": 119.99,
-            "image": "src/assets/product4.jpg",
-            "category": "cat"
-        },
-        {
-            "id": 7,
-            "name": "Cat Food 2",
-            "price": 119.99,
-            "image": "src/assets/product4.jpg",
-            "category": "cat"
-        },
-        {
-            "id": 8,
-            "name": "Cat Food 2",
-            "price": 119.99,
-            "image": "src/assets/product4.jpg",
-            "category": "cat"
-        },
-        {
-            "id": 9,
-            "name": "Cat Food 2",
-            "price": 119.99,
-            "image": "src/assets/product4.jpg",
-            "category": "cat"
-        },
-        {
-            "id": 10,
-            "name": "Cat Food 2",
-            "price": 119.99,
-            "image": "src/assets/product4.jpg",
-            "category": "cat"
-        },
-        {
-            "id": 11,
-            "name": "Cat Food 2",
-            "price": 119.99,
-            "image": "src/assets/product4.jpg",
-            "category": "cat"
-        },
-        {
-            "id": 12,
-            "name": "Cat Food 2",
-            "price": 119.99,
-            "image": "src/assets/product4.jpg",
-            "category": "cat"
-        },
-        {
-            "id": 13,
-            "name": "Cat Food 2",
-            "price": 119.99,
-            "image": "src/assets/product4.jpg",
-            "category": "cat"
-        },
-        {
-            "id": 14,
-            "name": "Dog Food 3",
-            "price": 229.99,
-            "image": "src/assets/dogProduct/pd3.webp",
-            "category": "dog"
-        },
-        {
-            "id": 15,
-            "name": "Dog Food 4",
-            "price": 229.99,
-            "image": "src/assets/dogProduct/pd4.webp",
-            "category": "dog"
-        },
-        {
-            "id": 16,
-            "name": "Dog Food 5",
-            "price": 229.99,
-            "image": "src/assets/dogProduct/pd5.webp",
-            "category": "dog"
-        },
-        {
-            "id": 17,
-            "name": "Dog Food 6",
-            "price": 229.99,
-            "image": "src/assets/dogProduct/pd6.webp",
-            "category": "dog"
-        },
-        {
-            "id": 18,
-            "name": "Dog Food 7",
-            "price": 229.99,
-            "image": "src/assets/dogProduct/pd7.webp",
-            "category": "dog"
-        },
-        {
-            "id": 19,
-            "name": "Dog Food 8",
-            "price": 229.99,
-            "image": "src/assets/dogProduct/pd8.webp",
-            "category": "dog"
-        },
-        {
-            "id": 20,
-            "name": "Dog Food 9",
-            "price": 229.99,
-            "image": "src/assets/dogProduct/pd9.webp",
-            "category": "dog"
-        },
-        {
-            "id": 21,
-            "name": "Dog Food 10",
-            "price": 229.99,
-            "image": "src/assets/dogProduct/pd10.jpg",
-            "category": "dog"
-        },
-        {
-            "id": 22,
-            "name": "Dog Food 11",
-            "price": 229.99,
-            "image": "src/assets/dogProduct/pd11.jpg",
-            "category": "dog"
-        },
-        {
-            "id": 23,
-            "name": "Dog Food 12",
-            "price": 229.99,
-            "image": "src/assets/dogProduct/pd12.jpg",
-            "category": "dog"
-        }
-    ]
+  "users": [
+    {
+      "id": "1c01",
+      "username": "Hisham",
+      "email": "hishamc16@gmail.com",
+      "password": "121212",
+      "confirmPassword": "121212"
+    },
+    {
+      "id": "5d03",
+      "username": "Shafeeq",
+      "email": "shafeeq@gmail.com",
+      "password": "121213",
+      "confirmPassword": "121213"
+    }
+  ],
+  
+  "products": [
+    {
+        "id": "1",
+        "name": "Barky Bites Premium Dog Food",
+        "price": 528.75,
+        "oldPrice": 793.13,
+        "image": "src/assets/dogProduct/pd1.jpg",
+        "category": "dog",
+        "seller": "PetWorld",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "2",
+        "name": "TailWaggers Nutrition Dog Food",
+        "price": 123.65,
+        "oldPrice": 185.48,
+        "image": "src/assets/dogProduct/pd2.jpg",
+        "category": "dog",
+        "seller": "Animal Kingdom",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "3",
+        "name": "WhiskerLickin' Cat Chow",
+        "price": 374.36,
+        "oldPrice": 561.54,
+        "image": "src/assets/catProduct/cat1.webp",
+        "category": "cat",
+        "seller": "Feline Friends",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "4",
+        "name": "Purrfect Paws Cat Food",
+        "price": 311.54,
+        "oldPrice": 467.31,
+        "image": "src/assets/catProduct/cat2.webp",
+        "category": "cat",
+        "seller": "Pet Supplies",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "5",
+        "name": "Happy Tails Cat Delight",
+        "price": 646.18,
+        "oldPrice": 969.27,
+        "image": "src/assets/catProduct/cat3.webp",
+        "category": "cat",
+        "seller": "Happy Pets",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "6",
+        "name": "Kitty Krunch Gourmet Cat Food",
+        "price": 785.95,
+        "oldPrice": 1178.93,
+        "image": "src/assets/catProduct/cat4.webp",
+        "category": "cat",
+        "seller": "Cat Haven",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "7",
+        "name": "Feline Feast Cat Mix",
+        "price": 396.34,
+        "oldPrice": 594.51,
+        "image": "src/assets/catProduct/cat5.webp",
+        "category": "cat",
+        "seller": "PetWorld",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "8",
+        "name": "Animal Kingdom Cat Treats",
+        "price": 124.75,
+        "oldPrice": 187.13,
+        "image": "src/assets/catProduct/cat6.webp",
+        "category": "cat",
+        "seller": "Animal Kingdom",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "9",
+        "name": "Whiskers' Favorite Cat Munch",
+        "price": 259.45,
+        "oldPrice": 389.18,
+        "image": "src/assets/catProduct/cat7.webp",
+        "category": "cat",
+        "seller": "Feline Friends",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "10",
+        "name": "Paw-some Cat Nibbles",
+        "price": 99.99,
+        "oldPrice": 149.99,
+        "image": "src/assets/catProduct/cat8.webp",
+        "category": "cat",
+        "seller": "Pet Supplies",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "11",
+        "name": "Cuddly Cats' Delight",
+        "price": 549.99,
+        "oldPrice": 824.99,
+        "image": "src/assets/catProduct/cat9.webp",
+        "category": "cat",
+        "seller": "Happy Pets",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "12",
+        "name": "Purr-fectly Balanced Cat Food",
+        "price": 319.99,
+        "oldPrice": 479.99,
+        "image": "src/assets/catProduct/cat10.webp",
+        "category": "cat",
+        "seller": "Cat Haven",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "13",
+        "name": "Kittens' Choice Cat Mix",
+        "price": 245.65,
+        "oldPrice": 368.48,
+        "image": "src/assets/catProduct/cat11.webp",
+        "category": "cat",
+        "seller": "PetWorld",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "14",
+        "name": "Barking Good Dog Food",
+        "price": 462.99,
+        "oldPrice": 694.49,
+        "image": "src/assets/dogProduct/pd3.webp",
+        "category": "dog",
+        "seller": "Animal Kingdom",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "15",
+        "name": "Pawfect Meal Dog Food",
+        "price": 325.65,
+        "oldPrice": 488.48,
+        "image": "src/assets/dogProduct/pd4.webp",
+        "category": "dog",
+        "seller": "Feline Friends",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "16",
+        "name": "Canine Cuisine Dog Food",
+        "price": 275.99,
+        "oldPrice": 413.99,
+        "image": "src/assets/dogProduct/pd5.webp",
+        "category": "dog",
+        "seller": "Pet Supplies",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "17",
+        "name": "Paw Patrol Dog Food",
+        "price": 154.99,
+        "oldPrice": 232.49,
+        "image": "src/assets/dogProduct/pd6.webp",
+        "category": "dog",
+        "seller": "Happy Pets",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "18",
+        "name": "Ruff and Tumble Dog Food",
+        "price": 699.99,
+        "oldPrice": 1049.99,
+        "image": "src/assets/dogProduct/pd7.webp",
+        "category": "dog",
+        "seller": "Cat Haven",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "19",
+        "name": "Super Dog Fuel",
+        "price": 487.99,
+        "oldPrice": 731.99,
+        "image": "src/assets/dogProduct/pd8.webp",
+        "category": "dog",
+        "seller": "PetWorld",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "20",
+        "name": "Barker's Delight Dog Food",
+        "price": 678.99,
+        "oldPrice": 1018.49,
+        "image": "src/assets/dogProduct/pd9.webp",
+        "category": "dog",
+        "seller": "Animal Kingdom",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "21",
+        "name": "Canine Comfort Dog Food",
+        "price": 237.65,
+        "oldPrice": 356.48,
+        "image": "src/assets/dogProduct/pd10.jpg",
+        "category": "dog",
+        "seller": "Feline Friends",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "22",
+        "name": "Doggy's Choice Dog Food",
+        "price": 156.99,
+        "oldPrice": 235.49,
+        "image": "src/assets/dogProduct/pd11.jpg",
+        "category": "dog",
+        "seller": "Pet Supplies",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "23",
+        "name": "Ultimate Pup Dog Food",
+        "price": 314.99,
+        "oldPrice": 472.49,
+        "image": "src/assets/dogProduct/pd12.jpg",
+        "category": "dog",
+        "seller": "Happy Pets",
+        "deliveryDate": "2024-10-07"
+    },
+    {
+        "id": "24",
+        "name": "WhiskerTickle Cat Food",
+        "price": 245.65,
+        "oldPrice": 368.48,
+        "image":"src/assets/catProduct/cat12.webp",
+        "category": "cat",
+        "seller": "Happy Pets",
+        "deliveryDate": "2024-10-07"
+    }
+  ]
 }

@@ -18,13 +18,13 @@ const HeroSection = () => {
         centerMode={false}
       >
         <div>
-          <img src="src/assets/hero-image1.jpg" alt="Slide-1" />
+          <img src="src/assets/carousal/hero-image1.jpg" alt="Slide-1" />
         </div>
         <div>
-          <img src="src/assets/hero-image2.jpg" alt="Slide-2" />
+          <img src="src/assets/carousal/hero-image2.jpg" alt="Slide-2" />
         </div>
         <div>
-          <img src="src/assets/hero-image3.jpg" alt="Slide-3" />
+          <img src="src/assets/carousal/hero-image3.jpg" alt="Slide-3" />
         </div>
       </Carousel>
     </div>
