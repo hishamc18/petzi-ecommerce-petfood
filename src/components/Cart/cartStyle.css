@@ -1,40 +1,40 @@
+/* ==================== Cart =================== */
+/* Cart Heading */
 h1 {
     padding: 30px;
     text-align: center;
 }
 
 .cart-container {
-    height: auto; /* Allow height to adjust based on content */
+    height: auto;
     display: flex;
-    flex-direction: row; /* Default for larger screens */
+    flex-direction: row;
     margin: 0 6%;
     padding: 20px;
     background-color: #fff;
     border-radius: 14px;
     box-shadow: 4px 8px 18px 8px rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap; /* Allow wrapping */
+    flex-wrap: wrap;
     margin-top: -0.4%;
     transform: scale(0.9);
 }
 
-/* Cart Content */
 .cart-content {
     display: flex;
-    flex-direction: row; /* Default for larger screens */
+    flex-direction: row;
     flex: 1;
-    width: 100%; /* Ensure full width */
+    width: 100%;
 }
 
-/* Cart Items */
 .cart-items {
     margin: 2%;
     display: flex;
     flex-direction: column;
     flex: 2;
     border-radius: 40px;
-    margin-right: 30px; /* Space between cart items and price details */
-    overflow-y: auto; /* Enable vertical scrolling */
-    max-height:44rem;
+    margin-right: 30px;
+    overflow-y: auto;
+    max-height: 44rem;
 }
 
 .cart-items::-webkit-scrollbar {
@@ -49,11 +49,11 @@ h1 {
     background-color: #f9f9f9;
     border-radius: 40px;
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s; /* Animation effect */
+    transition: transform 0.2s;
 }
 
 .cart-item img {
-    width: 25%; /* Adjust as needed */
+    width: 25%;
     height: auto;
     margin-right: 15px;
     border-radius: 5px;
@@ -94,7 +94,7 @@ h1 {
 }
 
 .quantity-controls button:hover {
-    background-color: #1da1f2; /* Hover effect */
+    background-color: #1da1f2;
 }
 
 .del {
@@ -105,7 +105,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer; /* Cursor changes to pointer */
+    cursor: pointer;
 }
 
 .del div {
@@ -117,9 +117,9 @@ h1 {
     align-items: center;
     background: none;
     box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5),
-                -4px -4px 6px 0 rgba(116, 125, 136, .5), 
-                inset -4px -4px 6px 0 rgba(255,255,255,.2),
-                inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+        -4px -4px 6px 0 rgba(116, 125, 136, .5),
+        inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
+        inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 30px;
@@ -135,7 +135,6 @@ h1 {
     background: #ff0000;
 }
 
-/* Price Styles */
 .original-price {
     text-decoration: line-through;
     color: #888;
@@ -144,21 +143,26 @@ h1 {
 }
 
 .discounted-price {
-    color: #f12525; /* Red color for discounted price */
+    color: #f12525;
     font-weight: bold;
 }
 
-/* Total Price Component Styles */
+
+
+
+
+
+/* ==================== Payment Details =================== */
 .price-details {
     display: flex;
     flex-direction: column;
     align-content: space-between;
-    height: auto; /* Allow height to adjust */
+    height: auto;
     padding: 15px;
     background-color: #e7f3fe;
     border-radius: 25px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
-    flex: 1; /* Take up remaining space */
+    flex: 1;
     transform: scale(0.95);
 }
 
@@ -174,17 +178,17 @@ h1 {
     color: #2c3e50;
 }
 
-.delivery-info span, .price-item h4 {
+.delivery-info span,
+.price-item h4 {
     color: green;
     font-weight: 700;
 }
 
-/* Responsive Styles */
-@media (max-width: 480px){
+/* resposive for cart */
+@media (max-width: 480px) {
     .delivery-info p {
         font-size: 10px;
     }
-
 }
 
 @media (max-width: 970px) {
@@ -202,7 +206,7 @@ h1 {
     }
 
     .cart-items {
-        margin-right: 0; 
+        margin-right: 0;
     }
 
     .cart-item {
@@ -223,6 +227,7 @@ h1 {
     }
 }
 
+/* Shipping Deatils form*/
 .shippingDetails {
     margin-top: 5px;
     display: flex;
@@ -235,14 +240,39 @@ h1 {
     transform: scale(0.95);
 }
 
-.address form{
+h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #4a4a4a;
+}
+
+.shippingDetails button {
+    margin-top: 20px;
+    background-color: #28a745;
+    border: none;
+    width: 80%;
+    padding: 15px;
+    border-radius: 35px;
+    font-size: large;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.shippingDetails button:hover {
+    background-color: #3eba5b;
+}
+
+.address form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.shippingDetails h2, .price-details h2 {
+.shippingDetails h2,
+.price-details h2 {
     font-size: 25px;
 }
 
@@ -281,42 +311,20 @@ h1 {
     color: #2c3e50;
 }
 
-.delivery-info span, .price-item h4 {
+.delivery-info span,
+.price-item h4 {
     color: #28a745;
     font-weight: 700;
 }
 
-h2 {
-    font-size: 18px;
-    margin-bottom: 15px;
-    color: #4a4a4a;
-}
-
-.shippingDetails button{
-    margin-top: 20px;
-    background-color: #28a745;
-    border: none;
-    width: 80%;
-    padding: 15px;
-    border-radius: 35px;
-    font-size: large;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.shippingDetails button:hover{
-    background-color: #3eba5b;
-}
-
-/* Responsive Styles */
+/* Responsive for cart and shipping*/
 @media (max-width: 970px) {
     .cart-container {
         flex-direction: column;
     }
 
-    .shippingDetails h2, .price-details h2 {
+    .shippingDetails h2,
+    .price-details h2 {
         font-size: 22px;
     }
 
@@ -325,7 +333,7 @@ h2 {
     }
 
     .cart-items {
-        margin-right: 0; 
+        margin-right: 0;
     }
 
     .cart-item {
@@ -340,7 +348,8 @@ h2 {
 
 
 
-/* modal */
+
+/* =============== Modal =============== */
 .custom-overlay {
     background: rgba(140, 138, 138, 0.8);
     display: flex;
@@ -351,7 +360,6 @@ h2 {
     left: 0;
     right: 0;
     bottom: 0;
-
 }
 
 .custom-modal {
@@ -367,27 +375,26 @@ h2 {
     transition: all 0.3s ease;
 }
 
-.payment-container h2{
+.payment-container h2 {
     text-align: center;
     color: #ffffff;
     font-size: 22px;
 }
 
-.payment-container p{
+.payment-container p {
     font-size: 18px;
     margin-bottom: 50px;
     text-align: center;
 }
 
-.payment-container span{
+.payment-container span {
     color: rgb(2, 229, 10);
     font-weight: 700;
 }
 
-#paymentHead{
+#paymentHead {
     color: rgb(49, 172, 147);
 }
-
 
 .payment-container button {
     padding: 10px 20px;
@@ -405,7 +412,6 @@ h2 {
     font-weight: 600;
 }
 
-/* Proceed to Payment Button */
 .proceed-btn {
     background: linear-gradient(135deg, #ff8a00, #e52e71);
     color: white;
@@ -414,16 +420,65 @@ h2 {
     padding: 12px 30px;
 }
 
-.proceed-btn:hover, .payment-container button:hover{
+.proceed-btn:hover,
+.payment-container button:hover {
     background: linear-gradient(135deg, #e52e71, #ff8a00);
+}
+
+
+
+
+
+
+/* ================== Payment Options ================ */
+.payment-options label {
+    display: block;
+    margin: 10px 0;
+}
+
+.payment-options input {
+    margin-right: 10px;
+}
+
+.upi {
+    display: flex;
+    gap: 0.26em;
+}
+
+.payIcons {
+    font-size: 35px;
+    margin-left: 10px;
+    margin-top: -6px;
+    color: white;
+}
+
+.payIcons:nth-child(3) {
+    font-size: 26px;
+    margin-left: 12px;
+    margin-top: 0.1px;
+}
+
+.payIcons:nth-child(4) {
+    font-size: 18px;
+    margin-left: 15px;
+    margin-top: 1.4px;
+}
+
+.debitcard {
+    margin-left: 10px;
+    padding-top: 2.5px;
+}
+
+h3 {
+    columns: white;
 }
 
 .pay-now-btn:hover {
     background-color: #45a049;
 }
 
-/* Loading and Success State */
-.loading-container, .success-container {
+.loading-container,
+.success-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -437,8 +492,13 @@ h2 {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .loading-text {
@@ -446,7 +506,7 @@ h2 {
     color: #ffffff;
 }
 
-.success-container{
+.success-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -467,47 +527,4 @@ h2 {
 .redirect-text {
     font-size: 14px;
     color: #888;
-}
-
-/* Payment Options */
-.payment-options label {
-    display: block;
-    margin: 10px 0;
-}
-
-.payment-options input {
-    margin-right: 10px;
-}
-
-.upi {
-    display: flex;
-    gap: 0.26em;
-}
-
-.payIcons{
-    font-size: 35px;
-    margin-left: 10px;
-    margin-top: -6px;
-    color: white;
-}
-
-.payIcons:nth-child(3){
-    font-size: 26px;
-    margin-left: 12px;
-    margin-top: 0.1px;
-}
-
-.payIcons:nth-child(4){
-    font-size: 18px;
-    margin-left: 15px;
-    margin-top: 1.4px;
-}
-
-.debitcard{
-    margin-left: 10px;
-    padding-top: 2.5px;
-}
-
-h3{
-    columns: white;
 }

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../ProductContext";
-import TotalPrice from "./TotalPrice";
-import { MdDeleteForever } from "react-icons/md";
-import "./style.css";
+import { ProductContext } from "../Context/CartContext";
+import PaymentDetails from "./PaymentDetails";
+import { MdDeleteForever } from "react-icons/md"; //icon
+import "./cartStyle.css";
 
 const Cart = () => {
     const { cart, removeFromCart, updateQuantity } = useContext(ProductContext);
@@ -11,7 +11,7 @@ const Cart = () => {
         <div className="cart-price">
             <h1>Your Cart</h1>
             <div className="cart-container">
-                {cart.length === 0 ? (
+                {cart.length === 0 ? ( //if nothing is added to the cart, it shows empty
                     <p>Your cart is empty.</p>
                 ) : (
                     <div className="cart-content">
@@ -52,7 +52,8 @@ const Cart = () => {
                             ))}
                         </div>
                         <div className="price-details">
-                            <TotalPrice /> {/* Render the TotalPrice component */}
+                            {/* both payment details and cart are in same component */}
+                            <PaymentDetails />
                         </div>
                     </div>
                 )}

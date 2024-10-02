@@ -2,25 +2,20 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import './Style.css'
+import { useNavigate, Link } from "react-router-dom";
+import "./authStyle.css";
 
 function Signin() {
     let navigate = useNavigate();
 
     // Define Yup validation schema
     const validationSchema = Yup.object({
-        username: Yup.string()
-            .required("Username Required"),
-        email: Yup.string()
-            .email("Invalid email address")
-            .required("Email Required"),
-        password: Yup.string()
-            .min(6, "Password must be at least 6 characters")
-            .required("Password Required"),
+        username: Yup.string().required("Username Required"),
+        email: Yup.string().email("Invalid email address").required("Email Required"),
+        password: Yup.string().min(6, "Password must be at least 6 characters").required("Password Required"),
         confirmPassword: Yup.string()
             .oneOf([Yup.ref("password"), null], "Passwords Must Match")
-            .required("Confirm Password Required")
+            .required("Confirm Password Required"),
     });
 
     return (
@@ -30,18 +25,15 @@ function Signin() {
                 validationSchema={validationSchema} // Adding the Yup validation schema
                 onSubmit={async (values, { setSubmitting, setFieldError }) => {
                     try {
-                        // Check if email already exists in db.json
+                        // Checking email already exists
                         const response = await axios.get("http://localhost:5001/users");
                         const users = response.data;
-
-                        // Check if the email is already registered
                         const userWithSameEmail = users.find((user) => user.email === values.email);
 
                         if (userWithSameEmail) {
                             setFieldError("email", "An account with this email already exists");
                             setSubmitting(false);
                         } else {
-                            // If email is unique, proceed to create the account
                             await axios.post("http://localhost:5001/users", values);
                             alert("Account Created, You're ready to login");
                             navigate("/login");
@@ -67,6 +59,12 @@ function Signin() {
                         <button type="submit" disabled={isSubmitting}>
                             Register
                         </button>
+                        <p>
+                            Have an Account?{" "}
+                            <Link className="link" to={"/login"}>
+                                Please Login
+                            </Link>
+                        </p>
                     </Form>
                 )}
             </Formik>

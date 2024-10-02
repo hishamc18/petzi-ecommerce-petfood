@@ -1,8 +1,6 @@
-
-// Category.jsx
 import React, { useContext } from "react";
-import { ProductContext } from "../Context/ProductContext";
-import "./style.css"; // Add any necessary styles
+import { ProductContext } from "../Context/CartContext";
+import "./homeStyle.css";
 
 const Category = () => {
     const { setCategory } = useContext(ProductContext);
@@ -22,8 +20,8 @@ const Category = () => {
                         <img src="src/assets/category/dog.jpg" alt="Dog" />
                     </button>
                     <label>Dog</label>
-                    </div>
-                    <div className="pet">
+                </div>
+                <div className="pet">
                     <button
                         onClick={() => {
                             setCategory("cat");
@@ -35,7 +33,7 @@ const Category = () => {
                     </button>
                     <label>Cat</label>
                 </div>
-                </div>
+            </div>
         </div>
     );
 };

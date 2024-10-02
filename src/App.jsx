@@ -1,11 +1,10 @@
 import React from 'react'
-import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Login from './components/authentication/Login'
 import Signin from './components/authentication/Signin'
 import HomePage from './components/HomePage/HomePage'
-import { ProductProvider } from './components/Context/ProductContext'
-import Cart from './components/Context/Cart/Cart'
+import { ProductProvider } from './components/Context/CartContext'
+import Cart from './components/Cart/Cart'
 
 
 function App() {
