@@ -4,6 +4,11 @@ import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 import { FaCheckCircle } from 'react-icons/fa';
 import { FiLoader } from 'react-icons/fi';
+import { SiGooglepay } from "react-icons/si";
+import { FaAmazonPay, FaPaypal } from "react-icons/fa";
+import { FaRegCreditCard } from "react-icons/fa6";
+
+
 const TotalPrice = () => {
     const { cart, setCart } = useContext(ProductContext);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,7 +21,7 @@ const TotalPrice = () => {
         openModal();
     };
 
-    // Calculate total price
+    // Total price
     const totalPrice = Array.isArray(cart)
         ? cart.reduce((total, item) => total + (item.price * item.quantity), 0)
         : 0;
@@ -36,13 +41,12 @@ const TotalPrice = () => {
             setIsLoading(false);
             setIsSuccess(true);
 
-            // Delay the modal close and navigation for 3 seconds after payment success
             setTimeout(() => {
-                setIsModalOpen(false); // Close the modal after showing success
-                setCart([]); // Clear the cart
-                navigate('/'); // Navigate to home after modal close
-            }, 2500); // 3-second delay
-        }, 1000); // 1-second loading delay
+                setIsModalOpen(false); //closeing modal after success
+                setCart([]); //clearing cart
+                navigate('/'); //after payment success, it will redirect to home
+            }, 3000);
+        }, 1000);
     };
 
     return (
@@ -96,30 +100,38 @@ const TotalPrice = () => {
                 {isLoading ? (
                     <div className="loading-container">
                         <FiLoader className="loading-icon" />
-                        <h2>Processing Payment...</h2>
+                        <h3 className='procesingHead'>Processing Payment...</h3>
                         <p className="loading-text">Please wait a moment</p>
                     </div>
                 ) : isSuccess ? (
                     <div className="success-container">
                         <FaCheckCircle className="success-icon" />
-                        <h2>Payment Successful!</h2>
+                        <h3 className='processingHead'>Payment Successful!</h3>
                         <p className="success-text">Total Amount Paid: ₹{Math.floor(finalAmount)}</p>
                         <p className="redirect-text">Redirecting to Home Page...</p>
                     </div>
                 ) : (
                     <div className="payment-container">
-                        <h2>Payment Details</h2>
+                        <h2><span>Pay</span>ment Details</h2>
                         <p>Total Amount: <span>₹{Math.floor(finalAmount)}</span></p>
                         <h3>Select Payment Method:</h3>
                         <div className="payment-options">
                             <label>
                                 <input type="radio" name="payment" value="Credit Card" /> Credit Card
+                                <FaRegCreditCard className='debitcard'/>
                             </label>
                             <label>
                                 <input type="radio" name="payment" value="Debit Card" /> Debit Card
+                                <FaRegCreditCard  className='debitcard' />
                             </label>
                             <label>
-                                <input type="radio" name="payment" value="UPI" /> UPI
+                                <div className='upi'>
+                                    <input type="radio" name="payment" value="UPI" /> UPI
+                                    <SiGooglepay className='payIcons'/>
+                                    <FaAmazonPay className='payIcons'/>
+                                    <FaPaypal className='payIcons'/>
+
+                                </div>
                             </label>
                             <label>
                                 <input type="radio" name="payment" value="COD" /> Cash on Delivery

@@ -1,7 +1,6 @@
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { ProductContext } from "../Context/ProductContext";
-import { GiShoppingCart } from "react-icons/gi";
 import "./style.css";
 
 const Products = () => {

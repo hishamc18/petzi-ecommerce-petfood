@@ -5,6 +5,7 @@ import HeroSection from './HeroSection';
 import Navbar from './Navbar';
 import Products from './Products';
 import Category from './Category';
+import Caption from './Caption';
 
 function HomePage() {
   const [username, setUsername] = useState('');
@@ -20,6 +21,7 @@ function HomePage() {
   return (
     <div className="homePage">
       <Navbar username={username} />
+      <Caption />
       <HeroSection />
       <Category />
       <Products />

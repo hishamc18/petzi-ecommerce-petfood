@@ -19,7 +19,7 @@ const Category = () => {
                         }}
                         className="category-btn"
                     >
-                        <img src="src/assets/category/dog.png" alt="Dog" />
+                        <img src="src/assets/category/dog.jpg" alt="Dog" />
                     </button>
                     <label>Dog</label>
                     </div>

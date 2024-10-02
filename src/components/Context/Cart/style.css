@@ -340,9 +340,9 @@ h2 {
 
 
 
-/* Modal overlay and container styling */
+/* modal */
 .custom-overlay {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(140, 138, 138, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -355,8 +355,10 @@ h2 {
 }
 
 .custom-modal {
-    background: #fff;
+    background: #f6efef;
+    background: linear-gradient(135deg, #46413b, #747176);
     border-radius: 20px;
+    color: white;
     padding: 30px;
     width: 400px;
     display: flex;
@@ -367,19 +369,23 @@ h2 {
 
 .payment-container h2{
     text-align: center;
-    color: #333;
+    color: #ffffff;
     font-size: 22px;
-    margin-bottom: 30px;
 }
 
 .payment-container p{
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
+    text-align: center;
 }
 
 .payment-container span{
-    color: red;
+    color: rgb(2, 229, 10);
     font-weight: 700;
+}
+
+#paymentHead{
+    color: rgb(49, 172, 147);
 }
 
 
@@ -408,7 +414,7 @@ h2 {
     padding: 12px 30px;
 }
 
-.proceed-btn:hover {
+.proceed-btn:hover, .payment-container button:hover{
     background: linear-gradient(135deg, #e52e71, #ff8a00);
 }
 
@@ -437,7 +443,7 @@ h2 {
 
 .loading-text {
     font-size: 14px;
-    color: #666;
+    color: #ffffff;
 }
 
 .success-container{
@@ -455,7 +461,7 @@ h2 {
 
 .success-text {
     font-size: 16px;
-    color: #333;
+    color: #ffffff;
 }
 
 .redirect-text {
@@ -473,3 +479,35 @@ h2 {
     margin-right: 10px;
 }
 
+.upi {
+    display: flex;
+    gap: 0.26em;
+}
+
+.payIcons{
+    font-size: 35px;
+    margin-left: 10px;
+    margin-top: -6px;
+    color: white;
+}
+
+.payIcons:nth-child(3){
+    font-size: 26px;
+    margin-left: 12px;
+    margin-top: 0.1px;
+}
+
+.payIcons:nth-child(4){
+    font-size: 18px;
+    margin-left: 15px;
+    margin-top: 1.4px;
+}
+
+.debitcard{
+    margin-left: 10px;
+    padding-top: 2.5px;
+}
+
+h3{
+    columns: white;
+}

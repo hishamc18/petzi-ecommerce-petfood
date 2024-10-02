@@ -46,10 +46,13 @@ export const ProductProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // Fetch all products initially
+    // Fetching all products initially
     const fetchProducts = async () => {
       try {
         const response = await axios.get("http://localhost:5001/products");
+        console.log(response
+        );
+        
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching products", error);

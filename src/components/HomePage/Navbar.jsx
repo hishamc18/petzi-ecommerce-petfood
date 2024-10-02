@@ -60,7 +60,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <img src="src/assets/logo/logo.png" alt="logo" />
+        <img src="src/assets/logo/logo1.png" alt="logo" />
       </div>
       <div className="navbar-icons">
         {/* Cart icon */}

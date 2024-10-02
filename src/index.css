@@ -17,6 +17,7 @@ body::-webkit-scrollbar {
 }
 body {
   overflow: scroll; /* Allow scrolling */
+  background-color: rgb(255, 255, 255);
 }
 
 
