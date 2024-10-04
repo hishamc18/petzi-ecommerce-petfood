@@ -1,18 +1,21 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../Context/CartContext";
+import { ProductContext } from "../Context/ProductContext";
 import PaymentDetails from "./PaymentDetails";
-import { MdDeleteForever } from "react-icons/md"; //icon
+import { MdDeleteForever } from "react-icons/md";
 import "./cartStyle.css";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
     const { cart, removeFromCart, updateQuantity } = useContext(ProductContext);
+    const navigate = useNavigate();
 
     return (
         <div className="cart-price">
-            <h1>Your Cart</h1>
+            <h1>Your <span className="carthead">Cart</span></h1>
+            <div className="homebtn"><button className="back-button" onClick={() => navigate("/")}><i class='bx bx-home'></i></button></div>
             <div className="cart-container">
                 {cart.length === 0 ? ( //if nothing is added to the cart, it shows empty
-                    <p>Your cart is empty.</p>
+                    <h3>Your cart is empty.</h3>
                 ) : (
                     <div className="cart-content">
                         <div className="cart-items">

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../Context/CartContext";
+import { ProductContext } from "../Context/ProductContext";
 import "./homeStyle.css";
 
 const Category = () => {

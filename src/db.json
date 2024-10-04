@@ -1,32 +1,50 @@
 {
   "users": [
     {
-      "id": "1c01",
+      "id": "b644",
       "username": "Hisham",
       "email": "hishamc16@gmail.com",
       "password": "121212",
-      "confirmPassword": "121212"
-    },
-    {
-      "id": "5d03",
-      "username": "Shafeeq",
-      "email": "shafeeq@gmail.com",
-      "password": "121213",
-      "confirmPassword": "121213"
-    },
-    {
-      "id": "2ab3",
-      "username": "Shahid",
-      "email": "shahid@gmail.com",
-      "password": "121212",
-      "confirmPassword": "121212"
-    },
-    {
-      "id": "e27b",
-      "username": "Suhail",
-      "email": "suhail@gmail.com",
-      "password": "121212",
-      "confirmPassword": "121212"
+      "confirmPassword": "121212",
+      "cart": [],
+      "orders": [
+        {
+          "shippingDetails": {
+            "fullName": "Hisham",
+            "streetAddress": "Chakkampully House",
+            "city": "Edappal",
+            "state": "Kerala",
+            "postalCode": "679576",
+            "phoneNumber": "9656736286"
+          },
+          "orderedItems": [
+            {
+              "id": "14",
+              "name": "Barking Good Dog Food",
+              "price": 462.99,
+              "oldPrice": 694.49,
+              "image": "src/assets/dogProduct/pd3.webp",
+              "category": "dog",
+              "seller": "Animal Kingdom",
+              "deliveryDate": "2024-10-07",
+              "quantity": 1
+            },
+            {
+              "id": "15",
+              "name": "Pawfect Meal Dog Food",
+              "price": 325.65,
+              "oldPrice": 488.48,
+              "image": "src/assets/dogProduct/pd4.webp",
+              "category": "dog",
+              "seller": "Feline Friends",
+              "deliveryDate": "2024-10-07",
+              "quantity": 1
+            }
+          ],
+          "totalAmount": 827.64,
+          "id": "1727981450152"
+        }
+      ]
     }
   ],
   "products": [

@@ -85,28 +85,9 @@
   overflow: hidden;
 }
 
-.form button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
-  border-radius: 15px;
-  background-image: url('src/assets/logo/logo.png');
-  transform: scale(0.8);
-  background-size: cover;
-  background-position: center;
-  z-index: -1;
-  transition: 0.4s
-}
-
 .form button:hover {
-  color: transparent;
-}
-
-.from button:hover::before {
-  width: 100%;
+  transform: scale(1.1);
+  transition: 0.5s;
 }
 
 .link {

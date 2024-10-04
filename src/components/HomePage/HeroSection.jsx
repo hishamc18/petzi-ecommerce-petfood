@@ -24,7 +24,7 @@ const HeroSection = () => {
                     <img src="src/assets/carousal/hero-image2.jpg" alt="Slide-2" />
                 </div>
                 <div>
-                    <img src="src/assets/carousal/hero-image3.jpg" alt="Slide-3" />
+                    <img src="src/assets/carousal/hero-image3.png" alt="Slide-3" />
                 </div>
                 <div>
                     <img src="src/assets/carousal/hero-image4.jpg" alt="Slide-4" />
