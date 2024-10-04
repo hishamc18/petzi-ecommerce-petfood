@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Login from './components/authentication/Login'
-import Signin from './components/authentication/Signin'
+import SignIn from './components/authentication/SignUp'
 import HomePage from './components/HomePage/HomePage'
 import { ProductProvider } from './components/Context/ProductContext'
 import Cart from './components/Cart/Cart'
@@ -16,7 +16,7 @@ function App() {
                     <Router>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path='signin' element={<Signin />}/>
+              <Route path='signin' element={<SignIn />}/>
               <Route path='login' element={<Login />}/>
               <Route path='cart' element={<Cart />}/>
               <Route path='order-summary' element={<OrderSummary />} />

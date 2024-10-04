@@ -7,7 +7,7 @@ import { TbTruckDelivery } from "react-icons/tb";
 const Navbar = () => {
     const { setSearchTerm, products, cart, isLoggedIn, logout } = useContext(ProductContext);
     const [suggestions, setSuggestions] = useState([]); //for using the search suggestion
-    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false); // for dropdown button in profile for logout and orders
     const navigate = useNavigate();
 
     //access entry to cart only when the user is loged.
@@ -15,7 +15,7 @@ const Navbar = () => {
         if (!isLoggedIn) {
             alert("Please log in to access your cart.");
         } else {
-            handleCartClick();
+            navigate('/cart')
         }
     };
 
@@ -46,18 +46,15 @@ const Navbar = () => {
         setSuggestions([]); // used to remove suggestion list, once a product is cliciked
     };
 
-    
+    // for logout fn()
     const handleLogout = () => {
         logout();
         navigate("/");
     };
 
+    // for toggle conditon to active the dropdown only when user is logined.
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
-    };
-
-    const handleCartClick = () => {
-        navigate("/cart");
     };
 
     return (
@@ -108,6 +105,7 @@ const Navbar = () => {
                     </ul>
                 )}
             </div>
+
         </nav>
     );
 };

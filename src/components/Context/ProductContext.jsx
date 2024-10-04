@@ -14,6 +14,7 @@ export const ProductProvider = ({ children }) => {
     const [orderSummary, setOrderSummary] = useState(null);
     const [orders, setOrders] = useState([]);
 
+    //fetching username from localstorage.
     useEffect(() => {
         const username = localStorage.getItem("username");
         if (username) {
@@ -22,6 +23,7 @@ export const ProductProvider = ({ children }) => {
         }
     }, []);
 
+    //fetching userdetails with username.
     const fetchUser = async (username) => {
         try {
             const response = await axios.get(`http://localhost:5001/users?username=${username}`);

@@ -87,7 +87,6 @@
 
 .orders {
   margin-top: 1px;
-  margin-right: 4px;
   display: flex;
   flex-direction: column;
 }
@@ -131,6 +130,13 @@
   font-size: 14px;
 }
 
+/* .wishListIcon i{
+  color: rgb(255, 255, 255);
+  margin-top: -4px;
+  font-size: 30px;
+
+} */
+
 .suggestions-list {
   position: absolute;
   background-color: #e9edf0;
@@ -152,10 +158,11 @@
 .suggestions-list li {
   padding: 10px;
   cursor: pointer;
+  border-bottom: 1px solid silver;
 }
 
 .suggestions-list li:hover {
-  background-color: #e2e8f0;
+  background-color: #dde1e7;
 }
 
 /* profile dropdown for logout */
@@ -326,7 +333,7 @@
 
 
 
-/*==================== Caption ==================*/
+/*==================== HeroSection ==================*/
 .heroMerge {
   display: flex;
 }
@@ -338,7 +345,7 @@
 }
 
 .hero-section .carousel img {
-  height: 500px;
+  height: 490px;
   object-fit: cover;
   border-radius: 20px;
   background-position: center;
@@ -360,12 +367,27 @@
 /* responsive for Carousel */
 @media (max-width: 768px) {
   .hero-section .carousel img {
-    height: 400px;
+    height: 300px;
     object-fit: fit;
   }
 
   .caption {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .caption {
+    font-size: 11.5px;
+    padding: 10px;
+    margin-bottom: -10px;
+  }
+
+  .hero-section .carousel img{
+    height: 230px;
+  }
+  .navbar{
+    height: 174px;
   }
 }
 
@@ -378,7 +400,7 @@
   flex-direction: column;
   align-items: center;
   gap: 2em;
-  margin: 10px;
+  margin: 20px;
 }
 
 .pet {
@@ -421,6 +443,22 @@
 
 .pet label {
   margin-top: -10px;
+}
+
+/* Responsive for category */
+@media (max-width: 380px) {
+  .category-container{
+    margin-top: 10px;
+  }
+
+  .category-btn{
+    transform: scale(0.8);
+  }
+
+  .category-buttons{
+    gap: 1px;
+    margin-bottom: -40px;
+  }
 }
 
 

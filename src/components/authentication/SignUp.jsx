@@ -22,7 +22,7 @@ function Signin() {
         <div className="form-container">
             <Formik
                 initialValues={{ username: "", email: "", password: "", confirmPassword: "" }}
-                validationSchema={validationSchema} // Adding the Yup validation schema
+                validationSchema={validationSchema} // Adding the Yup validation schema for checking
                 onSubmit={async (values, { setSubmitting, setFieldError }) => {
                     try {
                         // Checking email already exists
@@ -49,14 +49,15 @@ function Signin() {
                             <img src="src/assets/logo/logo.png" alt="Logo" />
                         </div>
                         <Field type="text" name="username" placeholder="Username" />
-                        <ErrorMessage name="username" className="error-message" component="div" />
+                        <ErrorMessage name="username" className="error-message" />
                         <Field type="email" name="email" placeholder="Email" />
-                        <ErrorMessage name="email" className="error-message" component="div" />
+                        <ErrorMessage name="email" className="error-message"/>
                         <Field type="password" name="password" placeholder="Password" />
-                        <ErrorMessage name="password" className="error-message" component="div" />
+                        <ErrorMessage name="password" className="error-message" />
                         <Field type="password" name="confirmPassword" placeholder="Confirm Password" />
-                        <ErrorMessage name="confirmPassword" className="error-message" component="div" />
+                        <ErrorMessage name="confirmPassword" className="error-message"/>
                         <button type="submit" disabled={isSubmitting}>
+                            {/* disabled due to avoid multiple submission */}
                             Register
                         </button>
                         <p>

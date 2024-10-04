@@ -1,12 +1,33 @@
 {
   "users": [
     {
-      "id": "b644",
-      "username": "Hisham",
-      "email": "hishamc16@gmail.com",
-      "password": "121212",
-      "confirmPassword": "121212",
-      "cart": [],
+      "id": "admin",
+      "email": "hishamc18@gmail.com",
+      "password": "121213",
+      "cart": [
+        {
+          "id": "5",
+          "name": "Happy Tails Cat Delight",
+          "price": 646.18,
+          "oldPrice": 969.27,
+          "image": "src/assets/catProduct/cat3.webp",
+          "category": "cat",
+          "seller": "Happy Pets",
+          "deliveryDate": "2024-10-07",
+          "quantity": 1
+        },
+        {
+          "id": "6",
+          "name": "Kitty Krunch Gourmet Cat Food",
+          "price": 785.95,
+          "oldPrice": 1178.93,
+          "image": "src/assets/catProduct/cat4.webp",
+          "category": "cat",
+          "seller": "Cat Haven",
+          "deliveryDate": "2024-10-07",
+          "quantity": 1
+        }
+      ],
       "orders": [
         {
           "shippingDetails": {
@@ -27,6 +48,17 @@
               "category": "dog",
               "seller": "Animal Kingdom",
               "deliveryDate": "2024-10-07",
+              "quantity": 5
+            },
+            {
+              "id": "2",
+              "name": "TailWaggers Nutrition Dog Food",
+              "price": 123.65,
+              "oldPrice": 185.48,
+              "image": "src/assets/dogProduct/pd2.jpg",
+              "category": "dog",
+              "seller": "Animal Kingdom",
+              "deliveryDate": "2024-10-07",
               "quantity": 1
             },
             {
@@ -41,10 +73,26 @@
               "quantity": 1
             }
           ],
-          "totalAmount": 827.64,
-          "id": "1727981450152"
+          "totalAmount": 2803.25,
+          "id": "1728039109968"
         }
       ]
+    },
+    {
+      "id": "b644",
+      "username": "Hisham",
+      "email": "hishamc16@gmail.com",
+      "password": "121212",
+      "confirmPassword": "121212",
+      "cart": [],
+      "orders": []
+    },
+    {
+      "id": "8555",
+      "username": "Shahid",
+      "email": "shahid@gmail.com",
+      "password": "121212",
+      "confirmPassword": "121212"
     }
   ],
   "products": [
