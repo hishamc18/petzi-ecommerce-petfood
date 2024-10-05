@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
-import { ProductContext } from "../Context/ProductContext";
+import { ProductContext } from "../context/ProductContext";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
-import { FaCheckCircle } from "react-icons/fa";
+import { FaCheckCircle, FaRegCreditCard } from "react-icons/fa";
 import { FiLoader } from "react-icons/fi";
 import { SiGooglepay } from "react-icons/si";
-import { FaAmazonPay, FaPaypal, FaRegCreditCard } from "react-icons/fa";
+import { FaAmazonPay, FaPaypal } from "react-icons/fa";
 import "./cartStyle.css";
 
 const PaymentDetails = () => {
@@ -13,6 +13,8 @@ const PaymentDetails = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
+    const [upiID, setUpiID] = useState("");
     const navigate = useNavigate();
 
     // for passing shipping details to order summary
@@ -25,7 +27,7 @@ const PaymentDetails = () => {
         phoneNumber: "",
     });
 
-    // for submiting shipping details form
+    // for submitting shipping details form
     const submiting = (e) => {
         e.preventDefault();
         openModal();
@@ -39,10 +41,10 @@ const PaymentDetails = () => {
         });
     };
 
+
     const totalPrice = Array.isArray(cart) ? cart.reduce((total, item) => total + item.price * item.quantity, 0) : 0;
     const securedPackagingFee = 39;
     const finalAmount = totalPrice + securedPackagingFee;
-
     const openModal = () => {
         setIsModalOpen(true);
         setIsLoading(false);
@@ -50,6 +52,11 @@ const PaymentDetails = () => {
     };
 
     const handlePayment = () => {
+        if (selectedPaymentMethod === "UPI" && !upiID) {
+            alert("Please enter UPI ID");
+            return;
+        }
+
         setIsLoading(true);
         setTimeout(() => {
             setIsLoading(false);
@@ -63,13 +70,15 @@ const PaymentDetails = () => {
             };
             setOrderDetails(orderDetails);
             setTimeout(() => {
-                console.log("navigating to OrderSummary");
-
                 setIsModalOpen(false);
                 setCart([]); // Clear cart after order
                 navigate("/order-summary"); // Navigate to order summary
             }, 2200);
         }, 1000);
+    };
+
+    const handlePaymentMethodChange = (e) => {
+        setSelectedPaymentMethod(e.target.value);
     };
 
     return (
@@ -176,32 +185,55 @@ const PaymentDetails = () => {
                     </div>
                 ) : (
                     <div className="payment-container">
-                        <h2>
-                            <span>Pay</span>ment Details
-                        </h2>
-                        <p>
-                            Total Amount: <span>₹{Math.floor(finalAmount)}</span>
-                        </p>
+                        <h2>Payment Details</h2>
+                        <p>Total Amount: <span>₹{Math.floor(finalAmount)}</span></p>
                         <h3>Select Payment Method:</h3>
                         <div className="payment-options">
                             <label>
-                                <input type="radio" name="payment" value="Credit Card" /> Credit Card
+                                <input
+                                    type="radio"
+                                    value="Credit Card"
+                                    checked={selectedPaymentMethod === "Credit Card"}
+                                    onChange={handlePaymentMethodChange}
+                                />
+                                Credit Card
                                 <FaRegCreditCard className="debitcard" />
                             </label>
                             <label>
-                                <input type="radio" name="payment" value="Debit Card" /> Debit Card
-                                <FaRegCreditCard className="debitcard" />
+                                <input
+                                    type="radio"
+                                    value="UPI"
+                                    checked={selectedPaymentMethod === "UPI"}
+                                    onChange={handlePaymentMethodChange}
+                                />
+                                UPI
+                                <SiGooglepay className="payIcons" />
+                                <FaAmazonPay className="payIcons"/>
+                                <FaPaypal className="payIcons"/>
                             </label>
-                            <label>
-                                <div className="upi">
-                                    <input type="radio" name="payment" value="UPI" /> UPI
-                                    <SiGooglepay className="payIcons" />
-                                    <FaAmazonPay className="payIcons" />
-                                    <FaPaypal className="payIcons" />
+
+                            {/* Show UPI input when UPI is selected */}
+                            {selectedPaymentMethod === "UPI" && (
+                                <div className="upi-input">
+                                    <label htmlFor="upiID">Enter UPI ID:</label>
+                                    <input
+                                        type="text"
+                                        id="upiID"
+                                        value={upiID}
+                                        onChange={(e) => setUpiID(e.target.value)}
+                                        placeholder="e.g. yourupi@bank"
+                                    />
                                 </div>
-                            </label>
+                            )}
+
                             <label>
-                                <input type="radio" name="payment" value="COD" /> Cash on Delivery
+                                <input
+                                    type="radio"
+                                    value="COD"
+                                    checked={selectedPaymentMethod === "COD"}
+                                    onChange={handlePaymentMethodChange}
+                                />
+                                Cash on Delivery
                             </label>
                         </div>
                         <button className="pay-now-btn" onClick={handlePayment}>

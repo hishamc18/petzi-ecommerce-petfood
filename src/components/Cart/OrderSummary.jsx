@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../Context/ProductContext";
+import { ProductContext } from "../context/ProductContext";
 import { useNavigate } from "react-router-dom";
 
 const OrderSummary = () => {
@@ -49,7 +49,7 @@ const OrderSummary = () => {
                     <p>₹{Math.floor(totalAmount)}</p>
                 </div>
                 <button className="back-button" onClick={() => navigate("/")}>
-                    <i class="bx bx-home"></i>
+                    <i className="bx bx-home"></i>
                 </button>
             </div>
         </div>

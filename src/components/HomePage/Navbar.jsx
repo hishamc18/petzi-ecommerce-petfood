@@ -1,14 +1,16 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import "./homeStyle.css";
-import { ProductContext } from "../Context/ProductContext";
+import { ProductContext } from "../context/ProductContext";
 import { useNavigate } from "react-router-dom";
 import { TbTruckDelivery } from "react-icons/tb";
+import { TbJewishStar } from "react-icons/tb";
 
 const Navbar = () => {
     const { setSearchTerm, products, cart, isLoggedIn, logout } = useContext(ProductContext);
     const [suggestions, setSuggestions] = useState([]); //for using the search suggestion
     const [dropdownOpen, setDropdownOpen] = useState(false); // for dropdown button in profile for logout and orders
     const navigate = useNavigate();
+    const dropdownRef = useRef(null);
 
     //access entry to cart only when the user is loged.
     const handleCartAccess = () => {
@@ -16,6 +18,7 @@ const Navbar = () => {
             alert("Please log in to access your cart.");
         } else {
             navigate('/cart')
+            setSearchTerm('')
         }
     };
 
@@ -28,17 +31,21 @@ const Navbar = () => {
         }
     };
 
-    //stoing the searching value into searchTerm
     const handleSearch = (e) => {
         const searchValue = e.target.value.toLowerCase();
         setSearchTerm(searchValue);
+    
         if (searchValue.length > 0) {
-            const filteredSuggestions = products.filter((product) => product.name.toLowerCase().includes(searchValue));
+            const filteredSuggestions = products.filter((product) =>
+                product.name.toLowerCase().includes(searchValue) || 
+                product.category.toLowerCase().includes(searchValue) // Search by both product name and category
+            );
             setSuggestions(filteredSuggestions);
         } else {
             setSuggestions([]);
         }
     };
+
 
     //for clicking the searched product from the suggestion list
     const handleSuggestionClick = (suggestion) => {
@@ -57,9 +64,28 @@ const Navbar = () => {
         setDropdownOpen(!dropdownOpen);
     };
 
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setDropdownOpen(false); // Close dropdown if clicked outside
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [dropdownRef]);
+
+    const refresh = () =>{
+        window.location.reload()
+    }
+
     return (
         <nav className="navbar">
-            <div className="navbar-logo">
+            <div onClick={refresh} className="navbar-logo">
                 <img src="src/assets/logo/logo1.png" alt="logo" />
             </div>
             <div className="navbar-icons">
@@ -76,14 +102,21 @@ const Navbar = () => {
                     <div className="count">{cart.length > 0 && <span className="cart-badge">{cart.length}</span>}</div>
                 </div>
                 {/* Profile icon */}
-                <div className="navbar-icon" onClick={handleProfileClick}>
+                <div className="navbar-icon" onClick={handleProfileClick} ref={dropdownRef}>
                     <i className="bx bx-user"></i>
-                    <label> {isLoggedIn ? localStorage.getItem("username") : "Profile"} </label>
+                    <label> {isLoggedIn ? localStorage.getItem("username") : "Login"} </label>
                     {dropdownOpen && isLoggedIn && (
                         <div className="dropdown-menu">
-                            <button className="logout-button" onClick={handleLogout}>
-                                <i className="bx bx-log-out"></i>
-                            </button>
+                            <div className="wrapDropDownIcons">
+                                <button className="logout" onClick={handleLogout}>
+                                    <i className="bx bx-log-out"></i>
+                                    <span className="logoutText">Logout</span>
+                                </button>
+                                <button className="logout-button" onClick={()=>{navigate('/wishlist')}}>
+                                    <TbJewishStar className="wishIcon" />
+                                    <span className="wishListText">Wishlist</span>
+                                </button>
+                            </div>
                             <div onClick={()=>{navigate('orders')}} className="navbar-iconCart orders">
                 <TbTruckDelivery className="orderIcon"/>
                 <label>Orders</label>
@@ -94,7 +127,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-search">
                 <input type="text" placeholder="Search for products..." onChange={handleSearch}></input>
-                <div className="searchIcon"><i class='bx bx-search-alt-2'></i></div>
+                <div className="searchIcon"><i className='bx bx-search-alt-2'></i></div>
                 {suggestions.length > 0 && (
                     <ul className="suggestions-list">
                         {suggestions.map((suggestion) => (

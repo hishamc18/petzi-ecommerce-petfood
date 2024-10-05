@@ -7,14 +7,14 @@ export const ProductProvider = ({ children }) => {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
-    const [category, setCategory] = useState("dog");
+    const [category, setCategory] = useState("");
+    const [wishList, setWishList] = useState([])
     const [cart, setCart] = useState([]);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [currentUser, setCurrentUser] = useState(null);
     const [orderSummary, setOrderSummary] = useState(null);
     const [orders, setOrders] = useState([]);
 
-    //fetching username from localstorage.
     useEffect(() => {
         const username = localStorage.getItem("username");
         if (username) {
@@ -23,7 +23,6 @@ export const ProductProvider = ({ children }) => {
         }
     }, []);
 
-    //fetching userdetails with username.
     const fetchUser = async (username) => {
         try {
             const response = await axios.get(`http://localhost:5001/users?username=${username}`);
@@ -31,23 +30,16 @@ export const ProductProvider = ({ children }) => {
             setCurrentUser(user);
             setCart(user.cart || []);
             setOrders(user.orders || []);
+            setWishList(user.wishlist || [])
         } catch (error) {
             console.error("Error fetching user data:", error);
         }
     };
 
     const login = async (username) => {
-        const response = await axios.get(`http://localhost:5001/users?username=${username}`);
-        if (response.data.length > 0) {
-            const user = response.data[0];
-            setIsLoggedIn(true);
-            setCurrentUser(user);
-            setCart(user.cart || []);
-            setOrders(user.orders || []);
-            localStorage.setItem("username", username);
-        } else {
-            console.log("User not found");
-        }
+        await fetchUser(username);
+        setIsLoggedIn(true);
+        localStorage.setItem("username", username);
     };
 
     const logout = () => {
@@ -58,7 +50,7 @@ export const ProductProvider = ({ children }) => {
         setCurrentUser(null);
     };
 
-    // fetvhing user details
+    // Fetch products
     useEffect(() => {
         const fetchProducts = async () => {
             try {
@@ -71,18 +63,73 @@ export const ProductProvider = ({ children }) => {
         fetchProducts();
     }, []);
 
-    //filtering products based on category and search words
+    // Filter products based on category or search term
     useEffect(() => {
         const filterProducts = () => {
-            const filtered = products.filter(
-                (product) => product.category === category && product.name.toLowerCase().includes(searchTerm.toLowerCase())
-            );
+            let filtered = products;
+
+            // If search term exists, prioritize search over category filter
+            if (searchTerm) {
+                filtered = products.filter((product) =>
+                    product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    product.category.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+            } else if (category) {
+                // Only filter by category if no search term is provided
+                filtered = products.filter((product) => product.category === category);
+            }
+
             setFilteredProducts(filtered);
         };
+
         filterProducts();
     }, [category, searchTerm, products]);
 
-    // adding items to the cart
+
+
+
+
+
+    // Wishlist logic
+    const addToWishlist = async (product) => {
+        const updatedWishlist = [...wishList];
+        const existingItem = updatedWishlist.find((item) => item.id === product.id);
+
+        if (!existingItem) {
+            updatedWishlist.push(product); // Add product to wishlist if not already present
+            setWishList(updatedWishlist);
+            await updateUserWishlistInDB(updatedWishlist);
+        }
+    };
+
+    const removeFromWishlist = async (productId) => {
+        const updatedWishlist = wishList.filter((item) => item.id !== productId);
+        setWishList(updatedWishlist);
+        await updateUserWishlistInDB(updatedWishlist);
+    };
+
+    const clearWishlist = async () => {
+        setWishList([]);
+        await updateUserWishlistInDB([]);
+    };
+
+    const updateUserWishlistInDB = async (updatedWishlist) => {
+        if (currentUser) {
+            try {
+                await axios.patch(`http://localhost:5001/users/${currentUser.id}`, { wishlist: updatedWishlist });
+            } catch (error) {
+                console.error("Error updating wishlist:", error);
+            }
+        }
+    };
+
+
+
+
+
+
+
+    // Add item to the cart
     const addToCart = async (product) => {
         const updatedCart = [...cart];
         const existingItem = updatedCart.find((item) => item.id === product.id);
@@ -96,14 +143,12 @@ export const ProductProvider = ({ children }) => {
         await updateUserCartInDB(updatedCart);
     };
 
-    //deleting item from cart
     const removeFromCart = async (productId) => {
         const updatedCart = cart.filter((item) => item.id !== productId);
         setCart(updatedCart);
         await updateUserCartInDB(updatedCart);
     };
 
-    //updating qty
     const updateQuantity = async (productId, quantity) => {
         const updatedCart = cart.map((item) =>
             item.id === productId ? { ...item, quantity: Math.max(1, quantity) } : item
@@ -112,7 +157,6 @@ export const ProductProvider = ({ children }) => {
         await updateUserCartInDB(updatedCart);
     };
 
-    //updating cart in db (main fn() for patching db)
     const updateUserCartInDB = async (updatedCart) => {
         if (currentUser) {
             try {
@@ -123,36 +167,34 @@ export const ProductProvider = ({ children }) => {
         }
     };
 
+
+
+    const currentDate = new Date();
+    const formattedDate = currentDate.toISOString().slice(0, 10);
     const setOrderDetails = (details) => {
         const orderWithId = {
             ...details,
-            id: Date.now().toString(), // orderId creation
+            id: Date.now().toString(), 
+            date: formattedDate,
         };
         setOrderSummary(orderWithId);
         saveOrder(orderWithId);
-
         setTimeout(() => {
-            clearCartAfterOrder(); // calling fn() for clearing cart after ordering
+            clearCartAfterOrder();
         }, 3000);
     };
 
-    // Fn() for clearing the cart after order
     const clearCartAfterOrder = async () => {
-        setCart([]); // Clear the cart in the state
-        await updateUserCartInDB([]); // Clear the cart in the database
+        setCart([]);
+        await updateUserCartInDB([]);
     };
 
     const saveOrder = async (order) => {
         if (currentUser) {
             try {
-                // fetching the data of user to add the order into db
                 const userResponse = await axios.get(`http://localhost:5001/users/${currentUser.id}`);
                 const currentOrders = userResponse.data.orders || [];
-
-                // Old orders + new order
                 const updatedOrders = [...currentOrders, order];
-
-                // Updating order to the db
                 await axios.patch(`http://localhost:5001/users/${currentUser.id}`, { orders: updatedOrders });
                 setOrders(updatedOrders);
             } catch (error) {
@@ -170,6 +212,10 @@ export const ProductProvider = ({ children }) => {
                 setSearchTerm,
                 category,
                 setCategory,
+                wishList,
+                addToWishlist,
+                removeFromWishlist,
+                clearWishlist,
                 cart,
                 setCart,
                 addToCart,

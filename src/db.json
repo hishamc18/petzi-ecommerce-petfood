@@ -1,20 +1,21 @@
 {
   "users": [
     {
-      "id": "admin",
-      "email": "hishamc18@gmail.com",
-      "password": "121213",
-      "cart": [
+      "id": "b0b1",
+      "username": "Hisham",
+      "email": "hishamc16@gmail.com",
+      "password": "121212",
+      "confirmPassword": "121212",
+      "wishlist": [
         {
-          "id": "5",
-          "name": "Happy Tails Cat Delight",
-          "price": 646.18,
-          "oldPrice": 969.27,
-          "image": "src/assets/catProduct/cat3.webp",
+          "id": "7",
+          "name": "Feline Feast Cat Mix",
+          "price": 396.34,
+          "oldPrice": 594.51,
+          "image": "src/assets/catProduct/cat5.webp",
           "category": "cat",
-          "seller": "Happy Pets",
-          "deliveryDate": "2024-10-07",
-          "quantity": 1
+          "seller": "PetWorld",
+          "deliveryDate": "2024-10-07"
         },
         {
           "id": "6",
@@ -24,10 +25,30 @@
           "image": "src/assets/catProduct/cat4.webp",
           "category": "cat",
           "seller": "Cat Haven",
-          "deliveryDate": "2024-10-07",
-          "quantity": 1
+          "deliveryDate": "2024-10-07"
+        },
+        {
+          "id": "3",
+          "name": "WhiskerLickin' Cat Chow",
+          "price": 374.36,
+          "oldPrice": 561.54,
+          "image": "src/assets/catProduct/cat1.webp",
+          "category": "cat",
+          "seller": "Feline Friends",
+          "deliveryDate": "2024-10-07"
+        },
+        {
+          "id": "2",
+          "name": "TailWaggers Nutrition Dog Food",
+          "price": 123.65,
+          "oldPrice": 185.48,
+          "image": "src/assets/dogProduct/pd2.jpg",
+          "category": "dog",
+          "seller": "Animal Kingdom",
+          "deliveryDate": "2024-10-07"
         }
       ],
+      "cart": [],
       "orders": [
         {
           "shippingDetails": {
@@ -36,63 +57,78 @@
             "city": "Edappal",
             "state": "Kerala",
             "postalCode": "679576",
-            "phoneNumber": "9656736286"
+            "phoneNumber": "7676786"
           },
           "orderedItems": [
             {
-              "id": "14",
-              "name": "Barking Good Dog Food",
-              "price": 462.99,
-              "oldPrice": 694.49,
-              "image": "src/assets/dogProduct/pd3.webp",
-              "category": "dog",
-              "seller": "Animal Kingdom",
-              "deliveryDate": "2024-10-07",
-              "quantity": 5
-            },
-            {
-              "id": "2",
-              "name": "TailWaggers Nutrition Dog Food",
-              "price": 123.65,
-              "oldPrice": 185.48,
-              "image": "src/assets/dogProduct/pd2.jpg",
-              "category": "dog",
-              "seller": "Animal Kingdom",
-              "deliveryDate": "2024-10-07",
-              "quantity": 1
-            },
-            {
-              "id": "15",
-              "name": "Pawfect Meal Dog Food",
-              "price": 325.65,
-              "oldPrice": 488.48,
-              "image": "src/assets/dogProduct/pd4.webp",
-              "category": "dog",
+              "id": "3",
+              "name": "WhiskerLickin' Cat Chow",
+              "price": 374.36,
+              "oldPrice": 561.54,
+              "image": "src/assets/catProduct/cat1.webp",
+              "category": "cat",
               "seller": "Feline Friends",
               "deliveryDate": "2024-10-07",
               "quantity": 1
             }
           ],
-          "totalAmount": 2803.25,
-          "id": "1728039109968"
+          "totalAmount": 413.36,
+          "id": "1728122097973",
+          "date": "2024-10-05"
+        },
+        {
+          "shippingDetails": {
+            "fullName": "Hisham",
+            "streetAddress": "Chakkampully House",
+            "city": "Edappal",
+            "state": "Kerala",
+            "postalCode": "679576",
+            "phoneNumber": "7676786"
+          },
+          "orderedItems": [
+            {
+              "id": "18",
+              "name": "Ruff and Tumble Dog Food",
+              "price": 699.99,
+              "oldPrice": 1049.99,
+              "image": "src/assets/dogProduct/pd7.webp",
+              "category": "dog",
+              "seller": "Cat Haven",
+              "deliveryDate": "2024-10-07",
+              "quantity": 1
+            }
+          ],
+          "totalAmount": 738.99,
+          "id": "1728130845568",
+          "date": "2024-10-05"
+        },
+        {
+          "shippingDetails": {
+            "fullName": "Hisham",
+            "streetAddress": "Chakkampully House",
+            "city": "Edappal",
+            "state": "Kerala",
+            "postalCode": "679576",
+            "phoneNumber": "7676786"
+          },
+          "orderedItems": [
+            {
+              "id": "3",
+              "name": "WhiskerLickin' Cat Chow",
+              "price": 374.36,
+              "oldPrice": 561.54,
+              "image": "src/assets/catProduct/cat1.webp",
+              "category": "cat",
+              "seller": "Feline Friends",
+              "deliveryDate": "2024-10-07",
+              "quantity": 1
+            }
+          ],
+          "totalAmount": 413.36,
+          "id": "1728138603978",
+          "date": "2024-10-05"
         }
       ]
-    },
-    {
-      "id": "b644",
-      "username": "Hisham",
-      "email": "hishamc16@gmail.com",
-      "password": "121212",
-      "confirmPassword": "121212",
-      "cart": [],
-      "orders": []
-    },
-    {
-      "id": "8555",
-      "username": "Shahid",
-      "email": "shahid@gmail.com",
-      "password": "121212",
-      "confirmPassword": "121212"
     }
   ],
   "products": [

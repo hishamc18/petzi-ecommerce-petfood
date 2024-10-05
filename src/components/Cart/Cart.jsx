@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../Context/ProductContext";
+import { ProductContext } from "../context/ProductContext";
 import PaymentDetails from "./PaymentDetails";
 import { MdDeleteForever } from "react-icons/md";
 import "./cartStyle.css";
@@ -12,7 +12,7 @@ const Cart = () => {
     return (
         <div className="cart-price">
             <h1>Your <span className="carthead">Cart</span></h1>
-            <div className="homebtn"><button className="back-button" onClick={() => navigate("/")}><i class='bx bx-home'></i></button></div>
+            <div className="homebtn"><button className="back-button" onClick={() => navigate("/")}><i className='bx bx-home'></i></button></div>
             <div className="cart-container">
                 {cart.length === 0 ? ( //if nothing is added to the cart, it shows empty
                     <h3>Your cart is empty.</h3>
@@ -39,7 +39,7 @@ const Cart = () => {
                                             </button>
                                         </div>
                                         <div className="cart-actions">
-                                            <div onClick={() => removeFromCart(product.id)} class="del">
+                                            <div onClick={() => removeFromCart(product.id)} className="del">
                                                 <div>
                                                     <MdDeleteForever />
                                                 </div>

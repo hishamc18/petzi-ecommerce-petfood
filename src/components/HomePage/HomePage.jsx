@@ -1,45 +1,4 @@
-// import React, { useContext, useEffect, useState } from "react";
-// import "./homeStyle.css";
-// import HeroSection from "./HeroSection";
-// import Navbar from "./Navbar";
-// import Products from "./Products";
-// import Category from "./Category";
-// import Caption from "./Caption";
-// import Footer from "./Footer";
-// import { ProductContext } from "../Context/ProductContext";
-
-// function HomePage() {
-//     const { searchTerm } = useContext(ProductContext);
-
-//     return (
-//         <div className="homePage">
-//             <Navbar />
-//             <Caption />
-
-//             {searchTerm ? (
-//                 <>
-//                     <Category />
-//                     <Products />
-//                     <HeroSection />
-//                 </>
-//             ) : (
-//                 <>
-//                     <HeroSection />
-//                     <Category />
-//                     <Products />
-//                 </>
-//             )}
-//             <Footer />
-//         </div>
-//     );
-// }
-
-// export default HomePage;
-
-
-
-
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useEffect } from "react";
 import "./homeStyle.css";
 import HeroSection from "./HeroSection";
 import Navbar from "./Navbar";
@@ -47,7 +6,7 @@ import Products from "./Products";
 import Category from "./Category";
 import Caption from "./Caption";
 import Footer from "./Footer";
-import { ProductContext } from "../Context/ProductContext";
+import { ProductContext } from "../context/ProductContext";
 
 function HomePage() {
     const { searchTerm } = useContext(ProductContext);
@@ -56,9 +15,19 @@ function HomePage() {
     // Scroll to the Products component
     const scrollToProducts = () => {
         if (productsRef.current) {
-            productsRef.current.scrollIntoView({ behavior: "smooth" });
+            window.scrollTo({
+                top: productsRef.current.offsetTop - 130,
+                behavior: "smooth"
+            });
         }
     };
+
+    // Auto-scroll to top when search active
+    useEffect(() => {
+        if (searchTerm && productsRef.current) {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [searchTerm]);
 
     return (
         <div className="homePage">

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../Context/ProductContext";
+import { ProductContext } from "../context/ProductContext";
 import { useNavigate } from "react-router-dom";
 
 const Orders = () => {
@@ -9,7 +9,7 @@ const Orders = () => {
     return (
         <div className="orders-container">
             <h2 className="orders-heading">Order History</h2>
-            <button className="backButton" onClick={() => navigate("/")}><i class='bx bx-home'></i></button>
+            <button className="backButton" onClick={() => navigate("/")}><i className='bx bx-home'></i></button>
             {orders.length === 0 ? (
                 <p className="no-orders">No orders found.</p>
             ) : (
@@ -17,6 +17,7 @@ const Orders = () => {
                     {orders.slice().reverse().map((order) => (
                         <div className="order-card" key={order.id}>
                             <h3 className="order-id">Order ID: #{order.id}</h3>
+                            <p className="orderDate">Date: {order.date}</p>
                             <div className="shipping-details">
                                 <h4>Shipping Details:</h4>
                                 <p><strong>Full Name:</strong> {order.shippingDetails.fullName}</p>

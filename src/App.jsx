@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Login from './components/authentication/Login'
 import SignIn from './components/authentication/SignUp'
 import HomePage from './components/HomePage/HomePage'
-import { ProductProvider } from './components/Context/ProductContext'
+import { ProductProvider } from './components/context/ProductContext'
 import Cart from './components/Cart/Cart'
 import OrderSummary from './components/Cart/OrderSummary'
 import Orders from './components/Cart/Orders'
-
+import WishList from './components/Cart/WishList'
 
 function App() {
 
@@ -21,6 +21,7 @@ function App() {
               <Route path='cart' element={<Cart />}/>
               <Route path='order-summary' element={<OrderSummary />} />
               <Route path='orders' element={<Orders />} />
+              <Route path='wishlist' element={<WishList />}/>
             </Routes>
             </Router>
           </ProductProvider>

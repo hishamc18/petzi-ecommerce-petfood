@@ -22,6 +22,11 @@
   margin-right: 30px;
 }
 
+.navbar img:hover{
+  transform: scale(1.06);
+  transition: 0.7s;
+}
+
 .navbar-icons {
   display: flex;
   gap: 3em;
@@ -130,13 +135,6 @@
   font-size: 14px;
 }
 
-/* .wishListIcon i{
-  color: rgb(255, 255, 255);
-  margin-top: -4px;
-  font-size: 30px;
-
-} */
-
 .suggestions-list {
   position: absolute;
   background-color: #e9edf0;
@@ -168,10 +166,15 @@
 /* profile dropdown for logout */
 .dropdown-menu {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  gap: 10px;
+  transform: scale(0.8);
   position: absolute;
-  top: 110%;
+  top: 109%;
+}
+
+.wrapDropDownIcons{
+  display: flex;
+  gap: 0.4em;
 }
 
 .dropdown-menu .orders1 {
@@ -179,20 +182,61 @@
 }
 
 .dropdown-menu button {
-  background-color: #ff4d4d;
-  color: white;
-  padding: 5px 15px;
+  background-color: #fff200;
+  color: rgb(255, 255, 255);
+  padding: 3px 12px;
   cursor: pointer;
   border-radius: 8px;
-  font-size: large;
+  font-size: 23px;
   border: none;
 }
 
-.logout-button:hover {
-  background-color: #ff1a1a;
-  border: none;
+.dropdown-menu .logout{
+  background-color: rgb(244, 49, 49);
 }
 
+.wishIcon{
+  margin-top: 3px;
+  color: black
+}
+
+.logout:hover {
+  background-color: #ff0000;
+  border: none;
+  visibility: visible;
+}
+
+.logoutText{
+  position: absolute;
+  color: black;
+  top: 3em;
+  visibility: hidden;
+  right: 3.5em;
+  font-size: 16px;
+  transition: opacity 0.7s ease;
+  opacity: 0;
+}
+
+.logout:hover .logoutText{
+  visibility: visible;
+  opacity: 1;
+}
+
+.wishListText{
+  position: absolute;
+  color: black;
+  top: 3em;
+  right: 0.01px;
+  font-size: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.7s ease;
+}
+
+.logout-button:hover .wishListText{
+  visibility: visible;
+  opacity: 1;
+}
 
 /* resposive for NavBar */
 
@@ -263,17 +307,14 @@
   }
 
   .dropdown-menu {
-    width: 80%;
-    margin-top: 3px;
+    flex-direction: column;
+    transform: scale(0.7);
+    margin-top: -0.3em;
   }
 
-  .dropdown-menu button {
-    padding: 2px 10px;
-  }
-
-  .dropdown-menu i {
-    text-align: center;
-    margin-left: -8px
+  .wrapDropDownIcons{
+    font-size: 10px;
+    gap: 10px;
   }
 }
 
@@ -474,6 +515,11 @@
   justify-items: center;
 }
 
+.productError{
+  font-size: 20px;
+  font-weight: 600;
+}
+
 .card {
   width: 100%;
   height: 80%;
@@ -486,6 +532,13 @@
   position: relative;
   box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.1),
     -20px -20px 60px rgba(190, 190, 190, 0.8);
+}
+
+.wrapCardButtons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .wrapper {
@@ -553,9 +606,9 @@
 .card-btn {
   margin-top: 20px;
   margin-bottom: -18px;
-  width: 80%;
-  height: 45px;
-  background-color: #181818;
+  padding: 10px;
+  height: 40px;
+  background-color: #333;
   border: none;
   border-radius: 30px;
   color: white;
@@ -569,12 +622,31 @@
   gap: 0.4em;
 }
 
+.card-btn2{
+  border-radius: 30px;
+  width: 15%;
+  font-size: 25px;
+  background-color: white;
+  border: none;
+  height: 45px;
+  margin-top: 20px;
+  margin-bottom: -18px;
+  margin-left: 10px;
+}
+
+.wishIcon:hover{
+  color:rgb(0, 0, 0);
+  background-color: rgb(245, 245, 105);
+  border-radius: 100px;
+  transition: 0.6s;
+}
+
 .card-btn i {
   font-size: 23px;
 }
 
 .card:hover .card-image img {
-  transform: scale(1.1);
+  transform: scale(1.03);
 }
 
 .card-btn:hover {
@@ -584,14 +656,8 @@
 }
 
 .card:hover {
-  background-color: rgb(0, 0, 0);
-  color: rgb(255, 255, 255);
-  transform: translateY(0);
-}
-
-.card:hover {
   background-color: #ffffff;
-  transform: scaleY(0.85);
+  transform: scaleY(.88);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   height: 100%;
 }
@@ -612,7 +678,19 @@
 @media (max-width:449px) {
   .card-btn {
     width: 100%;
-    font-size: 11px;
+    font-size: 9px;
+    padding: 3px;
+    height: 30px;
+  }
+
+  .card-btn i{
+    margin-right: -2px;
+    font-size: 13px;
+  }
+  
+
+  .card-btn2{
+    font-size: 2em;
   }
 
   .card {
