@@ -1,134 +1,26 @@
 {
   "users": [
     {
-      "id": "b0b1",
       "username": "Hisham",
-      "email": "hishamc16@gmail.com",
+      "email": "admin@gmail.com",
+      "password": "admin123"
+    },
+    {
+      "id": "4c00",
+      "username": "Hisham",
+      "email": "hisham@gmail.com",
       "password": "121212",
       "confirmPassword": "121212",
-      "wishlist": [
-        {
-          "id": "7",
-          "name": "Feline Feast Cat Mix",
-          "price": 396.34,
-          "oldPrice": 594.51,
-          "image": "src/assets/catProduct/cat5.webp",
-          "category": "cat",
-          "seller": "PetWorld",
-          "deliveryDate": "2024-10-07"
-        },
-        {
-          "id": "6",
-          "name": "Kitty Krunch Gourmet Cat Food",
-          "price": 785.95,
-          "oldPrice": 1178.93,
-          "image": "src/assets/catProduct/cat4.webp",
-          "category": "cat",
-          "seller": "Cat Haven",
-          "deliveryDate": "2024-10-07"
-        },
-        {
-          "id": "3",
-          "name": "WhiskerLickin' Cat Chow",
-          "price": 374.36,
-          "oldPrice": 561.54,
-          "image": "src/assets/catProduct/cat1.webp",
-          "category": "cat",
-          "seller": "Feline Friends",
-          "deliveryDate": "2024-10-07"
-        },
-        {
-          "id": "2",
-          "name": "TailWaggers Nutrition Dog Food",
-          "price": 123.65,
-          "oldPrice": 185.48,
-          "image": "src/assets/dogProduct/pd2.jpg",
-          "category": "dog",
-          "seller": "Animal Kingdom",
-          "deliveryDate": "2024-10-07"
-        }
-      ],
+      "wishlist": [],
       "cart": [],
-      "orders": [
-        {
-          "shippingDetails": {
-            "fullName": "Hisham",
-            "streetAddress": "Chakkampully House",
-            "city": "Edappal",
-            "state": "Kerala",
-            "postalCode": "679576",
-            "phoneNumber": "7676786"
-          },
-          "orderedItems": [
-            {
-              "id": "3",
-              "name": "WhiskerLickin' Cat Chow",
-              "price": 374.36,
-              "oldPrice": 561.54,
-              "image": "src/assets/catProduct/cat1.webp",
-              "category": "cat",
-              "seller": "Feline Friends",
-              "deliveryDate": "2024-10-07",
-              "quantity": 1
-            }
-          ],
-          "totalAmount": 413.36,
-          "id": "1728122097973",
-          "date": "2024-10-05"
-        },
-        {
-          "shippingDetails": {
-            "fullName": "Hisham",
-            "streetAddress": "Chakkampully House",
-            "city": "Edappal",
-            "state": "Kerala",
-            "postalCode": "679576",
-            "phoneNumber": "7676786"
-          },
-          "orderedItems": [
-            {
-              "id": "18",
-              "name": "Ruff and Tumble Dog Food",
-              "price": 699.99,
-              "oldPrice": 1049.99,
-              "image": "src/assets/dogProduct/pd7.webp",
-              "category": "dog",
-              "seller": "Cat Haven",
-              "deliveryDate": "2024-10-07",
-              "quantity": 1
-            }
-          ],
-          "totalAmount": 738.99,
-          "id": "1728130845568",
-          "date": "2024-10-05"
-        },
-        {
-          "shippingDetails": {
-            "fullName": "Hisham",
-            "streetAddress": "Chakkampully House",
-            "city": "Edappal",
-            "state": "Kerala",
-            "postalCode": "679576",
-            "phoneNumber": "7676786"
-          },
-          "orderedItems": [
-            {
-              "id": "3",
-              "name": "WhiskerLickin' Cat Chow",
-              "price": 374.36,
-              "oldPrice": 561.54,
-              "image": "src/assets/catProduct/cat1.webp",
-              "category": "cat",
-              "seller": "Feline Friends",
-              "deliveryDate": "2024-10-07",
-              "quantity": 1
-            }
-          ],
-          "totalAmount": 413.36,
-          "id": "1728138603978",
-          "date": "2024-10-05"
-        }
-      ]
+      "orders": []
+    },
+    {
+      "id": "44cf",
+      "username": "Yoosha",
+      "email": "yoosha@gmail.com",
+      "password": "121212",
+      "confirmPassword": "121212"
     }
   ],
   "products": [

@@ -1,14 +1,14 @@
 import React, { useContext, forwardRef } from "react";
-import { ProductContext } from "../context/ProductContext";
-import { TbJewishStar } from "react-icons/tb";
+import { ProductContext } from "../../Context/ProductContext";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
 import "./homeStyle.css";
 
 const Products = forwardRef((_, ref) => {
-    const { addToCart, filteredProducts, isLoggedIn, addToWishlist } = useContext(ProductContext);
+    const { addToCart, filteredProducts, isLoggedIn, addToWishlist, setToastMessage} = useContext(ProductContext);
 
     const handleAddToCartClick = (product) => {
         if (!isLoggedIn) {
-            alert("Please log in to add products to the cart.");
+            setToastMessage("Please log in to add items to your cart")
         } else {
             addToCart(product);
         }
@@ -37,7 +37,7 @@ const Products = forwardRef((_, ref) => {
                                     <i className="bx bx-cart"></i> Add to Cart
                                 </button>
                                 <button className="card-btn2" onClick={() => addToWishlist(product)}>
-                                        <TbJewishStar className="wishIcon" />
+                                        <MdOutlineFavoriteBorder className="wishIcon" />
                                     </button>
                             </div>
                         </div>

@@ -3,6 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import { toast, ToastContainer, Slide } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import "./authStyle.css";
 
 function Signin() {
@@ -20,12 +22,23 @@ function Signin() {
 
     return (
         <div className="form-container">
+            <ToastContainer 
+                position="top-center"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                transition={Slide}
+            />
             <Formik
                 initialValues={{ username: "", email: "", password: "", confirmPassword: "" }}
-                validationSchema={validationSchema} // Adding the Yup validation schema for checking
+                validationSchema={validationSchema}
                 onSubmit={async (values, { setSubmitting, setFieldError }) => {
                     try {
-                        // Checking email already exists
                         const response = await axios.get("http://localhost:5001/users");
                         const users = response.data;
                         const userWithSameEmail = users.find((user) => user.email === values.email);
@@ -35,10 +48,13 @@ function Signin() {
                             setSubmitting(false);
                         } else {
                             await axios.post("http://localhost:5001/users", values);
-                            alert("Account Created, You're ready to login");
-                            navigate("/login");
+                            toast.success("Account Created! You're ready to log in.");
+                            setTimeout(() => {
+                                navigate("/login");
+                            }, 2000);
                         }
                     } catch (error) {
+                        toast.error("🚨 Error creating account. Please try again.");
                         console.error("Error checking email or creating account:", error);
                     }
                 }}
@@ -57,7 +73,6 @@ function Signin() {
                         <Field type="password" name="confirmPassword" placeholder="Confirm Password" />
                         <ErrorMessage name="confirmPassword" className="error-message"/>
                         <button type="submit" disabled={isSubmitting}>
-                            {/* disabled due to avoid multiple submission */}
                             Register
                         </button>
                         <p>

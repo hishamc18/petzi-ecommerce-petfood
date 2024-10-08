@@ -1,0 +1,94 @@
+.admin-homepage {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.menubar {
+    width: 20%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: width 0.3s ease; 
+}
+
+.menubar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menubar li {
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.menubar a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.menubar a:hover {
+    color: #007bff;
+}
+
+.content {
+    width: 80%;
+    padding: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .menubar {
+        width: 25%; 
+    }
+    .content {
+        width: 75%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .navbar{
+        height: 10%;
+    }
+
+    .menubar {
+        width: 100%; 
+        padding: 10px;
+        box-shadow: none;
+    }
+    .content {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+    .menubar {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    .content {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}

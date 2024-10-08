@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../context/ProductContext";
+import { ProductContext } from "../../Context/ProductContext";
 import PaymentDetails from "./PaymentDetails";
 import { MdDeleteForever } from "react-icons/md";
 import "./cartStyle.css";

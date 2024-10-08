@@ -1,17 +1,22 @@
 import React, { useContext } from "react";
 import { MdDeleteForever } from "react-icons/md";
-import { ProductContext } from "../context/ProductContext";
+import { ProductContext } from "../../Context/ProductContext";
+import { useNavigate } from "react-router-dom";
 
 const Wishlist = () => {
     const { wishList, removeFromWishlist, clearWishlist } = useContext(ProductContext);
+    const navigate = useNavigate()
 
     return (
         <div className="wishlist-container">
             <div className="wishlist-header">
                 <h2>Wishlist</h2>
-                <button className="clear-btn" onClick={clearWishlist}>
-                    Clear Wishlist
-                </button>
+                <div className="wishListBtnsWrap">
+                    <button className="backButton homebtn" onClick={() => navigate("/")}><i className='bx bx-home'></i></button>
+                    <button className="clear-btn" onClick={clearWishlist}>
+                        Clear
+                    </button>
+                </div>
             </div>
             {wishList.length === 0 ? (
                 <p className="empty-wishlist">Your wishlist is empty.</p>

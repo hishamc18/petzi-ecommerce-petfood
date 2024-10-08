@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../context/ProductContext";
+import { ProductContext } from "../../Context/ProductContext";
 import { useNavigate } from "react-router-dom";
 
 const Orders = () => {
@@ -17,7 +17,7 @@ const Orders = () => {
                     {orders.slice().reverse().map((order) => (
                         <div className="order-card" key={order.id}>
                             <h3 className="order-id">Order ID: #{order.id}</h3>
-                            <p className="orderDate">Date: {order.date}</p>
+                            <p className="orderDate">Order Date: {order.date}</p>
                             <div className="shipping-details">
                                 <h4>Shipping Details:</h4>
                                 <p><strong>Full Name:</strong> {order.shippingDetails.fullName}</p>

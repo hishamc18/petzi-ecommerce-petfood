@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect } from "react";
+import React, { useContext, useRef, useEffect, useState } from "react";
 import "./homeStyle.css";
 import HeroSection from "./HeroSection";
 import Navbar from "./Navbar";
@@ -6,18 +6,28 @@ import Products from "./Products";
 import Category from "./Category";
 import Caption from "./Caption";
 import Footer from "./Footer";
-import { ProductContext } from "../context/ProductContext";
+import { ProductContext } from "../../Context/ProductContext";
+import LogoutModal from "./LogoutModal";
 
 function HomePage() {
-    const { searchTerm } = useContext(ProductContext);
+    const { searchTerm, showConfirm, cancelLogout, confirmLogout } = useContext(ProductContext);
     const productsRef = useRef(null);
+    const [loading, setLoading] = useState(true);
+
+    //loading home page
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 1600);
+        return () => clearTimeout(timer);
+    }, []);
 
     // Scroll to the Products component
     const scrollToProducts = () => {
         if (productsRef.current) {
             window.scrollTo({
                 top: productsRef.current.offsetTop - 130,
-                behavior: "smooth"
+                behavior: "smooth",
             });
         }
     };
@@ -29,11 +39,35 @@ function HomePage() {
         }
     }, [searchTerm]);
 
+    if (loading) {
+        return (
+            <div className="loading-screen">
+                <div className="loader">
+                    <div className="wrapDots">
+                        <div className="loadingDot"></div>
+                        <div className="loadingDot"></div>
+                        <div className="loadingDot"></div>
+                        <div className="loadingDot"></div>
+                    </div>
+                    <div className="caption">
+                        <div className="forPc">
+                            <h4>"Fuel their happiness with every bite - Shop the best food for your furry friends!”</h4>
+                        </div>
+                        <div className="forMobile">
+                            <h4>"Fuel their happiness with every bite</h4>
+                        </div>
+                    </div>
+                </div>
+                <img className="loadingLogo" src="src/assets/logo/logo.png" alt="logo" />
+            </div>
+        );
+    }
+
     return (
         <div className="homePage">
-            <Navbar />
+            <Navbar scrollToProducts={scrollToProducts} />
             <Caption />
-
+            {/* conditional rednering based on searching */}
             {searchTerm ? (
                 <>
                     <Category scrollToProducts={scrollToProducts} />
@@ -48,6 +82,8 @@ function HomePage() {
                 </>
             )}
             <Footer />
+            {/* for showing the logout modal */}
+            {showConfirm && <LogoutModal onConfirm={confirmLogout} onCancel={cancelLogout} />}
         </div>
     );
 }

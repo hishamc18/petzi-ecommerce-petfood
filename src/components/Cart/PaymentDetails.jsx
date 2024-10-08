@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { ProductContext } from "../context/ProductContext";
+import { ProductContext } from "../../Context/ProductContext";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
 import { FaCheckCircle, FaRegCreditCard } from "react-icons/fa";
@@ -15,6 +15,7 @@ const PaymentDetails = () => {
     const [isSuccess, setIsSuccess] = useState(false);
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
     const [upiID, setUpiID] = useState("");
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
     // for passing shipping details to order summary
@@ -27,10 +28,26 @@ const PaymentDetails = () => {
         phoneNumber: "",
     });
 
+    // for validating the shipping details form
+    const validateForm = () => {
+        let formErrors = {};
+
+        Object.keys(shippingDetails).forEach((key) => {
+            if (!shippingDetails[key]) {
+                formErrors[key] = `Please enter ${key.replace(/([A-Z])/g, " $1").toLowerCase()}`;
+            }
+        });
+
+        setErrors(formErrors);
+        return Object.keys(formErrors).length === 0; // Return true if no errors
+    };
+
     // for submitting shipping details form
     const submiting = (e) => {
         e.preventDefault();
-        openModal();
+        if (validateForm()) {
+            openModal();
+        }
     };
 
     // for storing the shipping details
@@ -39,12 +56,13 @@ const PaymentDetails = () => {
             ...shippingDetails,
             [e.target.name]: e.target.value,
         });
+        setErrors({ ...errors, [e.target.name]: "" }); // Clear error on input change
     };
-
 
     const totalPrice = Array.isArray(cart) ? cart.reduce((total, item) => total + item.price * item.quantity, 0) : 0;
     const securedPackagingFee = 39;
     const finalAmount = totalPrice + securedPackagingFee;
+
     const openModal = () => {
         setIsModalOpen(true);
         setIsLoading(false);
@@ -52,16 +70,18 @@ const PaymentDetails = () => {
     };
 
     const handlePayment = () => {
+        if (!selectedPaymentMethod) {
+            alert("Please select a payment method");
+            return;
+        }
         if (selectedPaymentMethod === "UPI" && !upiID) {
             alert("Please enter UPI ID");
             return;
         }
-
         setIsLoading(true);
         setTimeout(() => {
             setIsLoading(false);
             setIsSuccess(true);
-
             // Passing order details to OrderSummary
             const orderDetails = {
                 shippingDetails,
@@ -69,6 +89,7 @@ const PaymentDetails = () => {
                 totalAmount: finalAmount,
             };
             setOrderDetails(orderDetails);
+            localStorage.setItem("orderSummary", JSON.stringify(orderDetails));
             setTimeout(() => {
                 setIsModalOpen(false);
                 setCart([]); // Clear cart after order
@@ -111,51 +132,57 @@ const PaymentDetails = () => {
                         <input
                             type="text"
                             name="fullName"
-                            placeholder="Full Name"
+                            placeholder={errors.fullName || "Full Name"}
                             value={shippingDetails.fullName}
                             onChange={handleInputChange}
+                            className={errors.fullName ? "input-error" : ""}
                             required
                         />
                         <input
                             type="text"
                             name="streetAddress"
-                            placeholder="Street Address"
+                            placeholder={errors.streetAddress || "Street Address"}
                             value={shippingDetails.streetAddress}
                             onChange={handleInputChange}
+                            className={errors.streetAddress ? "input-error" : ""}
                             required
                         />
                         <input
                             type="text"
                             name="city"
-                            placeholder="City"
+                            placeholder={errors.city || "City"}
                             value={shippingDetails.city}
                             onChange={handleInputChange}
+                            className={errors.city ? "input-error" : ""}
                             required
                         />
                         <div className="statePin">
                             <input
                                 type="text"
                                 name="state"
-                                placeholder="State"
+                                placeholder={errors.state || "State"}
                                 value={shippingDetails.state}
                                 onChange={handleInputChange}
+                                className={errors.state ? "input-error" : ""}
                                 required
                             />
                             <input
                                 type="text"
                                 name="postalCode"
-                                placeholder="Postal Code"
+                                placeholder={errors.postalCode || "Postal Code"}
                                 value={shippingDetails.postalCode}
                                 onChange={handleInputChange}
+                                className={errors.postalCode ? "input-error" : ""}
                                 required
                             />
                         </div>
                         <input
                             type="text"
                             name="phoneNumber"
-                            placeholder="Phone Number"
+                            placeholder={errors.phoneNumber || "Phone Number"}
                             value={shippingDetails.phoneNumber}
                             onChange={handleInputChange}
+                            className={errors.phoneNumber ? "input-error" : ""}
                             required
                         />
                         <button className="proceed-btn">Proceed To Payment</button>
@@ -178,7 +205,9 @@ const PaymentDetails = () => {
                     </div>
                 ) : isSuccess ? (
                     <div className="success-container">
-                        <FaCheckCircle className="success-icon" />
+                        <div className="animated-success-icon">
+                            <FaCheckCircle className="success-icon" />
+                        </div>
                         <h3 className="processingHead">Payment Successful!</h3>
                         <p className="success-text">Total Amount Paid: ₹{Math.floor(finalAmount)}</p>
                         <p className="redirect-text">Wait for your Order Summary...</p>
@@ -186,7 +215,9 @@ const PaymentDetails = () => {
                 ) : (
                     <div className="payment-container">
                         <h2>Payment Details</h2>
-                        <p>Total Amount: <span>₹{Math.floor(finalAmount)}</span></p>
+                        <p>
+                            Total Amount: <span>₹{Math.floor(finalAmount)}</span>
+                        </p>
                         <h3>Select Payment Method:</h3>
                         <div className="payment-options">
                             <label>
@@ -208,8 +239,8 @@ const PaymentDetails = () => {
                                 />
                                 UPI
                                 <SiGooglepay className="payIcons" />
-                                <FaAmazonPay className="payIcons"/>
-                                <FaPaypal className="payIcons"/>
+                                <FaAmazonPay className="payIcons" />
+                                <FaPaypal className="payIcons" />
                             </label>
 
                             {/* Show UPI input when UPI is selected */}
@@ -236,7 +267,7 @@ const PaymentDetails = () => {
                                 Cash on Delivery
                             </label>
                         </div>
-                        <button className="pay-now-btn" onClick={handlePayment}>
+                        <button className="pay-now-btn" onClick={handlePayment} disabled={!selectedPaymentMethod}>
                             Pay Now
                         </button>
                     </div>

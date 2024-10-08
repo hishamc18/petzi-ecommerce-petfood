@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link, useFetcher, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { ProductContext } from "../context/ProductContext";
+import { ProductContext } from "../../Context/ProductContext";
+import { toast, ToastContainer, Slide } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import "./authStyle.css";
 
 function Login() {
@@ -26,8 +28,8 @@ function Login() {
             const user = users.find((u) => u.email === values.email && u.password === values.password);
 
             if (user) {
-                if(user.email === "hishamc18@gmail.com"){
-                    navigate("/orders")
+                if(user.email === "admin@gmail.com"){
+                    navigate("/Admin")
                 }
                     else{
                         login(user.username); //fn() in context
@@ -42,8 +44,24 @@ function Login() {
         setSubmitting(false);
     };
 
+    useEffect(()=>{
+        toast.info("Please Login With Your Credentials")
+    },[])
+
     return (
         <div className="form-container">
+                        <ToastContainer 
+                position="top-center"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                transition={Slide}
+            />
             <Formik
                 initialValues={{ email: "", password: "" }}
                 validationSchema={validationSchema} 
