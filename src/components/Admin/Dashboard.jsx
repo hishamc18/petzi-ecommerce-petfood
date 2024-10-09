@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './admin.css'
 
 function Dashboard() {
+
   return (
     <div>
       Dashboard

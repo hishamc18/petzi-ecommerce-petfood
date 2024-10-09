@@ -1,18 +1,19 @@
 import React, { useContext, useEffect } from "react";
-import { Link, useFetcher, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { ProductContext } from "../../Context/ProductContext";
+import { ProductContext } from "../../Context/ProductContext"; // For user login
+import { AdminContext } from "../../Context/AdminContext";
 import { toast, ToastContainer, Slide } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import "./authStyle.css";
 
 function Login() {
     const navigate = useNavigate();
-    const { login } = useContext(ProductContext);
+    const { login } = useContext(ProductContext);  // User login
+    const { adminLogin } = useContext(AdminContext);  // Admin login
 
-    // Validation using Yup
     const validationSchema = Yup.object().shape({
         email: Yup.string().required("Email is required").email("Invalid email address"),
         password: Yup.string().required("Password is required").min(6, "Password must be at least 6 characters"),
@@ -20,21 +21,18 @@ function Login() {
 
     const handleSubmit = async (values, { setSubmitting, setErrors }) => {
         try {
-            // Fetching users 
             const response = await axios.get("http://localhost:5001/users");
             const users = response.data;
 
-            // finding the  usermail and password
             const user = users.find((u) => u.email === values.email && u.password === values.password);
 
             if (user) {
-                if(user.email === "admin@gmail.com"){
-                    navigate("/Admin")
+                if (user.email === "admin@gmail.com") {
+                    adminLogin();  // Admin login action
+                } else {
+                    login(user.username);  // Regular user login
+                    navigate("/");
                 }
-                    else{
-                        login(user.username); //fn() in context
-                        navigate("/");
-                    }
             } else {
                 setErrors({ login: "Invalid email or password" });
             }
@@ -44,13 +42,13 @@ function Login() {
         setSubmitting(false);
     };
 
-    useEffect(()=>{
-        toast.info("Please Login With Your Credentials")
-    },[])
+    useEffect(() => {
+        toast.info("Please Login With Your Credentials");
+    }, []);
 
     return (
         <div className="form-container">
-                        <ToastContainer 
+            <ToastContainer
                 position="top-center"
                 autoClose={2000}
                 hideProgressBar={false}
@@ -64,7 +62,7 @@ function Login() {
             />
             <Formik
                 initialValues={{ email: "", password: "" }}
-                validationSchema={validationSchema} 
+                validationSchema={validationSchema}
                 onSubmit={handleSubmit}
             >
                 {({ isSubmitting, errors }) => (

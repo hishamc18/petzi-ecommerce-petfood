@@ -5,16 +5,22 @@ import { useNavigate } from "react-router-dom";
 import { TbTruckDelivery } from "react-icons/tb";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { MdOutlinePets } from "react-icons/md";
-import { toast } from "react-toastify";
 
-const Navbar = ({scrollToProducts}) => {
-    const { setSearchTerm, products, cart, isLoggedIn, currentUser, toastMessage, setToastMessage, handleLogoutClick } = useContext(ProductContext);
+const Navbar = ({ scrollToProducts }) => {
+    const {
+        setSearchTerm,
+        products,
+        cart,
+        isLoggedIn,
+        currentUser,
+        toastMessage,
+        setToastMessage,
+        handleLogoutClick,
+    } = useContext(ProductContext);
     const [suggestions, setSuggestions] = useState([]); //for using the search suggestion
     const [dropdownOpen, setDropdownOpen] = useState(false); // for dropdown button in profile for logout and orders
     const navigate = useNavigate();
-    const dropdownRef = useRef(null);
-
-
+    const dropdownRef = useRef(null); 
 
     //access entry to cart only when the user is loged.
     const handleCartAccess = () => {
@@ -36,19 +42,18 @@ const Navbar = ({scrollToProducts}) => {
         }
     };
 
-    const handleOrderAccess = () =>{
-        if(!isLoggedIn){
+    const handleOrderAccess = () => {
+        if (!isLoggedIn) {
             setToastMessage("Please Login to Access Your Cart Orders.");
-        } else{
-            navigate('/orders')
+        } else {
+            navigate("/orders");
         }
-    }
+    };
 
-    const handlePetFoods = () =>{
+    const handlePetFoods = () => {
         setSearchTerm("");
         scrollToProducts();
-        extraZoom()
-    }
+    };
 
     const handleSearch = (e) => {
         const searchValue = e.target.value.toLowerCase();
@@ -71,6 +76,10 @@ const Navbar = ({scrollToProducts}) => {
         setSuggestions([]); // used to remove suggestion list, once a product is cliciked
     };
 
+    // suggestions close when searchbar out of focus
+    const handleBlur = () => {
+        setSuggestions([]);
+    };
 
     // for toggle conditon to active the dropdown only when user is logined.
     const toggleDropdown = () => {
@@ -90,12 +99,9 @@ const Navbar = ({scrollToProducts}) => {
         };
     }, [dropdownRef]);
 
+    //refresh when logo clicks
     const refresh = () => {
         window.location.reload();
-    };
-
-    const handleBlur = () => {
-        setSuggestions([]);
     };
 
     return (
@@ -106,13 +112,10 @@ const Navbar = ({scrollToProducts}) => {
             {toastMessage && <div className="toast">{toastMessage}</div>}
             <div className="navbar-icons">
                 <div className="navbar-icon orders petFood" onClick={handlePetFoods}>
-                <MdOutlinePets />
-                <label>Pet Foods</label>
+                    <MdOutlinePets />
+                    <label>Pet Foods</label>
                 </div>
-                <div
-                    onClick={handleOrderAccess}
-                    className="navbar-iconCart orders orders1"
-                >
+                <div onClick={handleOrderAccess} className="navbar-iconCart orders orders1">
                     <TbTruckDelivery className="orderIcon" />
                     <label>Orders</label>
                 </div>
@@ -174,7 +177,6 @@ const Navbar = ({scrollToProducts}) => {
                 )}
             </div>
         </nav>
-        
     );
 };
 

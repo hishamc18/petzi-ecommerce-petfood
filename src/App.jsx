@@ -8,28 +8,62 @@ import Cart from "./components/Cart/Cart";
 import OrderSummary from "./components/Cart/OrderSummary";
 import Orders from "./components/Cart/Orders";
 import WishList from "./components/Cart/WishList";
+import { AdminProvider } from "./Context/AdminContext";
 import AdminHome from "./components/Admin/AdminHome";
 import Dashboard from "./components/Admin/Dashboard";
 import HandleProducts from "./components/Admin/HandleProducts";
 import UserDetails from "./components/Admin/UserDetails";
+import ProtectedAdmin from "./components/authentication/ProtectedAdmin";
 
 function App() {
     return (
         <Router>
             <ProductProvider>
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="signin" element={<SignIn />} />
-                    <Route path="login" element={<Login />} />
-                    <Route path="cart" element={<Cart />} />
-                    <Route path="order-summary" element={<OrderSummary />} />
-                    <Route path="orders" element={<Orders />} />
-                    <Route path="wishlist" element={<WishList />} />
-                    <Route path="admin" element={<AdminHome />}/>
-                    <Route path="dashboard" element={<Dashboard />} />
-                    <Route path="handleProducts" element={<HandleProducts />} />
-                    <Route path="userDetails" element={<UserDetails />} />
-                </Routes>
+                <AdminProvider>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="signin" element={<SignIn />} />
+                        <Route path="login" element={<Login />} />
+                        <Route path="cart" element={<Cart />} />
+                        <Route path="order-summary" element={<OrderSummary />} />
+                        <Route path="orders" element={<Orders />} />
+                        <Route path="wishlist" element={<WishList />} />
+
+                        {/* Protecting admin routes */}
+                        <Route
+                            path="admin"
+                            element={
+                                <ProtectedAdmin>
+                                    <AdminHome />
+                                </ProtectedAdmin>
+                            }
+                        />
+                        <Route
+                            path="dashboard"
+                            element={
+                                <ProtectedAdmin>
+                                    <Dashboard />
+                                </ProtectedAdmin>
+                            }
+                        />
+                        <Route
+                            path="handle-products"
+                            element={
+                                <ProtectedAdmin>
+                                    <HandleProducts />
+                                </ProtectedAdmin>
+                            }
+                        />
+                        <Route
+                            path="userDetails"
+                            element={
+                                <ProtectedAdmin>
+                                    <UserDetails />
+                                </ProtectedAdmin>
+                            }
+                        />
+                    </Routes>
+                </AdminProvider>
             </ProductProvider>
         </Router>
     );

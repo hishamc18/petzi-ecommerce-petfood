@@ -1,55 +1,41 @@
-import React, { useState } from 'react';
-// Import the components for each menu option
-import Dashboard from './Dashboard'; // Example dashboard component
-import HandleProducts from './HandleProducts'; // Example handle products component
-import UserDetails from './UserDetails'; // Example user details component
+import React, { useContext } from 'react';
+import { AdminContext } from '../../Context/AdminContext';
+import './admin.css';
+import HandleProducts from './HandleProducts';
+import Dashboard from './Dashboard';
+import UserDetails from './UserDetails';
 
-const AdminHomePage = () => {
-    const [activeMenu, setActiveMenu] = useState('Dashboard');
-
-    const handleMenuClick = (menu) => {
-        setActiveMenu(menu);
-    };
-
-    // Function to render the selected menu component
-    const renderContent = () => {
-        switch (activeMenu) {
-            case 'Dashboard':
-                return <Dashboard />;
-            case 'Handle Products':
-                return <HandleProducts />;
-            case 'User Details':
-                return <UserDetails />;
-            default:
-                return <Dashboard />;
-        }
-    };
+const AdminHome = () => {
+    const { activeMenu, handleMenuClick, adminLogout } = useContext(AdminContext);
 
     return (
         <div className="admin-homepage">
-            <nav className="navbar">
+            <nav className="adminNavbar">
                 <h1>Admin Panel</h1>
+                <button onClick={adminLogout}>Logout</button>  {/* Logout button */}
             </nav>
-            <div className="container">
-                <div className="menubar">
+            <div className="adminContainer">
+                <div className="adminMenubar">
                     <ul>
                         <li onClick={() => handleMenuClick('Dashboard')}>
                             Dashboard
                         </li>
-                        <li onClick={() => handleMenuClick('Handle Products')}>
+                        <li onClick={() => handleMenuClick('HandleProducts')}>
                             Handle Products
                         </li>
-                        <li onClick={() => handleMenuClick('User Details')}>
+                        <li onClick={() => handleMenuClick('UserDetails')}>
                             User Details
                         </li>
                     </ul>
                 </div>
-                <div className="content">
-                    {renderContent()} {/* Render the component for the active menu */}
+                <div className="adminContent">
+                    {activeMenu === 'Dashboard' && <Dashboard />}
+                    {activeMenu === 'HandleProducts' && <HandleProducts />}
+                    {activeMenu === 'UserDetails' && <UserDetails />}
                 </div>
             </div>
         </div>
     );
 };
 
-export default AdminHomePage;
+export default AdminHome;

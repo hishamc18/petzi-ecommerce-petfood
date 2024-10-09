@@ -1,9 +1,11 @@
 {
   "users": [
     {
-      "username": "Hisham",
+      "role": "admin",
+      "username": "Leofy",
       "email": "admin@gmail.com",
-      "password": "admin123"
+      "password": "admin123",
+      "id": "3cf7"
     },
     {
       "id": "4c00",
@@ -11,28 +13,129 @@
       "email": "hisham@gmail.com",
       "password": "121212",
       "confirmPassword": "121212",
-      "wishlist": [],
+      "wishlist": [
+        {
+          "id": 1728397678923,
+          "name": "Great Food for Kittens",
+          "price": 456,
+          "oldPrice": 765,
+          "image": "",
+          "category": "cat",
+          "seller": "hisham"
+        },
+        {
+          "id": "5",
+          "name": "Happy Tails Cat Delight",
+          "price": 646.18,
+          "oldPrice": 969.27,
+          "image": "src/assets/catProduct/cat3.webp",
+          "category": "cat",
+          "seller": "Happy Pets"
+        },
+        {
+          "id": "4",
+          "name": "Purrfect Paws Cat Food",
+          "price": 311.54,
+          "oldPrice": 467.31,
+          "image": "src/assets/catProduct/cat2.webp",
+          "category": "cat",
+          "seller": "Pet Supplies"
+        },
+        {
+          "name": "WhiskerLickin' Cat Chow",
+          "price": 374.36,
+          "oldPrice": 561.54,
+          "image": "src/assets/catProduct/cat1.webp",
+          "category": "cat",
+          "seller": "Feline Friends",
+          "id": "3"
+        },
+        {
+          "id": "2",
+          "name": "TailWaggers Nutrition Dog Food",
+          "price": 123.65,
+          "oldPrice": 185.48,
+          "image": "src/assets/dogProduct/pd2.jpg",
+          "category": "dog",
+          "seller": "Animal Kingdom"
+        },
+        {
+          "name": "Barky Bites Premium Dog Food",
+          "price": 528.75,
+          "oldPrice": 793.11,
+          "image": "src/assets/dogProduct/pd1.jpg",
+          "category": "dog",
+          "seller": "PetWorld",
+          "id": "1"
+        },
+        {
+          "id": "18",
+          "name": "Ruff and Tumble Dog Food",
+          "price": 699.99,
+          "oldPrice": 1049.99,
+          "image": "src/assets/dogProduct/pd7.webp",
+          "category": "dog",
+          "seller": "Cat Haven"
+        }
+      ],
       "cart": [],
-      "orders": []
+      "orders": [
+        {
+          "shippingDetails": {
+            "fullName": "Arun",
+            "streetAddress": "fasdas",
+            "city": "asddsad",
+            "state": "dassa",
+            "postalCode": "adasd",
+            "phoneNumber": "dsadasdasd"
+          },
+          "orderedItems": [
+            {
+              "id": "5",
+              "name": "Happy Tails Cat Delight",
+              "price": 646.18,
+              "oldPrice": 969.27,
+              "image": "src/assets/catProduct/cat3.webp",
+              "category": "cat",
+              "seller": "Happy Pets",
+              "quantity": 5,
+              "deliveryDate": "15/10/2024"
+            },
+            {
+              "id": "4",
+              "name": "Purrfect Paws Cat Food",
+              "price": 311.54,
+              "oldPrice": 467.31,
+              "image": "src/assets/catProduct/cat2.webp",
+              "category": "cat",
+              "seller": "Pet Supplies",
+              "quantity": 5,
+              "deliveryDate": "15/10/2024"
+            }
+          ],
+          "totalAmount": 4827.599999999999,
+          "id": "1728403719509",
+          "date": "2024-10-08"
+        }
+      ]
     },
     {
-      "id": "44cf",
-      "username": "Yoosha",
-      "email": "yoosha@gmail.com",
-      "password": "121212",
-      "confirmPassword": "121212"
+      "id": "f783",
+      "username": "Arun",
+      "email": "arun@gmail.com",
+      "password": "123123",
+      "confirmPassword": "123123"
     }
   ],
   "products": [
     {
-      "id": "1",
       "name": "Barky Bites Premium Dog Food",
       "price": 528.75,
-      "oldPrice": 793.13,
+      "oldPrice": 793.11,
       "image": "src/assets/dogProduct/pd1.jpg",
       "category": "dog",
       "seller": "PetWorld",
-      "deliveryDate": "2024-10-07"
+      "id": "1"
     },
     {
       "id": "2",
@@ -41,18 +144,16 @@
       "oldPrice": 185.48,
       "image": "src/assets/dogProduct/pd2.jpg",
       "category": "dog",
-      "seller": "Animal Kingdom",
-      "deliveryDate": "2024-10-07"
+      "seller": "Animal Kingdom"
     },
     {
-      "id": "3",
       "name": "WhiskerLickin' Cat Chow",
       "price": 374.36,
       "oldPrice": 561.54,
       "image": "src/assets/catProduct/cat1.webp",
       "category": "cat",
       "seller": "Feline Friends",
-      "deliveryDate": "2024-10-07"
+      "id": "3"
     },
     {
       "id": "4",
@@ -61,8 +162,7 @@
       "oldPrice": 467.31,
       "image": "src/assets/catProduct/cat2.webp",
       "category": "cat",
-      "seller": "Pet Supplies",
-      "deliveryDate": "2024-10-07"
+      "seller": "Pet Supplies"
     },
     {
       "id": "5",
@@ -71,8 +171,7 @@
       "oldPrice": 969.27,
       "image": "src/assets/catProduct/cat3.webp",
       "category": "cat",
-      "seller": "Happy Pets",
-      "deliveryDate": "2024-10-07"
+      "seller": "Happy Pets"
     },
     {
       "id": "6",
@@ -81,8 +180,7 @@
       "oldPrice": 1178.93,
       "image": "src/assets/catProduct/cat4.webp",
       "category": "cat",
-      "seller": "Cat Haven",
-      "deliveryDate": "2024-10-07"
+      "seller": "Cat Haven"
     },
     {
       "id": "7",
@@ -91,8 +189,7 @@
       "oldPrice": 594.51,
       "image": "src/assets/catProduct/cat5.webp",
       "category": "cat",
-      "seller": "PetWorld",
-      "deliveryDate": "2024-10-07"
+      "seller": "PetWorld"
     },
     {
       "id": "8",
@@ -101,8 +198,7 @@
       "oldPrice": 187.13,
       "image": "src/assets/catProduct/cat6.webp",
       "category": "cat",
-      "seller": "Animal Kingdom",
-      "deliveryDate": "2024-10-07"
+      "seller": "Animal Kingdom"
     },
     {
       "id": "9",
@@ -111,8 +207,7 @@
       "oldPrice": 389.18,
       "image": "src/assets/catProduct/cat7.webp",
       "category": "cat",
-      "seller": "Feline Friends",
-      "deliveryDate": "2024-10-07"
+      "seller": "Feline Friends"
     },
     {
       "id": "10",
@@ -121,8 +216,7 @@
       "oldPrice": 149.99,
       "image": "src/assets/catProduct/cat8.webp",
       "category": "cat",
-      "seller": "Pet Supplies",
-      "deliveryDate": "2024-10-07"
+      "seller": "Pet Supplies"
     },
     {
       "id": "11",
@@ -131,8 +225,7 @@
       "oldPrice": 824.99,
       "image": "src/assets/catProduct/cat9.webp",
       "category": "cat",
-      "seller": "Happy Pets",
-      "deliveryDate": "2024-10-07"
+      "seller": "Happy Pets"
     },
     {
       "id": "12",
@@ -141,8 +234,7 @@
       "oldPrice": 479.99,
       "image": "src/assets/catProduct/cat10.webp",
       "category": "cat",
-      "seller": "Cat Haven",
-      "deliveryDate": "2024-10-07"
+      "seller": "Cat Haven"
     },
     {
       "id": "13",
@@ -151,8 +243,7 @@
       "oldPrice": 368.48,
       "image": "src/assets/catProduct/cat11.webp",
       "category": "cat",
-      "seller": "PetWorld",
-      "deliveryDate": "2024-10-07"
+      "seller": "PetWorld"
     },
     {
       "id": "14",
@@ -161,8 +252,7 @@
       "oldPrice": 694.49,
       "image": "src/assets/dogProduct/pd3.webp",
       "category": "dog",
-      "seller": "Animal Kingdom",
-      "deliveryDate": "2024-10-07"
+      "seller": "Animal Kingdom"
     },
     {
       "id": "15",
@@ -171,8 +261,7 @@
       "oldPrice": 488.48,
       "image": "src/assets/dogProduct/pd4.webp",
       "category": "dog",
-      "seller": "Feline Friends",
-      "deliveryDate": "2024-10-07"
+      "seller": "Feline Friends"
     },
     {
       "id": "16",
@@ -181,8 +270,7 @@
       "oldPrice": 413.99,
       "image": "src/assets/dogProduct/pd5.webp",
       "category": "dog",
-      "seller": "Pet Supplies",
-      "deliveryDate": "2024-10-07"
+      "seller": "Pet Supplies"
     },
     {
       "id": "17",
@@ -191,8 +279,7 @@
       "oldPrice": 232.49,
       "image": "src/assets/dogProduct/pd6.webp",
       "category": "dog",
-      "seller": "Happy Pets",
-      "deliveryDate": "2024-10-07"
+      "seller": "Happy Pets"
     },
     {
       "id": "18",
@@ -201,8 +288,7 @@
       "oldPrice": 1049.99,
       "image": "src/assets/dogProduct/pd7.webp",
       "category": "dog",
-      "seller": "Cat Haven",
-      "deliveryDate": "2024-10-07"
+      "seller": "Cat Haven"
     },
     {
       "id": "19",
@@ -211,8 +297,7 @@
       "oldPrice": 731.99,
       "image": "src/assets/dogProduct/pd8.webp",
       "category": "dog",
-      "seller": "PetWorld",
-      "deliveryDate": "2024-10-07"
+      "seller": "PetWorld"
     },
     {
       "id": "20",
@@ -221,8 +306,7 @@
       "oldPrice": 1018.49,
       "image": "src/assets/dogProduct/pd9.webp",
       "category": "dog",
-      "seller": "Animal Kingdom",
-      "deliveryDate": "2024-10-07"
+      "seller": "Animal Kingdom"
     },
     {
       "id": "21",
@@ -231,8 +315,7 @@
       "oldPrice": 356.48,
       "image": "src/assets/dogProduct/pd10.jpg",
       "category": "dog",
-      "seller": "Feline Friends",
-      "deliveryDate": "2024-10-07"
+      "seller": "Feline Friends"
     },
     {
       "id": "22",
@@ -241,8 +324,7 @@
       "oldPrice": 235.49,
       "image": "src/assets/dogProduct/pd11.jpg",
       "category": "dog",
-      "seller": "Pet Supplies",
-      "deliveryDate": "2024-10-07"
+      "seller": "Pet Supplies"
     },
     {
       "id": "23",
@@ -251,18 +333,16 @@
       "oldPrice": 472.49,
       "image": "src/assets/dogProduct/pd12.jpg",
       "category": "dog",
-      "seller": "Happy Pets",
-      "deliveryDate": "2024-10-07"
+      "seller": "Happy Pets"
     },
     {
       "id": "24",
-      "name": "WhiskerTickle Cat Food",
-      "price": 245.65,
-      "oldPrice": 368.48,
+      "name": "Cat Nutritious Food",
+      "price": 114.99,
+      "oldPrice": 272.49,
       "image": "src/assets/catProduct/cat12.webp",
       "category": "cat",
-      "seller": "Happy Pets",
-      "deliveryDate": "2024-10-07"
+      "seller": "Happy Cat"
     }
   ]
 }
