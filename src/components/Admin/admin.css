@@ -313,7 +313,7 @@
 }
   
 .addEditbutton span {
-    transition: .5s;
+    transition: 0.5s;
 }
   
 .addEditbutton:hover {
