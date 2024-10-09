@@ -199,20 +199,20 @@
 .product-card {
     transform: scale(0.98);
     box-sizing: border-box;
-    width: calc(25% - 15px); /* Adjust width to fit 4 cards per row with some gap */
+    width: calc(25% - 15px);
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid #ddd;
     box-shadow:10px 4px 15px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s; /* Added transition for hover effects */
+    transition: transform 0.3s, box-shadow 0.3s; 
     padding: 10px;
 }
 
 .product-card:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
-    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-5px);
 }
 
 .product-card img {
