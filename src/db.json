@@ -13,71 +13,7 @@
       "email": "hisham@gmail.com",
       "password": "121212",
       "confirmPassword": "121212",
-      "wishlist": [
-        {
-          "id": 1728397678923,
-          "name": "Great Food for Kittens",
-          "price": 456,
-          "oldPrice": 765,
-          "image": "",
-          "category": "cat",
-          "seller": "hisham"
-        },
-        {
-          "id": "5",
-          "name": "Happy Tails Cat Delight",
-          "price": 646.18,
-          "oldPrice": 969.27,
-          "image": "src/assets/catProduct/cat3.webp",
-          "category": "cat",
-          "seller": "Happy Pets"
-        },
-        {
-          "id": "4",
-          "name": "Purrfect Paws Cat Food",
-          "price": 311.54,
-          "oldPrice": 467.31,
-          "image": "src/assets/catProduct/cat2.webp",
-          "category": "cat",
-          "seller": "Pet Supplies"
-        },
-        {
-          "name": "WhiskerLickin' Cat Chow",
-          "price": 374.36,
-          "oldPrice": 561.54,
-          "image": "src/assets/catProduct/cat1.webp",
-          "category": "cat",
-          "seller": "Feline Friends",
-          "id": "3"
-        },
-        {
-          "id": "2",
-          "name": "TailWaggers Nutrition Dog Food",
-          "price": 123.65,
-          "oldPrice": 185.48,
-          "image": "src/assets/dogProduct/pd2.jpg",
-          "category": "dog",
-          "seller": "Animal Kingdom"
-        },
-        {
-          "name": "Barky Bites Premium Dog Food",
-          "price": 528.75,
-          "oldPrice": 793.11,
-          "image": "src/assets/dogProduct/pd1.jpg",
-          "category": "dog",
-          "seller": "PetWorld",
-          "id": "1"
-        },
-        {
-          "id": "18",
-          "name": "Ruff and Tumble Dog Food",
-          "price": 699.99,
-          "oldPrice": 1049.99,
-          "image": "src/assets/dogProduct/pd7.webp",
-          "category": "dog",
-          "seller": "Cat Haven"
-        }
-      ],
+      "wishlist": [],
       "cart": [],
       "orders": [
         {
@@ -116,6 +52,32 @@
           "totalAmount": 4827.599999999999,
           "id": "1728403719509",
           "date": "2024-10-08"
+        },
+        {
+          "shippingDetails": {
+            "fullName": "Hisham",
+            "streetAddress": "Chakkampully House",
+            "city": "Edappal",
+            "state": "Kerala",
+            "postalCode": "679576",
+            "phoneNumber": "09656736286"
+          },
+          "orderedItems": [
+            {
+              "id": "19",
+              "name": "Super Dog Fuel",
+              "price": 487.99,
+              "oldPrice": 731.99,
+              "image": "src/assets/dogProduct/pd8.webp",
+              "category": "dog",
+              "seller": "PetWorld",
+              "quantity": 1,
+              "deliveryDate": "16/10/2024"
+            }
+          ],
+          "totalAmount": 526.99,
+          "id": "1728487695400",
+          "date": "2024-10-09"
         }
       ]
     },

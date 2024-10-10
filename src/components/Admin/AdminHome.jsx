@@ -14,16 +14,26 @@ const AdminHome = () => {
                 <h1>Admin Panel</h1>
                 <button onClick={adminLogout}>Logout</button>  {/* Logout button */}
             </nav>
-            <div className="adminContainer">
+
+<div className="adminContainer">
                 <div className="adminMenubar">
                     <ul>
-                        <li onClick={() => handleMenuClick('Dashboard')}>
+                        <li 
+                            className={activeMenu === 'Dashboard' ? 'active' : ''}
+                            onClick={() => handleMenuClick('Dashboard')}
+                        >
                             Dashboard
                         </li>
-                        <li onClick={() => handleMenuClick('HandleProducts')}>
+                        <li 
+                            className={activeMenu === 'HandleProducts' ? 'active' : ''}
+                            onClick={() => handleMenuClick('HandleProducts')}
+                        >
                             Handle Products
                         </li>
-                        <li onClick={() => handleMenuClick('UserDetails')}>
+                        <li 
+                            className={activeMenu === 'UserDetails' ? 'active' : ''}
+                            onClick={() => handleMenuClick('UserDetails')}
+                        >
                             User Details
                         </li>
                     </ul>
