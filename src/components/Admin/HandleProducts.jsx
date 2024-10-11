@@ -295,7 +295,7 @@ const HandleProducts = () => {
                         onChange={handleInputChange}
                     />
                     <button className="addEditbutton updateBtn" onClick={handleSaveProduct}>
-                        {isEditing ? "Update Product" : "Add Product"}
+                        {isEditing ? "Update" : "Add "}
                     </button>
                 </div>
             </Modal>

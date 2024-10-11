@@ -178,7 +178,6 @@ export const ProductProvider = ({ children }) => {
         } else {
             updatedCart.push({ ...product, quantity: 1, deliveryDate: formattedDeliveryDate }); // Add delivery date
         }
-
         setCart(updatedCart);
         await updateUserCartInDB(updatedCart);
     };

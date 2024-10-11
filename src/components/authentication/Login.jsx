@@ -23,24 +23,55 @@ function Login() {
         try {
             const response = await axios.get("http://localhost:5001/users");
             const users = response.data;
-
+    
+            // Find the user by email and password
             const user = users.find((u) => u.email === values.email && u.password === values.password);
-
+    
             if (user) {
-                if (user.email === "admin@gmail.com") {
-                    adminLogin();  // Admin login action
+                if (user.isBlocked) {
+                    // Show alert if user is blocked
+                    alert("You're blocked by admin, please contact admin.");
+                } else if (user.email === "admin@gmail.com") {
+                    // Admin login
+                    adminLogin();  // Call admin login function
                 } else {
-                    login(user.username);  // Regular user login
+                    // Regular user login
+                    login(user.username);  // Call user login function
                     navigate("/");
                 }
             } else {
+                // Invalid email or password error
                 setErrors({ login: "Invalid email or password" });
             }
         } catch (error) {
+            // General error handling
             setErrors({ login: "Something went wrong. Please try again later." });
         }
         setSubmitting(false);
     };
+
+    // const handleSubmit = async (values, { setSubmitting, setErrors }) => {
+    //     try {
+    //         const response = await axios.get("http://localhost:5001/users");
+    //         const users = response.data;
+
+    //         const user = users.find((u) => u.email === values.email && u.password === values.password);
+
+    //         if (user) {
+    //             if (user.email === "admin@gmail.com") {
+    //                 adminLogin();  // Admin login action
+    //             } else {
+    //                 login(user.username);  // Regular user login
+    //                 navigate("/");
+    //             }
+    //         } else {
+    //             setErrors({ login: "Invalid email or password" });
+    //         }
+    //     } catch (error) {
+    //         setErrors({ login: "Something went wrong. Please try again later." });
+    //     }
+    //     setSubmitting(false);
+    // };
 
     useEffect(() => {
         toast.info("Please Login With Your Credentials");

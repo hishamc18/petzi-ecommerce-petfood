@@ -37,17 +37,43 @@ function Signin() {
             <Formik
                 initialValues={{ username: "", email: "", password: "", confirmPassword: "" }}
                 validationSchema={validationSchema}
+                // onSubmit={async (values, { setSubmitting, setFieldError }) => {
+                //     try {
+                //         const response = await axios.get("http://localhost:5001/users");
+                //         const users = response.data;
+                //         const userWithSameEmail = users.find((user) => user.email === values.email);
+
+                //         if (userWithSameEmail) {
+                //             setFieldError("email", "An account with this email already exists");
+                //             setSubmitting(false);
+                //         } else {
+                //             await axios.post("http://localhost:5001/users", values);
+                //             toast.success("Account Created! You're ready to log in.");
+                //             setTimeout(() => {
+                //                 navigate("/login");
+                //             }, 2000);
+                //         }
+                //     } catch (error) {
+                //         toast.error("🚨 Error creating account. Please try again.");
+                //         console.error("Error checking email or creating account:", error);
+                //     }
+                // }}
                 onSubmit={async (values, { setSubmitting, setFieldError }) => {
                     try {
                         const response = await axios.get("http://localhost:5001/users");
                         const users = response.data;
                         const userWithSameEmail = users.find((user) => user.email === values.email);
-
+                
                         if (userWithSameEmail) {
                             setFieldError("email", "An account with this email already exists");
                             setSubmitting(false);
                         } else {
-                            await axios.post("http://localhost:5001/users", values);
+                            const newUser = {
+                                ...values,
+                                isBlocked: false // Initialize isBlocked to false
+                            };
+                
+                            await axios.post("http://localhost:5001/users", newUser);
                             toast.success("Account Created! You're ready to log in.");
                             setTimeout(() => {
                                 navigate("/login");

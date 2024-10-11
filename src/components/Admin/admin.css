@@ -10,7 +10,7 @@
     padding: 1rem;
     position: fixed;
     width: 100%;
-    z-index: 5;
+    z-index: 51;
 }
 
 
@@ -46,18 +46,23 @@
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     border-radius: 8px;
-    padding: 10px 15px; /* Added padding for better click area */
+    padding: 10px 15px;
+    /* Added padding for better click area */
 }
 
 .adminMenubar li:hover {
-    background-color: #44836d; /* Highlight on hover */
-    color: white; /* Change text color on hover */
+    background-color: #44836d;
+    /* Highlight on hover */
+    color: white;
+    /* Change text color on hover */
 }
 
 .adminMenubar li.active {
-    background-color: #44836d; /* Darker blue for active menu */
+    background-color: #44836d;
+    /* Darker blue for active menu */
     color: white;
-    transform: scale(1.05); /* Slightly scale up the active item */
+    transform: scale(1.05);
+    /* Slightly scale up the active item */
 }
 
 .adminMenubar a {
@@ -75,6 +80,7 @@
     border-radius: 10px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
+
 /* Handle Products Styling */
 .handle-products {
     padding: 20px;
@@ -85,7 +91,7 @@
 }
 
 .handle-products h3 {
-    color: #ffffff; 
+    color: #ffffff;
     margin-bottom: 0.8em;
 }
 
@@ -112,8 +118,8 @@
     border: 1px solid #ccc;
     border-radius: 6px;
     transition: border 0.3s ease, box-shadow 0.3s ease;
-    width: calc(50% - 10px); 
-    display: inline-block; 
+    width: calc(50% - 10px);
+    display: inline-block;
 }
 
 .product-form input::placeholder {
@@ -125,10 +131,10 @@
 
 .product-form input:focus {
     border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.product-form h3{
+.product-form h3 {
     letter-spacing: 2px;
 }
 
@@ -146,7 +152,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 30; /* Ensure the modal is on top of other content */
+    z-index: 30;
+    /* Ensure the modal is on top of other content */
 }
 
 .adminModal-content {
@@ -154,10 +161,13 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     position: relative;
-    width: 90%; /* Change to a percentage for responsiveness */
+    width: 90%;
+    /* Change to a percentage for responsiveness */
     max-width: 900px;
-    height: auto; /* Allow height to adjust based on content */
-    padding: 1px; /* Add padding for better spacing */
+    height: auto;
+    /* Allow height to adjust based on content */
+    padding: 1px;
+    /* Add padding for better spacing */
 }
 
 .adminModal-close {
@@ -179,41 +189,51 @@
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .adminModal-content {
-        width: 95%; /* Increase width for smaller screens */
-        padding: 15px; /* Adjust padding */
+        width: 95%;
+        /* Increase width for smaller screens */
+        padding: 15px;
+        /* Adjust padding */
     }
 
     .adminModal-close {
-        font-size: 24px; /* Smaller close button on mobile */
-        top: 10px; /* Adjust position */
-        right: 15px; /* Adjust position */
+        font-size: 24px;
+        /* Smaller close button on mobile */
+        top: 10px;
+        /* Adjust position */
+        right: 15px;
+        /* Adjust position */
     }
 }
 
 @media (max-width: 480px) {
     .adminModal-content {
-        width: 100%; /* Full width for very small screens */
-        padding: 10px; /* Less padding for very small screens */
+        width: 100%;
+        /* Full width for very small screens */
+        padding: 10px;
+        /* Less padding for very small screens */
     }
 
     .adminModal-close {
-        font-size: 20px; /* Even smaller close button */
-        top: 5px; /* Adjust position */
-        right: 10px; /* Adjust position */
+        font-size: 20px;
+        /* Even smaller close button */
+        top: 5px;
+        /* Adjust position */
+        right: 10px;
+        /* Adjust position */
     }
 }
 
-.updateBtn{
+.updateBtn {
     margin: 10px auto;
 }
 
-.product-form .addEditbutton{
+.product-form .addEditbutton {
     width: 100px;
     height: 40px;
     font-size: 12px;
 }
 
-.product-form .addEditbutton:hover{
+.product-form .addEditbutton:hover {
     font-size: 0.2em;
 }
 
@@ -223,21 +243,22 @@
         padding: 0;
     }
 
-    .product-form h3, .adminContainer h2 {
+    .product-form h3,
+    .adminContainer h2 {
         text-align: center;
     }
 
     .product-form input {
-        width: calc(100% - 10px); 
+        width: calc(100% - 10px);
     }
 
-    .product-form{
+    .product-form {
         height: auto;
     }
 
-    .adminModal-close{
+    .adminModal-close {
         top: 25px;
-        right: 31px;  
+        right: 31px;
         font-size: 28px;
     }
 }
@@ -250,7 +271,7 @@
     font-weight: 500;
 }
 
-.wrapSelect{
+.wrapSelect {
     display: flex;
     gap: 2em;
 }
@@ -265,33 +286,35 @@
 .productsListing {
     max-height: calc(100vh - 28.3em);
     overflow-y: auto;
-    border-top: 2px solid #007bff; 
+    border-top: 2px solid #007bff;
     padding: 20px;
 }
 
-@media (max-width:800px){
-    .productsListing{
+@media (max-width:800px) {
+    .productsListing {
         max-height: 600px;
     }
 
-    .adminMenubar{
+    .adminMenubar {
         position: fixed;
         max-height: 150px;
     }
 
-    .adminContent{
+    .adminContent {
         margin-top: 8em;
     }
-    .adminMenubar{
+
+    .adminMenubar {
         font-size: 14px;
         padding: 0;
     }
 
-    .adminMenubar li{
+    .adminMenubar li {
         padding: 10px;
-        margin:5px;
+        margin: 5px;
     }
-    .adminMenubar ul{
+
+    .adminMenubar ul {
         padding: 1px;
         margin: 0;
     }
@@ -320,13 +343,13 @@
     background-color: #d4d3d3;
 }
 
-.productActions{
+.productActions {
     display: flex;
     flex-direction: column;
     gap: 1em;
 }
 
-.productActions button{
+.productActions button {
     background-color: #333;
     color: white;
     width: 70px;
@@ -335,7 +358,7 @@
     padding: 5px;
 }
 
-.productActions button:hover{
+.productActions button:hover {
     transform: scale(1.08);
     transition: 0.5s;
 }
@@ -345,20 +368,20 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
 }
 
-.product-card h4{
+.product-card h4 {
     font-size: 15px;
     color: black;
 }
 
-.product-card p{
+.product-card p {
     font-size: 14px;
 }
 
-.product-card strong{
+.product-card strong {
     font-weight: 650;
 }
 
@@ -379,12 +402,12 @@
     border-radius: 12px;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s; 
+    transition: transform 0.3s, box-shadow 0.3s;
     padding: 8px;
 }
 
 .product-card:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     transform: translateY(-5px);
 }
 
@@ -412,7 +435,7 @@
     font-size: 13px;
 }
 
-.product-details .productActions button{
+.product-details .productActions button {
     margin: 0 -4px;
     width: 40%;
     padding: 5px;
@@ -423,7 +446,7 @@
     transform: scale(0.99);
 }
 
-.product-details .productActions{
+.product-details .productActions {
     display: flex;
     flex-direction: row;
     margin-top: 10px;
@@ -446,17 +469,17 @@
     align-items: center;
     overflow: hidden;
 }
-  
+
 .addEditbutton span {
     transition: 0.5s;
 }
-  
+
 .addEditbutton:hover {
     width: 60px;
     background-color: rgba(51, 34, 51, 0.815);
-    box-shadow: 20px 20px 96px #bebebe,-20px -20px 96px #ffffff;
+    box-shadow: 20px 20px 96px #bebebe, -20px -20px 96px #ffffff;
 }
-  
+
 .addEditbutton:hover span {
     font-size: 0.4rem;
 }
@@ -464,14 +487,15 @@
 /* Responsive Design for Admin */
 @media (max-width: 1024px) {
     .adminMenubar {
-        width: 25%; 
+        width: 25%;
     }
+
     .adminContent {
         width: 75%;
     }
 
     .product-card {
-        width: calc(33.33% - 15px); 
+        width: calc(33.33% - 15px);
     }
 }
 
@@ -479,25 +503,27 @@
     .adminContainer {
         flex-direction: column;
     }
+
     .adminNavbar {
         height: 12%;
     }
 
     .adminMenubar {
         top: 10%;
-        width: 100%; 
+        width: 100%;
         height: 35%;
         padding: 10px;
         box-shadow: none;
         border-radius: 0;
     }
+
     .adminContent {
         width: 100%;
         padding: 10px;
     }
 
     .product-card {
-        width: calc(50% - 15px); 
+        width: calc(50% - 15px);
     }
 
 }
@@ -507,12 +533,13 @@
         padding: 0.5rem;
         font-size: 0.9rem;
     }
+
     .product-card {
-        width: calc(100% - 15px); 
+        width: calc(100% - 15px);
     }
 }
 
-.wrapAddBtnandCard{
+.wrapAddBtnandCard {
     display: flex;
     padding: 10px;
     justify-content: center;
@@ -520,36 +547,36 @@
     gap: 7em;
 }
 
-@media (max-width:1100px){
-    .wrapAddBtnandCard{
+@media (max-width:1100px) {
+    .wrapAddBtnandCard {
         flex-direction: column;
         gap: 0;
     }
 
 
-    .addEditbutton{
+    .addEditbutton {
         width: 150px;
         transform: scale(0.8);
     }
 
-    .view-switch{
+    .view-switch {
         font-size: 14px;
         display: flex;
         flex-direction: column;
         gap: 3.5em;
     }
 
-    .wrapSelect{
+    .wrapSelect {
         display: flex;
         justify-content: center;
         text-align: center;
     }
 
-    .wrapSelect select{
+    .wrapSelect select {
         margin-top: 8px;
     }
 
-    .product-counts{
+    .product-counts {
         font-size: 15px;
         text-align: center;
     }
@@ -558,90 +585,172 @@
 .Admincard {
     position: relative;
     border: 3px solid rgb(14, 15, 14);
-    width: 220px; 
-    height: auto; 
+    width: 220px;
+    height: auto;
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); 
-    overflow: hidden; /* Prevents overflow from content */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
-    margin: 20px; /* Space around the card */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    /* Prevents overflow from content */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth transition for hover */
+    margin: 20px;
+    /* Space around the card */
 }
 
 .Admincard:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+    transform: translateY(-5px);
+    /* Lift effect on hover */
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+    /* Enhanced shadow on hover */
 }
 
 .Cardcontent {
-    padding: 20px; /* Padding inside the card */
-    color: white; /* Text color */
-    text-align: center; /* Centered text */
-    background: linear-gradient(335deg, #000000 0%, #949393 100%); /* Gradient background */
+    padding: 20px;
+    /* Padding inside the card */
+    color: white;
+    /* Text color */
+    text-align: center;
+    /* Centered text */
+    background: linear-gradient(335deg, #000000 0%, #949393 100%);
+    /* Gradient background */
 }
 
 .Cardheading {
-    font-size: 19px; /* Font size for the heading */
-    margin-bottom: 15px; /* Space below the heading */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Subtle text shadow for depth */
+    font-size: 19px;
+    /* Font size for the heading */
+    margin-bottom: 15px;
+    /* Space below the heading */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    /* Subtle text shadow for depth */
 }
 
 .Cardcontent p {
-    font-size: 15px; /* Font size for paragraph text */
-    margin: 5px 0; /* Margin for spacing */
+    font-size: 15px;
+    /* Font size for paragraph text */
+    margin: 5px 0;
+    /* Margin for spacing */
 }
 
 .Cardcontent p strong {
-    color: #e2c196; /* Different color for strong text */
+    color: #e2c196;
+    /* Different color for strong text */
 }
 
 
-.productsListing h2, .wrapHandleProductHead h2{
+.productsListing h2,
+.wrapHandleProductHead h2 {
     letter-spacing: 1px;
     font-size: 20px;
 }
 
 /* Dashboard */
 .admin-dashboard-container {
+    border-radius: 10px;
     width: 100%;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #d7e8df;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.admin-dashCardcontent{
+.DashboardHead h1 {
+    border-bottom: #007bff 2px solid;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #14213D;
+    margin-bottom: 18px;
+}
+
+.DashboardHead span {
+    color: #d38609;
+}
+
+.admin-dashCardcontent {
     z-index: 11;
     text-align: center;
 }
 
+.admin-dashCardcontent ul {
+    list-style-type: none;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+}
+
+.admin-dashCardcontent ul li {
+    padding-bottom: 6px;
+}
+
 /* Card container */
 .admin-dashboardCard-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6em;
     width: 100%;
     max-width: 1200px;
     padding: 0 20px;
+    margin-top: 1em;
+    height: calc(100vh - 13em);
+    overflow-y: auto;
+}
+
+.admin-dashboard-container::-webkit-scrollbar {
+    display: none;
+}
+
+.allDashBoardCards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 cards in a row for PC */
+    width: 100%;
+    height: auto;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+
+    /* For tablets and smaller screens (less than 768px), 2 cards per row */
+    .allDashBoardCards {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 cards per row */
+    }
+
+    .admin-recent-orders-container {
+        transform: scale(0.7);
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    /* For mobile devices (less than 480px), 1 card per row */
+    .allDashBoardCards {
+        grid-template-columns: 1fr;
+        /* 1 card per row */
+    }
 }
 
 /* Individual card styling */
 .admin-dashcard {
     position: relative;
-    width: 100%;
-    min-height: 180px;
+    width: 18em;
+    min-height: 200px;
     border-radius: 14px;
-    z-index: 1111;
+    z-index: 1;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
     transition: transform 0.3s, box-shadow 0.3s;
     padding: 20px;
     background-color: white;
+    margin: 0 auto;
 }
 
 .admin-dashcard:hover {
@@ -657,7 +766,7 @@
     width: calc(100% - 10px);
     height: calc(100% - 10px);
     z-index: 0;
-    background: rgba(20, 94, 75, 0.95);
+    background: rgba(4, 62, 80, 0.95);
     backdrop-filter: blur(24px);
     border-radius: 10px;
     overflow: hidden;
@@ -673,7 +782,7 @@
     width: 250px;
     height: 150px;
     border-radius: 50%;
-    background-color: #0cf320;
+    background-color: #4fea3b;
     opacity: 1;
     filter: blur(1);
     animation: admin-blob-bounce 5s infinite ease;
@@ -704,13 +813,13 @@
 /* Card content */
 .admin-dashCardcontent h3 {
     font-size: 1.5rem;
-    color: #ffffff;
+    color: hsl(38, 83%, 60%);
     margin-bottom: 10px;
     font-weight: 500;
 }
 
 .admin-dashCardcontent p {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: #ffffff;
     font-weight: 600;
 }
@@ -755,5 +864,509 @@
 
     .admin-dashCardcontent p {
         font-size: 1rem;
+    }
+}
+
+.revenueContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    background-color: rgba(97, 162, 126, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.revenueContainer h3 {
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+.revenueContainer h2 {
+    text-align: center;
+}
+
+.revenueDetails {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+}
+
+.revenueContainer2 {
+    font-size: 28px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+
+
+/* Table structure */
+.admin-recent-orders-table {
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    /* Make table take full width of the container */
+}
+
+/* Table Headers */
+.admin-recent-orders-table thead th {
+    background-color: #3d95ed;
+    /* Custom header color */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    width: 10%;
+}
+
+/* Table Rows */
+.admin-recent-orders-table tbody tr {
+    border-bottom: 1px solid #f2f2f2;
+    transition: background-color 0.2s ease-in;
+}
+
+.admin-recent-orders-table tbody tr:nth-child(even) {
+    background-color: #f0eded;
+}
+
+.admin-recent-orders-table tbody tr:hover {
+    background-color: #f1f1f1;
+    /* Row hover effect */
+}
+
+/* Table Cells */
+.admin-recent-orders-table td {
+    padding: 15px 19px;
+    color: #333;
+}
+
+/* Responsive Typography */
+.admin-recent-orders-table td,
+.admin-recent-orders-table th {
+    font-size: 0.9rem;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .admin-recent-orders-table {
+        font-size: 0.8rem;
+        /* Slightly smaller font on mobile */
+        display: block;
+        /* Allow block layout for better stacking */
+    }
+
+    .admin-recent-orders-table td,
+    .admin-recent-orders-table th {
+        font-size: 0.5rem;
+    }
+
+    .admin-recent-orders-table thead {
+        display: table-header-group;
+        /* Keep the header visible */
+    }
+
+    .admin-recent-orders-table thead th {
+        position: sticky;
+        /* Make the header sticky */
+        top: 0;
+        /* Stick to the top */
+        z-index: 1;
+        /* Ensure it appears above other content */
+    }
+
+    .admin-recent-orders-table tbody {
+        display: block;
+        /* Display tbody as a block */
+        max-height: 400px;
+        /* Limit height for scrolling */
+        overflow-y: auto;
+        /* Allow vertical scrolling */
+    }
+
+    .admin-recent-orders-table tbody tr {
+        display: table;
+        /* Reset display for rows */
+        width: 100%;
+        /* Full width for rows */
+        table-layout: fixed;
+        /* Fixed layout for uniform cell sizes */
+    }
+
+    .admin-recent-orders-table tbody tr td {
+        display: table-cell;
+        /* Maintain cell display */
+        padding: 6px 4px;
+        /* Adjust padding for mobile */
+        border: 1px solid #f2f2f2;
+        /* Add border for separation */
+    }
+
+    .admin-recent-orders-table tbody tr td:nth-child(odd) {
+        font-weight: bold;
+        /* Make the first column bold for better readability */
+    }
+
+    .admin-recent-orders-container {
+        padding: 6px;
+        width: 100%;
+        /* Full width on mobile */
+    }
+}
+
+.admin-recent-orders-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    /* Full width for the container */
+}
+
+.admin-table-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7em;
+    text-align: center;
+    margin: -4em auto;
+}
+
+/* Ensure the container is responsive */
+@media (max-width: 768px) {
+    .admin-table-container {
+        grid-template-columns: 1fr;
+        /* Single column layout on mobile */
+        margin: 0;
+        margin-top: -5em;
+        gap: 3em;
+    }
+}
+
+
+
+/* UserDetails container styling */
+.admin-user-details {
+    padding: 20px;
+    background-color: #f5f7fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-user-details h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Table styling */
+.admin-user-table {
+    width: 100%;
+    overflow-x: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.admin-user-table th,
+.admin-user-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.admin-user-table th {
+    background-color: #34495e;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.admin-user-table td {
+    border-bottom: 1px solid #eaeaea;
+    font-size: 0.95rem;
+}
+
+.admin-user-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Action button */
+.admin-user-table button {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admin-user-table button:hover {
+    background-color: #2980b9;
+}
+
+
+
+
+
+/* Modal overlay styling */
+.admin-modal-overlay {
+    position: fixed;
+    /* Keep the overlay fixed so it covers the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(55, 103, 79, 0.4);
+    /* Semi-transparent dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 123;
+    /* Ensure the modal is above all other elements */
+}
+
+/* Modal content styling */
+.admin-modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8em;
+    position: relative;
+    /* So the close button can be positioned inside */
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    /* Occupy more width in the viewport */
+    max-width: 800px;
+    /* Set a max-width to avoid oversizing on large screens */
+    margin: 0 auto;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    max-height: 95vh;
+    /* Ensure modal doesn't exceed viewport height */
+    overflow-y: auto;
+    /* Scroll inside the modal if content overflows */
+    transform: scale(0.94);
+}
+
+/* Modal close button */
+.admin-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 13px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+}
+
+.admin-modal-close:hover {
+    color: #e74c3c;
+    /* Change color when hovering */
+    transform: scale(1.1);
+    transition: 0.4s;
+}
+
+.admin-modal-content h4 {
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+/* Cart details table with scroll */
+.admin-cart-details,
+.admin-order-details {
+    width: 100%;
+    border-collapse: collapse;
+    max-height: 220px;
+    /* Limit table height to show 5 rows */
+    overflow-y: auto;
+    /* Enable scrolling after 5 rows */
+    display: block;
+    /* Ensures that overflow is applied correctly */
+}
+
+.admin-cart-details th,
+.admin-order-details th,
+.admin-cart-details td,
+.admin-order-details td {
+    padding: 10px;
+    border: 2px solid #ddd;
+    text-align: left;
+}
+
+.admin-cart-details th,
+.admin-order-details th {
+    background-color: #34495e;
+    color: white;
+}
+
+.admin-cart-details td,
+.admin-order-details td {
+    background-color: #f9f9f9;
+}
+
+/* User summary cards */
+.admin-user-summary {
+    display: flex;
+    justify-content: center;
+}
+
+.admin-summary-card {
+    background-color: #4c6559;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    flex: 1;
+    margin-right: 30px;
+}
+
+.admin-summary-card h4 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.admin-summary-card p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.admin-summary-card:last-child {
+    margin-right: 0;
+}
+
+
+.adminBlockBtnDiv button:hover {
+    background-color: rgb(246, 76, 76);
+    transition: 0.4s;
+}
+
+
+.userDetailsData p {
+    margin-top: 7px;
+}
+
+.wrapTablesInUserDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8em;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Responsive design */
+
+@media (max-width: 768px) {
+    .admin-modal-content {
+        padding: 0;
+        margin: 20px;
+        width: 90%;
+    }
+
+    .admin-cart-details,
+    .admin-order-details {
+        transform: scale(0.8);
+    }
+
+    .adminBlockBtnDiv {
+        transform: scale(0.6);
+        top: 4.4%;
+        left: -12.4%;
+    }
+
+    .admin-user-summary {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .admin-user-summary h4 {
+        font-size: 13px;
+    }
+
+    .admin-user-summary p {
+        font-size: 15px;
+    }
+
+    .admin-summary-card {
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+
+    .userDetailsData {
+        font-size: 10px;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+    .admin-modal-content {
+        padding: 15px;
+        margin: 10px;
+        width: 95%;
+        /* Ensure modal takes up the full viewport width on very small screens */
+    }
+
+    .admin-user-table {
+        font-size: 0.8rem;
+    }
+}
+
+
+
+.userDetailsInModal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-top: -34px;
+    background-color: rgb(58, 131, 98, 0.3);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: relative;
+}
+
+.adminBlockBtnDiv button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    background-color: rgb(239, 68, 68);
+    border: none;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.adminBlockBtnDiv button:hover {
+    background-color: rgb(246, 76, 76);
+    transition: 0.4s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .adminBlockBtnDiv button {
+        font-size: 0.9rem;
+        padding: 8px 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .adminBlockBtnDiv button {
+        font-size: 0.8rem;
+        padding: 7px 15px;
+        
     }
 }
