@@ -8,11 +8,21 @@ import Caption from "./Caption";
 import Footer from "./Footer";
 import { ProductContext } from "../../Context/ProductContext";
 import LogoutModal from "./LogoutModal";
+import { ToastContainer, Slide, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Import toast styles
 
 function HomePage() {
     const { searchTerm, showConfirm, cancelLogout, confirmLogout } = useContext(ProductContext);
     const productsRef = useRef(null);
     const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            toast.info("50% off on all products!");
+        }, 4000); // 2000 milliseconds = 2 seconds
+
+        return () => clearInterval(intervalId); // Clean up the interval on component unmount
+    }, []);
 
     //loading home page
     useEffect(() => {
@@ -65,6 +75,18 @@ function HomePage() {
 
     return (
         <div className="homePage">
+                        <ToastContainer
+                position="top-center"
+                autoClose={1300}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                transition={Slide}
+            />
             <Navbar scrollToProducts={scrollToProducts} />
             <Caption />
             {/* conditional rednering based on searching */}

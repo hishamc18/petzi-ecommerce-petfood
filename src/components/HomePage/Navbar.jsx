@@ -16,11 +16,12 @@ const Navbar = ({ scrollToProducts }) => {
         toastMessage,
         setToastMessage,
         handleLogoutClick,
+        setCategory,
     } = useContext(ProductContext);
     const [suggestions, setSuggestions] = useState([]); //for using the search suggestion
     const [dropdownOpen, setDropdownOpen] = useState(false); // for dropdown button in profile for logout and orders
     const navigate = useNavigate();
-    const dropdownRef = useRef(null); 
+    const dropdownRef = useRef(null);
 
     //access entry to cart only when the user is loged.
     const handleCartAccess = () => {
@@ -52,6 +53,7 @@ const Navbar = ({ scrollToProducts }) => {
 
     const handlePetFoods = () => {
         setSearchTerm("");
+        setCategory("");
         scrollToProducts();
     };
 

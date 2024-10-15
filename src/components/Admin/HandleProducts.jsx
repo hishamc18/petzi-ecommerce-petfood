@@ -15,11 +15,12 @@ const HandleProducts = () => {
         image: "",
         category: "",
         seller: "",
+        stock:''
     });
-    const [viewMode, setViewMode] = useState("table");
+    const [viewMode, setViewMode] = useState("table"); //view mode of the products (table/cards)
     const [selectedCategory, setSelectedCategory] = useState("all"); // State for selected category
-    const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
-    const [isEditing, setIsEditing] = useState(false); // State to track if editing mode is active
+    const [isModalOpen, setIsModalOpen] = useState(false); // modal visibility
+    const [isEditing, setIsEditing] = useState(false); // for eiditing product details
 
     // Calculate product counts
     const totalProducts = products.length;
@@ -35,6 +36,7 @@ const HandleProducts = () => {
         setProductData((prevData) => ({ ...prevData, [name]: value }));
     };
 
+    //to add products
     const handleAddProduct = () => {
         setIsEditing(false); // Open modal for adding a product
         setProductData({
@@ -45,10 +47,12 @@ const HandleProducts = () => {
             image: "",
             category: "",
             seller: "",
+            stock: "",
         });
         setIsModalOpen(true); // Open the modal
     };
 
+    //to save the edited details or added productes
     const handleSaveProduct = () => {
         if (productData.name && productData.price && productData.category && productData.seller) {
             if (isEditing) {
@@ -59,6 +63,7 @@ const HandleProducts = () => {
                     image: productData.image,
                     category: productData.category,
                     seller: productData.seller,
+                    stock: parseInt(productData.stock)
                 });
                 toast.success("Product updated successfully!");
             } else {
@@ -70,6 +75,7 @@ const HandleProducts = () => {
                     image: productData.image,
                     category: productData.category,
                     seller: productData.seller,
+                    stock: parseInt(productData.stock)
                 };
                 addProduct(newProduct);
                 toast.success("Product added successfully!");
@@ -80,12 +86,37 @@ const HandleProducts = () => {
         }
     };
 
+    //to delete a product
     const handleDeleteProduct = (id) => {
-        if (window.confirm("Are you sure you want to delete this product?")) {
-            deleteProduct(id);
-        }
+        toast(
+            ({ closeToast }) => (
+                <div className="productDeleteConfirm">
+                    <p>Are you sure you want to delete this product?</p>
+                    <div>
+                        <button
+                            onClick={() => {
+                                deleteProduct(id);
+                                toast.success("Product deleted successfully!");
+                                closeToast();
+                            }}
+                            className="deleteconfirmButton"
+                        >
+                            Yes
+                        </button>
+                        <button onClick={closeToast} className="deletecancelButton">
+                            No
+                        </button>
+                    </div>
+                </div>
+            ),
+            {
+                closeOnClick: false,
+                autoClose: false,
+            }
+        );
     };
-
+    
+//to handling edit
     const handleEditProduct = (product) => {
         setIsEditing(true); // Open modal for editing a product
         setProductData({
@@ -96,6 +127,7 @@ const HandleProducts = () => {
             image: product.image,
             category: product.category,
             seller: product.seller,
+            stock: product.stock,
         });
         setIsModalOpen(true); // Open the modal
     };
@@ -192,6 +224,7 @@ const HandleProducts = () => {
                                 <th>Old Price</th>
                                 <th>Image</th>
                                 <th>Category</th>
+                                <th>Stock</th>
                                 <th>Seller</th>
                                 <th>Actions</th>
                             </tr>
@@ -206,6 +239,7 @@ const HandleProducts = () => {
                                         <img src={product.image} alt={product.name} style={{ width: "50px" }} />
                                     </td>
                                     <td>{product.category}</td>
+                                    <td>{product.stock}</td>
                                     <td>{product.seller}</td>
                                     <td>
                                         <div className="productActions">
@@ -235,6 +269,9 @@ const HandleProducts = () => {
                                         <strong>Category:</strong> {product.category}
                                     </p>
                                     <p>
+                                        <strong>Stock:</strong> {product.stock}
+                                    </p>
+                                    <p>
                                         <strong>Seller:</strong> {product.seller}
                                     </p>
                                     <div className="productActions">
@@ -252,48 +289,58 @@ const HandleProducts = () => {
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
                 <div className="product-form">
                     <h3>{isEditing ? "Edit Product" : "Add New Product"}</h3>
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="Product Name"
-                        value={productData.name}
-                        onChange={handleInputChange}
-                    />
-                    <input
-                        type="number"
-                        name="price"
-                        placeholder="Product Price"
-                        value={productData.price}
-                        onChange={handleInputChange}
-                    />
-                    <input
-                        type="number"
-                        name="oldPrice"
-                        placeholder="Old Price"
-                        value={productData.oldPrice}
-                        onChange={handleInputChange}
-                    />
-                    <input
-                        type="text"
-                        name="image"
-                        placeholder="Image URL"
-                        value={productData.image}
-                        onChange={handleInputChange}
-                    />
-                    <input
-                        type="text"
-                        name="category"
-                        placeholder="Category"
-                        value={productData.category}
-                        onChange={handleInputChange}
-                    />
-                    <input
-                        type="text"
-                        name="seller"
-                        placeholder="Seller"
-                        value={productData.seller}
-                        onChange={handleInputChange}
-                    />
+                    <div className="inputWrap">
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Product Name"
+                            value={productData.name}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="number"
+                            name="price"
+                            placeholder="Product Price"
+                            value={productData.price}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="number"
+                            name="oldPrice"
+                            placeholder="Old Price"
+                            value={productData.oldPrice}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="text"
+                            name="image"
+                            placeholder="Image URL"
+                            value={productData.image}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="text"
+                            name="category"
+                            placeholder="Category"
+                            value={productData.category}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="number"
+                            name="stock"
+                            placeholder="Stock"
+                            value={productData.stock}
+                            onChange={handleInputChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="seller"
+                            placeholder="Seller"
+                            value={productData.seller}
+                            onChange={handleInputChange}
+                        />
+                    </div>
                     <button className="addEditbutton updateBtn" onClick={handleSaveProduct}>
                         {isEditing ? "Update" : "Add "}
                     </button>

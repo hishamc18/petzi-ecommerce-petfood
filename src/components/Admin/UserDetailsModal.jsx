@@ -4,7 +4,7 @@ const Modal = ({ onClose, children }) => {
     const handleOverlayClick = (e) => {
         // Close the modal when clicking on the overlay
         if (e.target === e.currentTarget) {
-            onClose();
+            onClose();  // Trigger the onClose function passed from UserDetails
         }
     };
 

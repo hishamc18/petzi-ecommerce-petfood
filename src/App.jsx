@@ -37,31 +37,12 @@ function App() {
                                     <AdminHome />
                                 </ProtectedAdmin>
                             }
-                        />
-                        <Route
-                            path="dashboard"
-                            element={
-                                <ProtectedAdmin>
-                                    <Dashboard />
-                                </ProtectedAdmin>
-                            }
-                        />
-                        <Route
-                            path="handle-products"
-                            element={
-                                <ProtectedAdmin>
-                                    <HandleProducts />
-                                </ProtectedAdmin>
-                            }
-                        />
-                        <Route
-                            path="userDetails"
-                            element={
-                                <ProtectedAdmin>
-                                    <UserDetails />
-                                </ProtectedAdmin>
-                            }
-                        />
+                        >
+                            {/* Nested routes for admin */}
+                            <Route path="dashboard" element={<Dashboard />} />
+                            <Route path="handle-products" element={<HandleProducts />} />
+                            <Route path="user-details" element={<UserDetails />} />
+                        </Route>
                     </Routes>
                 </AdminProvider>
             </ProductProvider>

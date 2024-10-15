@@ -145,8 +145,8 @@ const ordersByStateArray = Object.entries(ordersByState)
                             <div className="admin-blob"></div>
                             <div className="admin-dashCardcontent">
                                 <h3>Admin Details</h3>
-                                <p>Name: {adminUser.username}</p>
-                                <p>Email: {adminUser.email}</p>
+                                <p className="adminDetailsCard">Name: {adminUser.username}</p>
+                                <p className="adminDetailsCard">Email: {adminUser.email}</p>
                             </div>
                         </div>
                     )}

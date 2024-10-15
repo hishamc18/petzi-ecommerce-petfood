@@ -11,6 +11,45 @@
     position: fixed;
     width: 100%;
     z-index: 51;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.adminlogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+.adminlogo h1{
+    font-size: 20px;
+}
+
+.adminLogoutBtn{
+    margin-right: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.adminlgbtn{
+    margin-top: -22px;
+}
+
+.adminLogoutText{
+    margin-right: -57px;
+    margin-top: -22px;
+}
+
+.adminLogoutBtn i{
+    font-size: 25px;
+}
+
+.adminLogoutBtn label{
+    font-size: 13px;
+    margin-top: 4px;
 }
 
 
@@ -110,6 +149,15 @@
     background-color: #3e7b62;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-form .inputWrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .product-form input {
@@ -153,7 +201,6 @@
     justify-content: center;
     align-items: center;
     z-index: 30;
-    /* Ensure the modal is on top of other content */
 }
 
 .adminModal-content {
@@ -162,12 +209,9 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     position: relative;
     width: 90%;
-    /* Change to a percentage for responsiveness */
     max-width: 900px;
     height: auto;
-    /* Allow height to adjust based on content */
     padding: 1px;
-    /* Add padding for better spacing */
 }
 
 .adminModal-close {
@@ -208,19 +252,21 @@
 @media (max-width: 480px) {
     .adminModal-content {
         width: 100%;
-        /* Full width for very small screens */
         padding: 10px;
-        /* Less padding for very small screens */
     }
 
     .adminModal-close {
         font-size: 20px;
-        /* Even smaller close button */
         top: 5px;
-        /* Adjust position */
         right: 10px;
-        /* Adjust position */
     }
+}
+
+@media (max-width: 390px) {
+     .adminModal-content{
+        margin-top: 5em;
+        transform: scale(0.9);
+     }
 }
 
 .updateBtn {
@@ -590,50 +636,35 @@
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
     overflow: hidden;
-    /* Prevents overflow from content */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* Smooth transition for hover */
     margin: 20px;
-    /* Space around the card */
 }
 
 .Admincard:hover {
     transform: translateY(-5px);
-    /* Lift effect on hover */
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
-    /* Enhanced shadow on hover */
 }
 
 .Cardcontent {
     padding: 20px;
-    /* Padding inside the card */
     color: white;
-    /* Text color */
     text-align: center;
-    /* Centered text */
     background: linear-gradient(335deg, #000000 0%, #949393 100%);
-    /* Gradient background */
 }
 
 .Cardheading {
     font-size: 19px;
-    /* Font size for the heading */
     margin-bottom: 15px;
-    /* Space below the heading */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-    /* Subtle text shadow for depth */
 }
 
 .Cardcontent p {
     font-size: 15px;
-    /* Font size for paragraph text */
     margin: 5px 0;
-    /* Margin for spacing */
 }
 
 .Cardcontent p strong {
     color: #e2c196;
-    /* Different color for strong text */
 }
 
 
@@ -766,7 +797,7 @@
     width: calc(100% - 10px);
     height: calc(100% - 10px);
     z-index: 0;
-    background: rgba(4, 62, 80, 0.95);
+    background: rgba(15, 41, 54, 0.95);
     backdrop-filter: blur(24px);
     border-radius: 10px;
     overflow: hidden;
@@ -782,7 +813,7 @@
     width: 250px;
     height: 150px;
     border-radius: 50%;
-    background-color: #4fea3b;
+    background-color: #242a24;
     opacity: 1;
     filter: blur(1);
     animation: admin-blob-bounce 5s infinite ease;
@@ -815,7 +846,7 @@
     font-size: 1.5rem;
     color: hsl(38, 83%, 60%);
     margin-bottom: 10px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .admin-dashCardcontent p {
@@ -828,6 +859,10 @@
     font-size: 1.1rem;
     color: #ffffff;
     font-weight: 500;
+}
+
+.admin-dashCardcontent .adminDetailsCard{
+    font-size: 18px;
 }
 
 /* Responsive design */
@@ -1336,13 +1371,13 @@
     position: relative;
 }
 
-.adminBlockBtnDiv button {
+.adminBlockBtnDiv .adminBlockBtn {
     padding: 10px 20px;
     font-size: 1rem;
     letter-spacing: 1px;
     border-bottom-right-radius: 20px;
     border-top-left-radius: 20px;
-    background-color: rgb(239, 68, 68);
+    background-color: rgb(241, 61, 61);
     border: none;
     color: white;
     font-weight: 700;
@@ -1350,9 +1385,9 @@
     transition: background-color 0.3s ease;
 }
 
-.adminBlockBtnDiv button:hover {
-    background-color: rgb(246, 76, 76);
-    transition: 0.4s;
+.adminBlockBtnDiv .adminBlockBtn:hover {
+    background-color: rgb(255, 0, 0);
+    transition: 0.2s;
 }
 
 /* Responsive adjustments */
@@ -1369,4 +1404,68 @@
         padding: 7px 15px;
         
     }
+}
+
+
+
+.confirmation-box {
+    position: absolute;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    display: flex;
+    gap: 5px;
+    justify-content: space-around;
+    border-radius: 4px;
+}
+
+.confirmation-box p {
+    margin-right: 10px;
+}
+
+.yes-btn, .no-btn {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    font-weight: 600;
+}
+
+.yes-btn {
+    background-color: #227c1f;
+    color: white;
+}
+
+.no-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.productDeleteConfirm{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.deleteconfirmButton {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 50px;
+}
+
+.deletecancelButton {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 50px;
 }

@@ -56,7 +56,7 @@ const PaymentDetails = () => {
             ...shippingDetails,
             [e.target.name]: e.target.value,
         });
-        setErrors({ ...errors, [e.target.name]: "" }); // Clear error on input change
+        // setErrors({ ...errors, [e.target.name]: "" }); // Clear error on input change
     };
 
     const totalPrice = Array.isArray(cart) ? cart.reduce((total, item) => total + item.price * item.quantity, 0) : 0;
@@ -71,11 +71,11 @@ const PaymentDetails = () => {
 
     const handlePayment = () => {
         if (!selectedPaymentMethod) {
-            alert("Please select a payment method");
+            toast.info("Please select a payment method");
             return;
         }
         if (selectedPaymentMethod === "UPI" && !upiID) {
-            alert("Please enter UPI ID");
+            toast.info("Please enter UPI ID");
             return;
         }
         setIsLoading(true);
@@ -135,7 +135,6 @@ const PaymentDetails = () => {
                             placeholder={errors.fullName || "Full Name"}
                             value={shippingDetails.fullName}
                             onChange={handleInputChange}
-                            className={errors.fullName ? "input-error" : ""}
                             required
                         />
                         <input
@@ -144,7 +143,6 @@ const PaymentDetails = () => {
                             placeholder={errors.streetAddress || "Street Address"}
                             value={shippingDetails.streetAddress}
                             onChange={handleInputChange}
-                            className={errors.streetAddress ? "input-error" : ""}
                             required
                         />
                         <input
@@ -153,7 +151,6 @@ const PaymentDetails = () => {
                             placeholder={errors.city || "City"}
                             value={shippingDetails.city}
                             onChange={handleInputChange}
-                            className={errors.city ? "input-error" : ""}
                             required
                         />
                         <div className="statePin">
@@ -163,7 +160,6 @@ const PaymentDetails = () => {
                                 placeholder={errors.state || "State"}
                                 value={shippingDetails.state}
                                 onChange={handleInputChange}
-                                className={errors.state ? "input-error" : ""}
                                 required
                             />
                             <input
@@ -172,7 +168,6 @@ const PaymentDetails = () => {
                                 placeholder={errors.postalCode || "Postal Code"}
                                 value={shippingDetails.postalCode}
                                 onChange={handleInputChange}
-                                className={errors.postalCode ? "input-error" : ""}
                                 required
                             />
                         </div>
@@ -182,7 +177,6 @@ const PaymentDetails = () => {
                             placeholder={errors.phoneNumber || "Phone Number"}
                             value={shippingDetails.phoneNumber}
                             onChange={handleInputChange}
-                            className={errors.phoneNumber ? "input-error" : ""}
                             required
                         />
                         <button className="proceed-btn">Proceed To Payment</button>
@@ -214,6 +208,7 @@ const PaymentDetails = () => {
                     </div>
                 ) : (
                     <div className="payment-container">
+                                
                         <h2>Payment Details</h2>
                         <p>
                             Total Amount: <span>₹{Math.floor(finalAmount)}</span>

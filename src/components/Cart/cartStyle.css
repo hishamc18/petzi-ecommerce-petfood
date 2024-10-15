@@ -349,8 +349,6 @@
 
 
 
-
-
 /* ==================== Payment Details =================== */
 .price-details {
     display: flex;
@@ -566,6 +564,7 @@ h2 {
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 501;
 }
 
 .custom-modal {
@@ -577,6 +576,7 @@ h2 {
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     position: relative;
+    z-index: 500;
 }
 
  .payment-container h2 {
@@ -1135,6 +1135,7 @@ h2 {
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    border-bottom: #c0bebe 2px solid;
 }
 
 .order-id {
@@ -1180,7 +1181,7 @@ h2 {
     background-color: #7a7b7c;
     border-radius: 8px;
     color: white;
-    padding: 10px;
+    padding: 8px 12px;
     margin-bottom: 5px;
     font-size: 1rem;
 }
@@ -1236,4 +1237,22 @@ h2 {
     margin-bottom: -10px;
     margin-top: -10px;
     z-index: 1;
+}
+
+
+
+/* ======= rating ======= */
+.star-rating {
+    display: flex;
+    cursor: pointer;
+    gap: 7px;
+}
+
+.star {
+    font-size: 20px;
+    color: rgb(255, 255, 255); /* Default color */
+}
+
+.star.filled {
+    color: rgb(241, 238, 54); /* Filled star color */
 }

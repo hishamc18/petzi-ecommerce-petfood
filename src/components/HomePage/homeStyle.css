@@ -878,7 +878,7 @@
   align-items: center; 
   justify-content: center; 
   font-size: 1.08em;
-  z-index: 2; 
+  z-index: 53; 
   transition: opacity 0.3s ease;
 }
 

@@ -14,6 +14,12 @@ const OrderSummary = () => {
     // Destructure orderSummary to extract shipping details, ordered items, and total amount
     const { shippingDetails, orderedItems, totalAmount } = orderSummary;
 
+    // expected delivery date (current date + 7 days)
+    const currentDate = new Date();
+    const expectedDeliveryDate = new Date(currentDate);
+    expectedDeliveryDate.setDate(currentDate.getDate() + 7);
+    const formattedExpectedDate = expectedDeliveryDate.toISOString().slice(0, 10); // YYYY-MM-DD
+
     return (
         <div className="summary">
             <div className="order-summary-container">
@@ -41,7 +47,7 @@ const OrderSummary = () => {
                                 <strong>{item.name}</strong> - ₹{item.price} x {item.quantity}
                                 <br />
                                 <p className="deliveryDate">
-                                    <strong>Expected Delivery:</strong> {item.deliveryDate}
+                                    <strong>Expected Delivery:</strong> {formattedExpectedDate}
                                 </p>
                             </li>
                         ))}

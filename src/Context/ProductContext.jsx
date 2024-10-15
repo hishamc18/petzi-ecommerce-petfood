@@ -1,10 +1,14 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify'; // Import toast
 
+// Initialize the ProductContext
 export const ProductContext = createContext();
 
+// Define the ProductProvider
 export const ProductProvider = ({ children }) => {
+    // State declarations
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
@@ -19,7 +23,7 @@ export const ProductProvider = ({ children }) => {
     const navigate = useNavigate();
     const [showConfirm, setShowConfirm] = useState(false); // For logout modal handling
 
-    /// Runs initially when component mounts and fetch username from localStorage
+    // Runs initially when component mounts and fetch username from localStorage
     useEffect(() => {
         const username = localStorage.getItem("username");
         if (username) {
@@ -56,7 +60,6 @@ export const ProductProvider = ({ children }) => {
         localStorage.removeItem("orderSummary");
         setIsLoggedIn(false);
         setCart([]);
-        // setOrders([]);
         setCurrentUser(null);
         navigate("/");
     };
@@ -65,10 +68,12 @@ export const ProductProvider = ({ children }) => {
     const handleLogoutClick = () => {
         setShowConfirm(true);
     };
+
     const confirmLogout = () => {
         logout();
         setShowConfirm(false);
     };
+
     const cancelLogout = () => {
         setShowConfirm(false);
     };
@@ -113,13 +118,13 @@ export const ProductProvider = ({ children }) => {
     const addToWishlist = async (product) => {
         const updatedWishlist = [...wishList];
         const existingItem = updatedWishlist.find((item) => item.id === product.id);
-        if (!existingItem) {
+        if(!isLoggedIn){
+            setToastMessage(<>Please log in to add items to your cart</>)
+        }
+        else if (!existingItem) {
             updatedWishlist.push(product);
             setWishList(updatedWishlist);
             await updateUserWishlistInDB(updatedWishlist);
-        }
-
-        if (isLoggedIn && !existingItem) {
             setToastMessage(
                 <>
                     Added to your wishlist 😊 <br />
@@ -127,16 +132,17 @@ export const ProductProvider = ({ children }) => {
                 </>
             );
         } else {
-            setToastMessage(<>Please log in to add items to your Wishlist</>);
+            setToastMessage(<>Item already in wishlist! 😊</>);
         }
     };
 
     // Close toast message after a specified time
     useEffect(() => {
         if (toastMessage) {
-            setTimeout(() => {
+            const timer = setTimeout(() => {
                 setToastMessage("");
             }, 2200);
+            return () => clearTimeout(timer); // Cleanup timeout on unmount
         }
     }, [toastMessage]);
 
@@ -164,52 +170,133 @@ export const ProductProvider = ({ children }) => {
         }
     };
 
+    // Check if stock is available
+    const isStockAvailable = (productId) => {
+        const product = products.find((prod) => prod.id === productId);
+        return product && product.stock > 0;
+    };
+
     // Add items to cart
     const addToCart = async (product) => {
-        const currentDate = new Date();
-        const deliveryDate = new Date(currentDate);
-        deliveryDate.setDate(currentDate.getDate() + 7); // Add 7 days
-        const formattedDeliveryDate = new Intl.DateTimeFormat("en-GB").format(deliveryDate); // For date format = dd-mm-yyyy
+        const quantityToAdd = 1; // Set quantity to add
+
+        // Check stock availability
+        if (!isStockAvailable(product.id)) {
+            toast.error("Currently Out of Stock");
+            return;
+        }
+
         const updatedCart = [...cart];
         const existingItem = updatedCart.find((item) => item.id === product.id);
+
         if (existingItem) {
-            existingItem.quantity += 1;
-            existingItem.deliveryDate = formattedDeliveryDate; // Update the delivery date if needed
+            existingItem.quantity += quantityToAdd;
         } else {
-            updatedCart.push({ ...product, quantity: 1, deliveryDate: formattedDeliveryDate }); // Add delivery date
+            updatedCart.push({ ...product, quantity: quantityToAdd });
         }
+
         setCart(updatedCart);
         await updateUserCartInDB(updatedCart);
+
+        // Update stock in the product list only after cart is updated in DB
+        await updateProductStock(product.id, quantityToAdd);
+    };
+
+    const updateProductStock = async (productId, quantity) => {
+        const product = products.find((prod) => prod.id === productId);
+
+        // Only update if product stock is available
+        if (product && product.stock >= quantity) {
+            const updatedProducts = products.map((prod) =>
+                prod.id === productId ? { ...prod, stock: prod.stock - quantity } : prod
+            );
+
+            setProducts(updatedProducts); // Update local state
+
+            // Save updated product stock to DB
+            await saveProductsToDB(updatedProducts);
+        } else {
+            toast.error("Not enough stock available");
+        }
+    };
+
+    // Save updated products to DB
+    const saveProductsToDB = async (updatedProducts) => {
+        try {
+            await Promise.all(updatedProducts.map((product) =>
+                axios.patch(`http://localhost:5001/products/${product.id}`, { stock: product.stock })
+            ));
+        } catch (error) {
+            console.error("Error saving products:", error);
+        }
     };
 
     // Remove item from cart
     const removeFromCart = async (productId) => {
-        const updatedCart = cart.filter((item) => item.id !== productId);
-        setCart(updatedCart);
-        await updateUserCartInDB(updatedCart);
+        const itemToRemove = cart.find((item) => item.id === productId);
+        if (itemToRemove) {
+            const updatedCart = cart.filter((item) => item.id !== productId);
+            setCart(updatedCart);
+            await updateUserCartInDB(updatedCart);
+            await restoreProductStock(itemToRemove.id, itemToRemove.quantity);
+        }
+    };
+
+    // Restore stock for removed item
+    const restoreProductStock = async (productId, quantity) => {
+        const product = products.find((prod) => prod.id === productId);
+        if (product) {
+            const updatedProducts = products.map((prod) =>
+                prod.id === productId ? { ...prod, stock: prod.stock + quantity } : prod
+            );
+
+            setProducts(updatedProducts); // Update local state
+
+            // Save updated product stock to DB
+            await saveProductsToDB(updatedProducts);
+        }
     };
 
     // Update quantity of items in cart
     const updateQuantity = async (productId, quantity) => {
-        const updatedCart = cart.map((item) =>
-            item.id === productId ? { ...item, quantity: Math.max(1, quantity) } : item
-        );
-        setCart(updatedCart);
-        await updateUserCartInDB(updatedCart);
+        const itemToUpdate = cart.find((item) => item.id === productId);
+        if (itemToUpdate) {
+            const product = products.find((prod) => prod.id === productId);
+        if (product && quantity > product.stock) {
+            // Show toast alert if stock is not available
+            toast.error("Stock not available for this quantity.");
+            return; // Prevent updating quantity if stock is insufficient
+        }
+
+            const updatedCart = cart.map((item) =>
+                item.id === productId ? { ...item, quantity: Math.max(1, quantity) } : item
+            );
+
+            // Update stock based on new quantity
+            const quantityDifference = quantity - itemToUpdate.quantity;
+            if (quantityDifference > 0) {
+                await updateProductStock(productId, quantityDifference);
+            } else {
+                await restoreProductStock(productId, -quantityDifference); // Restore if decreasing quantity
+            }
+
+            setCart(updatedCart);
+            await updateUserCartInDB(updatedCart);
+        }
     };
 
-    // Function used to update cart in the DB
+    // Update user cart in the DB
     const updateUserCartInDB = async (updatedCart) => {
         if (currentUser) {
             try {
                 await axios.patch(`http://localhost:5001/users/${currentUser.id}`, { cart: updatedCart });
             } catch (error) {
-                console.error("Error updating user cart:", error);
+                console.error("Error updating cart:", error);
             }
         }
     };
 
-    // Set order details
+        // Set order details
     const currentDate = new Date();
     const formattedDate = currentDate.toISOString().slice(0, 10);
     const setOrderDetails = (details) => {
@@ -232,51 +319,20 @@ export const ProductProvider = ({ children }) => {
         await updateUserCartInDB([]);
     };
 
-    //to fetch the orderSummary from localStorage
-    useEffect(() => {
-        const savedOrderSummary = localStorage.getItem("orderSummary");
-        if (savedOrderSummary) {
-            setOrderSummary(JSON.parse(savedOrderSummary));
-        }
-    }, []); // This effect runs only once when the component mounts
-
-    // Save order history in DB and state for orders-history page
+    // To save order in the user order array
     const saveOrder = async (order) => {
+        const updatedOrders = [...orders, order];
+        setOrders(updatedOrders);
         if (currentUser) {
             try {
-                const userResponse = await axios.get(`http://localhost:5001/users/${currentUser.id}`);
-                const currentOrders = userResponse.data.orders || [];
-                const updatedOrders = [...currentOrders, order];
                 await axios.patch(`http://localhost:5001/users/${currentUser.id}`, { orders: updatedOrders });
-                setOrders(updatedOrders);
             } catch (error) {
                 console.error("Error saving order:", error);
             }
         }
     };
 
-    // Fetch user orders from the database
-    const fetchUserOrders = async (userId) => {
-        try {
-            const response = await axios.get(`http://localhost:5001/users/${userId}`);
-            setOrders(response.data.orders || []); // Update the orders state
-        } catch (error) {
-            console.error("Error fetching user orders:", error);
-        }
-    };
-
-    // // Clear orders from the user
-    // const clearOrders = async () => {
-    //     if (currentUser) {
-    //         try {
-    //             await axios.patch(`http://localhost:5001/users/${currentUser.id}`, { orders: [] });
-    //             setOrders([]); // Clear local orders state
-    //         } catch (error) {
-    //             console.error("Error clearing orders:", error);
-    //         }
-    //     }
-    // };
-
+    // Provide context values
     return (
         <ProductContext.Provider
             value={{
@@ -305,8 +361,6 @@ export const ProductProvider = ({ children }) => {
                 setOrderSummary,
                 setOrderDetails,
                 orders,
-                fetchUserOrders,
-                // clearOrders,
                 handleLogoutClick,
                 confirmLogout,
                 cancelLogout,

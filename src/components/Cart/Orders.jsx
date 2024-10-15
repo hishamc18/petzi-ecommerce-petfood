@@ -1,10 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ProductContext } from "../../Context/ProductContext";
 import { useNavigate } from "react-router-dom";
+import StarRating from "./StarRating";
 
 const Orders = () => {
     const { orders } = useContext(ProductContext);
     const navigate = useNavigate()
+    const [ratings, setRatings] = useState({});
+
+
+    const handleRatingChange = (orderId, itemId, rating) => {
+        setRatings((prevRatings) => ({
+            ...prevRatings,
+            [`${orderId}-${itemId}`]: rating, // Unique key for each item rating
+        }));
+    };
     
     return (
         <div className="orders-container">
@@ -28,11 +38,17 @@ const Orders = () => {
                                 <h4>Items:</h4>
                                 <div className="itemsList">
                                     <ul>
-                                        {order.orderedItems.map((item) => (
-                                            <li key={item.id}>
-                                                <strong>{item.name}</strong> - ₹{item.price} x {item.quantity}
-                                            </li>
-                                        ))}
+                                            {order.orderedItems.map((item) => (
+                                                    <div className="wrapReviewandList">
+                                                        <li key={item.id}>
+                                                            <strong>{item.name}</strong> - ₹{item.price} x {item.quantity}
+                                                            <StarRating
+                                                                value={ratings[`${order.id}-${item.id}`] || 0} // Get the current rating or default to 0
+                                                                onChange={(rating) => handleRatingChange(order.id, item.id, rating)} // Update the rating
+                                                            />
+                                                        </li>
+                                                    </div>
+                                            ))}
                                     </ul>
                                 </div>
                             </div>
