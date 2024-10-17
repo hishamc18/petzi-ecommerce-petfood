@@ -610,8 +610,68 @@
           "totalAmount": 1369.6399999999999,
           "id": "1728944495923",
           "date": "2024-10-14"
+        },
+        {
+          "shippingDetails": {
+            "fullName": "Hisham",
+            "streetAddress": "Chakkampully House",
+            "city": "Edappal",
+            "state": "Kerala",
+            "postalCode": "679576",
+            "phoneNumber": "09656736286"
+          },
+          "orderedItems": [
+            {
+              "id": "22",
+              "name": "Doggy's Choice Dog Food",
+              "price": 156.99,
+              "oldPrice": 235.49,
+              "image": "src/assets/dogProduct/pd11.jpg",
+              "category": "dog",
+              "seller": "Pet Supplies",
+              "stock": 67,
+              "description": "Doggy's Choice Dog Food is made from natural ingredients, providing a wholesome and nutritious meal for your furry friend.",
+              "ingredients": [
+                "Beef meal",
+                "Barley",
+                "Brown rice",
+                "Chicken fat (preserved with mixed tocopherols)",
+                "Carrots",
+                "Peas",
+                "Vitamins and minerals",
+                "Taurine"
+              ],
+              "quantity": 7
+            },
+            {
+              "id": "23",
+              "name": "Ultimate Pup Dog Food",
+              "price": 314.99,
+              "oldPrice": 472.49,
+              "image": "src/assets/dogProduct/pd12.jpg",
+              "category": "dog",
+              "seller": "Happy Pets",
+              "stock": 58,
+              "description": "Ultimate Pup Dog Food is a complete and balanced meal that promotes healthy growth and energy for active dogs.",
+              "ingredients": [
+                "Chicken meal",
+                "Brown rice",
+                "Oats",
+                "Chicken fat (preserved with mixed tocopherols)",
+                "Carrots",
+                "Blueberries",
+                "Vitamins and minerals",
+                "Taurine"
+              ],
+              "quantity": 1
+            }
+          ],
+          "totalAmount": 1452.92,
+          "id": "1729137307552",
+          "date": "2024-10-17"
         }
-      ]
+      ],
+      "wishlist": []
     },
     {
       "id": "c584",
@@ -1116,7 +1176,7 @@
       "image": "src/assets/dogProduct/pd11.jpg",
       "category": "dog",
       "seller": "Pet Supplies",
-      "stock": 67,
+      "stock": 60,
       "description": "Doggy's Choice Dog Food is made from natural ingredients, providing a wholesome and nutritious meal for your furry friend.",
       "ingredients": [
         "Beef meal",
@@ -1137,7 +1197,7 @@
       "image": "src/assets/dogProduct/pd12.jpg",
       "category": "dog",
       "seller": "Happy Pets",
-      "stock": 58,
+      "stock": 57,
       "description": "Ultimate Pup Dog Food is a complete and balanced meal that promotes healthy growth and energy for active dogs.",
       "ingredients": [
         "Chicken meal",
