@@ -16,13 +16,13 @@ function HomePage() {
     const productsRef = useRef(null);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const offerInterval = setInterval(() => {
-            toast.info("50% off on all products!");
-        }, 4000); 
+    // useEffect(() => {
+    //     const offerInterval = setInterval(() => {
+    //         toast.info("50% off on all products!");
+    //     }, 4000); 
 
-        return () => clearInterval(offerInterval);
-    }, []);
+    //     return () => clearInterval(offerInterval);
+    // }, []);
 
     //loading home page
     useEffect(() => {
