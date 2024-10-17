@@ -12,7 +12,7 @@ const Orders = () => {
     const handleRatingChange = (orderId, itemId, rating) => {
         setRatings((prevRatings) => ({
             ...prevRatings,
-            [`${orderId}-${itemId}`]: rating, // Unique key for each item rating
+            [`${orderId}-${itemId}`]: rating,
         }));
     };
     

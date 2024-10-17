@@ -135,6 +135,28 @@
     background-color: #ff3a3e;
 }
 
+.cart-actions{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.addtoCartbtnInWishlist{
+    background-color: rgb(43, 174, 226);
+    color: white;
+    border-radius: 20px;
+    padding: 0;
+    height: 30px;
+    font-weight: 600;
+    width: 100px;
+    border: none;
+}
+
+.addtoCartbtnInWishlist:hover{
+    background-color: #1da1f2;
+    transition: 0.6s;
+}
+
 
 @media (max-width: 768px) {
     .wishlist-header {
@@ -194,11 +216,11 @@
 /* ==================== Cart =================== */
 /* Cart Heading */
 .cart-price h1 {
-    padding: 15px;
+    padding: 11px;
     text-align: center;
     letter-spacing: 2px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.14);
-    margin-top: 1em;
+    margin-top: 0.5em;
 }
 
 .carthead {
@@ -928,7 +950,6 @@ h2 {
 
 
 
-
 /* ============= OrderSummary ============ */
 .summary {
     display: flex;
@@ -1240,7 +1261,6 @@ h2 {
 }
 
 
-
 /* ======= rating ======= */
 .star-rating {
     display: flex;
@@ -1250,9 +1270,9 @@ h2 {
 
 .star {
     font-size: 20px;
-    color: rgb(255, 255, 255); /* Default color */
+    color: rgb(255, 255, 255);
 }
 
 .star.filled {
-    color: rgb(241, 238, 54); /* Filled star color */
+    color: rgb(241, 238, 54);
 }

@@ -8,7 +8,7 @@ import Caption from "./Caption";
 import Footer from "./Footer";
 import { ProductContext } from "../../Context/ProductContext";
 import LogoutModal from "./LogoutModal";
-import { ToastContainer, Slide, toast } from 'react-toastify';
+import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Import toast styles
 
 function HomePage() {
@@ -16,13 +16,13 @@ function HomePage() {
     const productsRef = useRef(null);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            toast.info("50% off on all products!");
-        }, 4000); // 2000 milliseconds = 2 seconds
+    // useEffect(() => {
+    //     const offerInterval = setInterval(() => {
+    //         toast.info("50% off on all products!");
+    //     }, 4000); 
 
-        return () => clearInterval(intervalId); // Clean up the interval on component unmount
-    }, []);
+    //     return () => clearInterval(offerInterval);
+    // }, []);
 
     //loading home page
     useEffect(() => {

@@ -38,7 +38,6 @@ function App() {
                                 </ProtectedAdmin>
                             }
                         >
-                            {/* Nested routes for admin */}
                             <Route path="dashboard" element={<Dashboard />} />
                             <Route path="handle-products" element={<HandleProducts />} />
                             <Route path="user-details" element={<UserDetails />} />

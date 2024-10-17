@@ -36,13 +36,12 @@ export const AdminProvider = ({ children }) => {
             let ordersCount = 0;
             let totalRevenue = 0;
             data.forEach((user) => {
-                // Increment orders count
                 if (user.orders) {
                     ordersCount += user.orders.length;
 
-                    // Sum up the total revenue from each order
+                    // Sum of the total revenue from each order
                     user.orders.forEach((order) => {
-                        totalRevenue += order.totalAmount; // Adjust 'amount' based on your order structure
+                        totalRevenue += order.totalAmount; 
                     });
                 }
             });
@@ -326,11 +325,11 @@ export const AdminProvider = ({ children }) => {
                 dailyRevenue,
                 recentOrders,
                 getUsersWithMostOrders,
-                users, // All users
-                selectedUser, // The user selected for modal
+                users,
+                selectedUser,
                 handleUserClick, // Function to handle user click
-                closeModal, // Function to close the modal
-                isModalOpen, // Modal state
+                closeModal,
+                isModalOpen,
                 blockUser,
             }}
         >

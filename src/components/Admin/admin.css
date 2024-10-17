@@ -86,22 +86,17 @@
     transition: background-color 0.3s ease, transform 0.2s ease;
     border-radius: 8px;
     padding: 10px 15px;
-    /* Added padding for better click area */
 }
 
 .adminMenubar li:hover {
     background-color: #44836d;
-    /* Highlight on hover */
     color: white;
-    /* Change text color on hover */
 }
 
 .adminMenubar li.active {
     background-color: #44836d;
-    /* Darker blue for active menu */
     color: white;
     transform: scale(1.05);
-    /* Slightly scale up the active item */
 }
 
 .adminMenubar a {
@@ -122,7 +117,7 @@
 
 /* Handle Products Styling */
 .handle-products {
-    padding: 20px;
+    padding: 15px;
     background-color: #d7e8df;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);

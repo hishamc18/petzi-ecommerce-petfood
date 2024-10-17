@@ -3,12 +3,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify'; // Import toast
 
-// Initialize the ProductContext
 export const ProductContext = createContext();
 
-// Define the ProductProvider
 export const ProductProvider = ({ children }) => {
-    // State declarations
+
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
@@ -19,7 +17,7 @@ export const ProductProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
     const [orderSummary, setOrderSummary] = useState(null);
     const [orders, setOrders] = useState([]);
-    const [toastMessage, setToastMessage] = useState("");
+    const [toastMessage, setToastMessage] = useState(""); //for setting toastmessage withouusing toast library
     const navigate = useNavigate();
     const [showConfirm, setShowConfirm] = useState(false); // For logout modal handling
 
@@ -100,8 +98,7 @@ export const ProductProvider = ({ children }) => {
             if (searchTerm) {
                 filtered = products.filter(
                     (product) =>
-                        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                        product.category.toLowerCase().includes(searchTerm.toLowerCase())
+                        product.name.toLowerCase().includes(searchTerm.toLowerCase())
                 );
             } else if (category) {
                 // Only filter by category if no search term is provided
@@ -114,7 +111,7 @@ export const ProductProvider = ({ children }) => {
         filterProducts();
     }, [category, searchTerm, products]);
 
-    // Toast for adding item to wishlist
+    // adding item to wishlist
     const addToWishlist = async (product) => {
         const updatedWishlist = [...wishList];
         const existingItem = updatedWishlist.find((item) => item.id === product.id);
@@ -191,8 +188,10 @@ export const ProductProvider = ({ children }) => {
 
         if (existingItem) {
             existingItem.quantity += quantityToAdd;
+            toast.success("Increased the quantity of same item in your cart")
         } else {
             updatedCart.push({ ...product, quantity: quantityToAdd });
+            toast.success("Item added to your cart")
         }
 
         setCart(updatedCart);
@@ -265,7 +264,7 @@ export const ProductProvider = ({ children }) => {
         if (product && quantity > product.stock) {
             // Show toast alert if stock is not available
             toast.error("Stock not available for this quantity.");
-            return; // Prevent updating quantity if stock is insufficient
+            return; // Prevent updating quantity if stock is 0
         }
 
             const updatedCart = cart.map((item) =>
@@ -277,7 +276,7 @@ export const ProductProvider = ({ children }) => {
             if (quantityDifference > 0) {
                 await updateProductStock(productId, quantityDifference);
             } else {
-                await restoreProductStock(productId, -quantityDifference); // Restore if decreasing quantity
+                await restoreProductStock(productId, -quantityDifference);
             }
 
             setCart(updatedCart);
@@ -332,7 +331,6 @@ export const ProductProvider = ({ children }) => {
         }
     };
 
-    // Provide context values
     return (
         <ProductContext.Provider
             value={{

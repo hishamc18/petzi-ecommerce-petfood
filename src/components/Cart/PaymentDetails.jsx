@@ -88,8 +88,9 @@ const PaymentDetails = () => {
                 orderedItems: cart,
                 totalAmount: finalAmount,
             };
+
             setOrderDetails(orderDetails);
-            // localStorage.setItem("orderSummary", JSON.stringify(orderDetails));
+           
             setTimeout(() => {
                 setIsModalOpen(false);
                 setCart([]); // Clear cart after order

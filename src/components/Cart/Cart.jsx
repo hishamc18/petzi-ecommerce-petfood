@@ -4,8 +4,8 @@ import PaymentDetails from "./PaymentDetails";
 import { MdDeleteForever } from "react-icons/md";
 import "./cartStyle.css";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, Slide } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // Import toast styles
+import { ToastContainer, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import toast styles
 
 const Cart = () => {
     const { cart, removeFromCart, updateQuantity } = useContext(ProductContext);
@@ -13,7 +13,7 @@ const Cart = () => {
 
     return (
         <div className="cart-price">
-                                    <ToastContainer
+            <ToastContainer
                 position="top-center"
                 autoClose={1000}
                 hideProgressBar={false}
@@ -25,8 +25,15 @@ const Cart = () => {
                 pauseOnHover
                 transition={Slide}
             />
-            <h1>Your <span className="carthead">Cart</span></h1>
-            <div className="homebtn"><button className="back-button" onClick={() => navigate("/")}><i className='bx bx-home'></i></button></div>
+
+            <h1>
+                Your <span className="carthead">Cart</span>
+            </h1>
+            <div className="homebtn">
+                <button className="back-button" onClick={() => navigate("/")}>
+                    <i className="bx bx-home"></i>
+                </button>
+            </div>
             <div className="cart-container">
                 {cart.length === 0 ? ( //if nothing is added to the cart, it shows empty
                     <h3>Your cart is empty.</h3>
