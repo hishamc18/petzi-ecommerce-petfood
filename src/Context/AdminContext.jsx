@@ -19,8 +19,8 @@ export const AdminProvider = ({ children }) => {
     const [weeklyRevenue, setWeeklyRevenue] = useState({});
     const [dailyRevenue, setDailyRevenue] = useState({});
     const [recentOrders, setRecentOrders] = useState({});
-    const [selectedUser, setSelectedUser] = useState(null); // State to hold selected user details
-    const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
+    const [selectedUser, setSelectedUser] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false); 
 
     
 

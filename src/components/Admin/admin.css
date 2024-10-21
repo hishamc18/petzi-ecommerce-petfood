@@ -1385,6 +1385,18 @@
     transition: 0.2s;
 }
 
+.user-Tables{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 1em;
+    /* flex-wrap: wrap; */
+}
+
+.user-Tables h2{
+    font-size: 24px;
+    text-align: center;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .adminBlockBtnDiv button {

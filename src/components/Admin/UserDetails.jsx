@@ -19,14 +19,20 @@ const UserDetails = () => {
         setShowConfirmation(true); // Show the confirmation div
     };
 
-    // Function to confirm block/unblock action
+    // // Function to confirm block/unblock action
     const confirmBlock = () => {
         blockUser(selectedUser.id); // Call the blockUser function from context
-        setShowConfirmation(false); // Hide the confirmation div after action
-        if (selectedUser.isBlocked) {
-            toast.success("Unblocked Successfully");
-        } else {
+    
+        // Immediately update the selectedUser's isBlocked status after blocking/unblocking
+        const updatedUser = { ...selectedUser, isBlocked: !selectedUser.isBlocked };
+        handleUserClick(updatedUser); // Update the selected user state
+        setShowConfirmation(false); // Hide the confirmation div after click
+    
+        // Show the correct toast notification
+        if (updatedUser.isBlocked) {
             toast.error("Blocked Successfully");
+        } else {
+            toast.success("Unblocked Successfully");
         }
     };
 
@@ -39,6 +45,9 @@ const UserDetails = () => {
         setShowConfirmation(false); // Reset confirmation state when modal closes
         closeModal(); // Close the modal using AdminContext method
     };
+
+    // Blocked users
+    const blockedUsers = users.filter(user => user.isBlocked);
 
     return (
         <div className="admin-user-details">
@@ -54,30 +63,64 @@ const UserDetails = () => {
                 pauseOnHover
                 transition={Slide}
             />
-            <h2>Manage Users</h2>
-            <div className="admin-user-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users.slice(0, 15).map((user) => (
-                            <tr key={user.id}>
-                                <td>{user.id}</td>
-                                <td>{user.username}</td>
-                                <td>{user.email}</td>
-                                <td>
-                                    <button onClick={() => handleUserClick(user)}>View Details</button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+            <div className="user-Tables">
+                <div>
+                    <h2>Manage Users</h2>
+                    <div className="admin-user-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {users.slice(0, 15).map((user) => (
+                                    <tr key={user.id}>
+                                        <td>{user.id}</td>
+                                        <td>{user.username}</td>
+                                        <td>{user.email}</td>
+                                        <td>
+                                            <button onClick={() => handleUserClick(user)}>View Details</button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {/* Blocked Users */}
+                <div>
+                    <h2>Blocked Users</h2>
+                    {blockedUsers.length > 0 && (
+                        <div className="admin-user-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {blockedUsers.map((user) => (
+                                        <tr key={user.id}>
+                                            <td>{user.id}</td>
+                                            <td>{user.username}</td>
+                                            <td>{user.email}</td>
+                                            <td>
+                                                <button onClick={() => handleUserClick(user)}>View Details</button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
+                </div>
             </div>
 
             {isModalOpen && selectedUser && (
