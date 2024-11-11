@@ -24,17 +24,18 @@ export const ProductProvider = ({ children }) => {
     // Runs initially when component mounts and fetch username from localStorage
     useEffect(() => {
         const username = localStorage.getItem("username");
-        if (username) {
+        const email = localStorage.getItem("email")
+        if (username && email) {
             setIsLoggedIn(true);
             setCurrentUser(username);
-            fetchUser(username);
+            fetchUser(username, email);
         }
     }, []);
 
     // Fetching user details from the DB
-    const fetchUser = async (username) => {
+    const fetchUser = async (email) => {
         try {
-            const response = await axios.get(`http://localhost:5001/users?username=${username}`);
+            const response = await axios.get(`http://localhost:5001/users?email=${email}`);
             const user = response.data[0];
             setCurrentUser(user);
             setCart(user.cart || []);
@@ -46,15 +47,17 @@ export const ProductProvider = ({ children }) => {
     };
 
     // Login
-    const login = async (username) => {
-        await fetchUser(username);
+    const login = async (username, email) => {
+        await fetchUser(email);
         setIsLoggedIn(true);
         localStorage.setItem("username", username);
+        localStorage.setItem("email", email)
     };
 
     // Logout
     const logout = () => {
         localStorage.removeItem("username");
+        localStorage.removeItem("email")
         localStorage.removeItem("orderSummary");
         setIsLoggedIn(false);
         setCart([]);
@@ -176,7 +179,6 @@ export const ProductProvider = ({ children }) => {
     // Add items to cart
     const addToCart = async (product) => {
         const quantityToAdd = 1; // Set quantity to add
-
         // Check stock availability
         if (!isStockAvailable(product.id)) {
             toast.error("Currently Out of Stock");
