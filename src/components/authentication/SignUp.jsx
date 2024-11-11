@@ -40,7 +40,8 @@ function Signin() {
 
                 onSubmit={async (values, { setSubmitting, setFieldError }) => {
                     try {
-                        const response = await axios.get("http://localhost:5001/users");
+                        // const response = await axios.get("http://localhost:5001/users");
+                        const response = await axios.get("http://192.168.57.37:5001/users");
                         const users = response.data;
                         const userWithSameEmail = users.find((user) => user.email === values.email);
                 
@@ -55,7 +56,8 @@ function Signin() {
                                 orders: []
                             };
                 
-                            await axios.post("http://localhost:5001/users", newUser);
+                            // await axios.post("http://localhost:5001/users", newUser);
+                            await axios.post("http://192.168.57.37:5001/users", newUser);
                             toast.success("Account Created! You're ready to log in.");
                             setTimeout(() => {
                                 navigate("/login");
