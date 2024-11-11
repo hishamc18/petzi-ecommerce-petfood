@@ -11,8 +11,8 @@ import "./authStyle.css";
 
 function Login() {
     const navigate = useNavigate();
-    const { login } = useContext(ProductContext);  // User login
-    const { adminLogin } = useContext(AdminContext);  // Admin login
+    const { login } = useContext(ProductContext); 
+    const { adminLogin } = useContext(AdminContext); 
 
     const validationSchema = Yup.object().shape({
         email: Yup.string().required("Email is required").email("Invalid email address"),
@@ -31,12 +31,12 @@ function Login() {
                 if (user.isBlocked) {
                     // Show alert if user is blocked
                     toast.error("You're blocked by admin, please contact admin.");
-                } else if (user.email === "admin@gmail.com") {
+                } else if (user.email === "admin@gmail.com" && user.role == "admin") {
                     // Admin login
                     adminLogin(user.username);  // Call admin login function
                 } else {
                     // Regular user login
-                    login(user.username);  // Call user login function
+                    login(user.username, user.email);  // Call user login function
                     navigate("/");
                 }
             } else {
