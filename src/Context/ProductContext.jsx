@@ -36,6 +36,7 @@ export const ProductProvider = ({ children }) => {
     const fetchUser = async (email) => {
         try {
             const response = await axios.get(`http://localhost:5001/users?email=${email}`);
+            // const response = await axios.get(`http://192.168.57.37:5001/users?email=${email}`);
             const user = response.data[0];
             setCurrentUser(user);
             setCart(user.cart || []);
@@ -84,6 +85,7 @@ export const ProductProvider = ({ children }) => {
         const fetchProducts = async () => {
             try {
                 const response = await axios.get("http://localhost:5001/products");
+                // const response = await axios.get("http://192.168.57.37:5001/products");
                 setProducts(response.data);
             } catch (error) {
                 console.error("Error fetching products", error);
@@ -164,6 +166,7 @@ export const ProductProvider = ({ children }) => {
         if (currentUser) {
             try {
                 await axios.patch(`http://localhost:5001/users/${currentUser.id}`, { wishlist: updatedWishlist });
+                // await axios.patch(`http://192.168.57.37:5001/users/${currentUser.id}`, { wishlist: updatedWishlist });
             } catch (error) {
                 console.error("Error updating wishlist:", error);
             }
@@ -226,6 +229,7 @@ export const ProductProvider = ({ children }) => {
         try {
             await Promise.all(updatedProducts.map((product) =>
                 axios.patch(`http://localhost:5001/products/${product.id}`, { stock: product.stock })
+                // axios.patch(`http://192.168.57.37:5001/products/${product.id}`, { stock: product.stock })
             ));
         } catch (error) {
             console.error("Error saving products:", error);
@@ -291,6 +295,7 @@ export const ProductProvider = ({ children }) => {
         if (currentUser) {
             try {
                 await axios.patch(`http://localhost:5001/users/${currentUser.id}`, { cart: updatedCart });
+                // await axios.patch(`http://192.168.57.37:5001/users/${currentUser.id}`, { cart: updatedCart });
             } catch (error) {
                 console.error("Error updating cart:", error);
             }
@@ -327,6 +332,7 @@ export const ProductProvider = ({ children }) => {
         if (currentUser) {
             try {
                 await axios.patch(`http://localhost:5001/users/${currentUser.id}`, { orders: updatedOrders });
+                // await axios.patch(`http://192.168.57.37:5001/users/${currentUser.id}`, { orders: updatedOrders });
             } catch (error) {
                 console.error("Error saving order:", error);
             }
