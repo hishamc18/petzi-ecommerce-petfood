@@ -26,8 +26,8 @@ export const AdminProvider = ({ children }) => {
 
     const fetchData = async () => {
         try {
-            // const response = await fetch("http://localhost:5001/users");
-            const response = await fetch("http://192.168.57.37:5001/users");
+            const response = await fetch("http://localhost:5001/users");
+            // const response = await fetch("http://192.168.57.37:5001/users");
             const data = await response.json();
             // Filter users without admin role
             const nonAdminUsers = data.filter((user) => user.role !== "admin");
@@ -243,8 +243,8 @@ export const AdminProvider = ({ children }) => {
 
     const fetchProducts = async () => {
         try {
-            // const response = await axios.get("http://localhost:5001/products");
-            const response = await axios.get("http://192.168.57.37:5001/products");
+            const response = await axios.get("http://localhost:5001/products");
+            // const response = await axios.get("http://192.168.57.37:5001/products");
             setProducts(response.data);
         } catch (error) {
             console.error("Failed to fetch products:", error);
@@ -253,8 +253,8 @@ export const AdminProvider = ({ children }) => {
 
     const addProduct = async (newProduct) => {
         try {
-            // const response = await axios.post("http://localhost:5001/products", newProduct);
-            const response = await axios.post("http://192.168.57.37:5001/products", newProduct);
+            const response = await axios.post("http://localhost:5001/products", newProduct);
+            // const response = await axios.post("http://192.168.57.37:5001/products", newProduct);
             setProducts([...products, response.data]); // Update state with the new product
             await fetchProducts();
         } catch (error) {
@@ -264,8 +264,8 @@ export const AdminProvider = ({ children }) => {
 
     const deleteProduct = async (id) => {
         try {
-            // await axios.delete(`http://localhost:5001/products/${id}`);
-            await axios.delete(`http://192.168.57.37:5001/products/${id}`);
+            await axios.delete(`http://localhost:5001/products/${id}`);
+            // await axios.delete(`http://192.168.57.37:5001/products/${id}`);
             setProducts(products.filter((product) => product.id !== id)); // Remove from state
             await fetchProducts();
         } catch (error) {
@@ -275,8 +275,8 @@ export const AdminProvider = ({ children }) => {
 
     const editProduct = async (id, updatedProduct) => {
         try {
-            // const response = await axios.put(`http://localhost:5001/products/${id}`, updatedProduct);
-            const response = await axios.put(`http://192.168.57.37:5001/products/${id}`, updatedProduct);
+            const response = await axios.put(`http://localhost:5001/products/${id}`, updatedProduct);
+            // const response = await axios.put(`http://192.168.57.37:5001/products/${id}`, updatedProduct);
             setProducts(products.map((product) => (product.id === id ? response.data : product))); // Update product in state
             await fetchProducts();
         } catch (error) {
@@ -297,8 +297,8 @@ export const AdminProvider = ({ children }) => {
             const updatedUser = { ...userToBlock, isBlocked: !userToBlock.isBlocked };
 
             // Update the user in the database
-            // await axios.patch(`http://localhost:5001/users/${userId}`, { isBlocked: updatedUser.isBlocked });
-            await axios.patch(`http://192.168.57.37:5001/users/${userId}`, { isBlocked: updatedUser.isBlocked });
+            await axios.patch(`http://localhost:5001/users/${userId}`, { isBlocked: updatedUser.isBlocked });
+            // await axios.patch(`http://192.168.57.37:5001/users/${userId}`, { isBlocked: updatedUser.isBlocked });
 
             // Update state after successful API call
             setUsers((prevUsers) => prevUsers.map((user) => (user.id === userId ? updatedUser : user)));

@@ -8,5 +8,4 @@ function Caption() {
         </div>
     );
 }
-
 export default Caption;

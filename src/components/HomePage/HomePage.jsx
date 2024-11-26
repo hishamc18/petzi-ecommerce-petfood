@@ -16,6 +16,7 @@ function HomePage() {
     const productsRef = useRef(null);
     const [loading, setLoading] = useState(true);
 
+    //offer toast
     // useEffect(() => {
     //     const offerInterval = setInterval(() => {
     //         toast.info("50% off on all products!");

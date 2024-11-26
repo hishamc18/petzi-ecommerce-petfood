@@ -6,13 +6,13 @@ import axios from "axios";
 import { ProductContext } from "../../Context/ProductContext"; // For user login
 import { AdminContext } from "../../Context/AdminContext";
 import { toast, ToastContainer, Slide } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import "./authStyle.css";
 
 function Login() {
     const navigate = useNavigate();
-    const { login } = useContext(ProductContext); 
-    const { adminLogin } = useContext(AdminContext); 
+    const { login } = useContext(ProductContext);
+    const { adminLogin } = useContext(AdminContext);
 
     const validationSchema = Yup.object().shape({
         email: Yup.string().required("Email is required").email("Invalid email address"),
@@ -21,23 +21,23 @@ function Login() {
 
     const handleSubmit = async (values, { setSubmitting, setErrors }) => {
         try {
-            // const response = await axios.get("http://localhost:5001/users");
-            const response = await axios.get("http://192.168.57.37:5001/users");
+            const response = await axios.get("http://localhost:5001/users");
+            // const response = await axios.get("http://192.168.57.37:5001/users");
             const users = response.data;
-    
+
             // Find the user by email and password
             const user = users.find((u) => u.email === values.email && u.password === values.password);
-    
+
             if (user) {
                 if (user.isBlocked) {
                     // Show alert if user is blocked
                     toast.error("You're blocked by admin, please contact admin.");
                 } else if (user.email === "admin@gmail.com" && user.role == "admin") {
                     // Admin login
-                    adminLogin(user.username);  // Call admin login function
+                    adminLogin(user.username); // Call admin login function
                 } else {
                     // Regular user login
-                    login(user.username, user.email);  // Call user login function
+                    login(user.username, user.email); // Call user login function
                     navigate("/");
                 }
             } else {
@@ -50,7 +50,6 @@ function Login() {
         }
         setSubmitting(false);
     };
-
 
     useEffect(() => {
         toast.info("Please Login With Your Credentials");
@@ -70,11 +69,7 @@ function Login() {
                 pauseOnHover
                 transition={Slide}
             />
-            <Formik
-                initialValues={{ email: "", password: "" }}
-                validationSchema={validationSchema}
-                onSubmit={handleSubmit}
-            >
+            <Formik initialValues={{ email: "", password: "" }} validationSchema={validationSchema} onSubmit={handleSubmit}>
                 {({ isSubmitting, errors }) => (
                     <Form className="form">
                         <div className="logo">
